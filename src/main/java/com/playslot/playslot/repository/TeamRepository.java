@@ -4,6 +4,9 @@ import com.playslot.playslot.model.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
+import java.util.List;
 
 public interface TeamRepository extends JpaRepository<Team, UUID> {
+    List<Team> findAllByOrderByNameAsc();
+    List<Team> findByMembers_Id(UUID userId);
 }

@@ -48,6 +48,10 @@ public class Game {
     @Column(columnDefinition = "text")
     private String description;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20, columnDefinition = "varchar(20) default 'PENDING'")
+    private GameStatus status = GameStatus.PENDING;
+
     @ManyToMany
     @JoinTable(
             name = "game_participants",
@@ -99,6 +103,14 @@ public class Game {
 
     public String getDescription() {
         return description;
+    }
+
+    public GameStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(GameStatus status) {
+        this.status = status;
     }
 
     public Set<User> getParticipants() {

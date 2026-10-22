@@ -85,6 +85,15 @@ class PlaySlotApplicationTests {
     }
 
     @Test
+    void createsDefaultAdminOnStartup() {
+        User admin = userRepository.findByEmail("admin@playslot.kz").orElseThrow();
+
+        assertEquals("Administrator", admin.getFullName());
+        assertEquals(UserRole.ADMIN, admin.getRole());
+        assertTrue(passwordEncoder.matches("Admin12345", admin.getPasswordHash()));
+    }
+
+    @Test
     void reportsDatabaseConnectionStatus() {
         assertEquals("connected", databaseHealthController.databaseHealth().status());
     }

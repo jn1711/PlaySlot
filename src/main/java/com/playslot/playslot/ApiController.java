@@ -8,7 +8,7 @@ import java.util.List;
 @RestController
 public class ApiController {
 
-    @GetMapping("/")
+    @GetMapping("/api")
     public ApiInfo apiInfo() {
         return new ApiInfo("PlaySlot API", List.of(
                 "/api/auth/csrf",

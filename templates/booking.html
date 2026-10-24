@@ -1,0 +1,3100 @@
+<!DOCTYPE html>
+<html lang="kk" class="h-full bg-slate-50 text-slate-900 antialiased">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>PlaySlot - Спорт алаңдарын онлайн брондау платформасы</title>
+	<meta name="description" content="Қазақстан бойынша спорт алаңдарын оңай тап және онлайн бронда. Футбол, теннис, баскетбол, волейбол залдары мен корттары." />
+
+	<!-- Google Fonts: Inter -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+	<!-- Google Material Symbols -->
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+	<!-- Tailwind CSS CDN with plugins -->
+	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+	<script>
+		tailwind.config = {
+			darkMode: "class",
+			theme: {
+				extend: {
+					colors: {
+						primary: {
+							DEFAULT: "#006b2c",
+							hover: "#005320",
+							soft: "#DCFCE7",
+							fixed: "#7ffc97"
+						},
+						secondary: {
+							DEFAULT: "#855300",
+							soft: "#FEF3C7",
+							container: "#fea619"
+						},
+						surface: {
+							default: "#FFFFFF",
+							secondary: "#F1F5F9",
+							border: "#E2E8F0"
+						},
+						text: {
+							primary: "#0F172A",
+							secondary: "#64748B",
+							muted: "#94A3B8"
+						},
+						danger: {
+							DEFAULT: "#ba1a1a",
+							soft: "#FEE2E2"
+						}
+					},
+					fontFamily: {
+						sans: ["Inter", "sans-serif"]
+					}
+				}
+			}
+		};
+	</script>
+
+	<style>
+		.material-symbols-outlined {
+			font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+			display: inline-block;
+			vertical-align: middle;
+			line-height: 1;
+		}
+		.material-symbols-fill {
+			font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+		}
+		html {
+			scroll-behavior: smooth;
+		}
+	</style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-[#F8FAFC] font-sans text-text-primary selection:bg-primary-soft selection:text-primary">
+
+	<!-- ========================================== -->
+	<!-- SINGLE CLEAN WHITE HEADER NAVBAR           -->
+	<!-- ========================================== -->
+	<header class="bg-surface-default shadow-sm border-b border-surface-border sticky top-0 z-40">
+		<div class="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center h-16 w-full">
+			<!-- Logo & Main Nav -->
+			<div class="flex items-center gap-8">
+				<a href="javascript:switchView('home')" class="flex items-center gap-2.5 text-primary group">
+					<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+						<span class="material-symbols-outlined text-2xl">sports_soccer</span>
+					</div>
+					<div class="flex flex-col">
+						<span class="text-xl font-bold tracking-tight text-primary">PlaySlot</span>
+						<span class="text-[10px] font-semibold text-text-secondary -mt-1 tracking-wider uppercase" data-i18n="brandSubtitle">Спорт алаңдары</span>
+					</div>
+				</a>
+
+				<!-- Desktop Navigation -->
+				<nav class="hidden md:flex items-center gap-6 pt-1 text-sm font-semibold">
+					<button id="nav-link-home" onclick="switchView('home')" class="text-text-secondary hover:text-text-primary pb-1 transition-colors" data-i18n="navHome">Басты бет</button>
+					<button id="nav-link-courts" onclick="switchView('courts')" class="text-text-secondary hover:text-text-primary pb-1 transition-colors" data-i18n="navCourts">Спорт алаңдары</button>
+					<button id="nav-link-games" onclick="switchView('games')" class="text-text-secondary hover:text-text-primary pb-1 transition-colors" data-i18n="navGames">Ойындар мен командалар</button>
+
+					<!-- Visible ONLY for OWNER and ADMIN -->
+					<button id="nav-link-owner" onclick="switchView('owner')" class="hidden text-text-secondary hover:text-text-primary pb-1 transition-colors items-center gap-1.5">
+						<span class="material-symbols-outlined text-base text-amber-600">storefront</span>
+						<span data-i18n="navOwner">Алаң иесі</span>
+					</button>
+
+					<!-- Visible ONLY for ADMIN -->
+					<button id="nav-link-admin" onclick="switchView('admin')" class="hidden text-text-secondary hover:text-text-primary pb-1 transition-colors items-center gap-1.5">
+						<span class="material-symbols-outlined text-base text-primary">admin_panel_settings</span>
+						<span data-i18n="navAdmin">Әкімші</span>
+					</button>
+				</nav>
+			</div>
+
+			<!-- Right Cluster: Language Switcher + User Cluster -->
+			<div class="flex items-center gap-3">
+				<!-- Language Switcher in White Header -->
+				<div class="flex items-center gap-1 bg-surface-secondary p-1 rounded-xl border border-surface-border">
+					<button onclick="setLanguage('kk')" id="lang-btn-kk" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-primary text-white shadow-sm transition-all">KZ</button>
+					<button onclick="setLanguage('en')" id="lang-btn-en" class="px-2.5 py-1 rounded-lg text-xs font-bold text-text-secondary hover:text-text-primary transition-all">EN</button>
+					<button onclick="setLanguage('ru')" id="lang-btn-ru" class="px-2.5 py-1 rounded-lg text-xs font-bold text-text-secondary hover:text-text-primary transition-all">RU</button>
+				</div>
+
+				<!-- Notifications -->
+				<button id="btn-notifications" onclick="showToast(t('notificationToast'), 'notifications')" class="relative p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-secondary transition-colors" title="Notifications">
+					<span class="material-symbols-outlined">notifications</span>
+					<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
+				</button>
+
+				<!-- Unauthenticated Button (visible when not logged in) -->
+				<button id="btn-guest-login" onclick="openLoginModal()" class="hidden items-center gap-1.5 px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors shadow-sm">
+					<span class="material-symbols-outlined text-base">person</span>
+					<span data-i18n="loginBtnHeader">Жеке кабинет</span>
+				</button>
+
+				<!-- Authenticated User Dropdown Menu -->
+				<div class="relative" id="user-menu-container">
+					<button onclick="toggleUserMenu()" class="flex items-center gap-2 p-1.5 pr-3 rounded-full border border-surface-border hover:border-primary transition-colors bg-surface-default">
+						<div id="user-avatar-badge" class="w-8 h-8 rounded-full bg-primary-soft text-primary font-bold flex items-center justify-center text-xs">ЕС</div>
+						<div class="hidden sm:flex flex-col text-left">
+							<span id="user-display-name" class="text-xs font-semibold text-text-primary leading-tight">Ерлан С.</span>
+							<span id="user-display-role" class="text-[10px] text-primary font-medium leading-tight">Ойыншы</span>
+						</div>
+						<span class="material-symbols-outlined text-xs text-text-secondary">expand_more</span>
+					</button>
+
+					<!-- Dropdown Menu -->
+					<div id="user-dropdown-menu" class="hidden absolute right-0 mt-2 w-64 bg-surface-default rounded-2xl border border-surface-border shadow-xl p-3 z-50">
+						<!-- User Info Card -->
+						<div class="p-3 bg-surface-secondary rounded-xl mb-2">
+							<div class="font-bold text-xs text-text-primary" id="dropdown-user-name">Ерлан Серіков</div>
+							<div class="text-[11px] text-text-secondary" id="dropdown-user-email">erlan.serikov@example.kz</div>
+							<div class="mt-2">
+								<span id="dropdown-user-role-badge" class="px-2 py-0.5 rounded-full bg-primary-soft text-primary text-[10px] font-bold">PLAYER (Ойыншы)</span>
+							</div>
+						</div>
+
+						<!-- Links inside menu -->
+						<div class="space-y-1 text-xs">
+							<button onclick="switchView('profile'); closeUserMenu()" class="w-full flex items-center gap-2 p-2 rounded-lg text-text-primary hover:bg-surface-secondary text-left font-semibold">
+								<span class="material-symbols-outlined text-base">person</span>
+								<span data-i18n="navProfile">Жеке кабинет</span>
+							</button>
+
+							<!-- Owner Mode link inside menu if role permits -->
+							<button id="dropdown-link-owner" onclick="switchView('owner'); closeUserMenu()" class="hidden w-full flex items-center gap-2 p-2 rounded-lg text-amber-800 hover:bg-amber-50 text-left font-semibold">
+								<span class="material-symbols-outlined text-base text-amber-600">storefront</span>
+								<span data-i18n="navOwner">Алаң иесі (Менің алаңдарым)</span>
+							</button>
+
+							<!-- Admin link inside menu if role permits -->
+							<button id="dropdown-link-admin" onclick="switchView('admin'); closeUserMenu()" class="hidden w-full flex items-center gap-2 p-2 rounded-lg text-emerald-800 hover:bg-emerald-50 text-left font-semibold">
+								<span class="material-symbols-outlined text-base text-primary">admin_panel_settings</span>
+								<span data-i18n="navAdmin">Әкімші панелі</span>
+							</button>
+						</div>
+
+						<!-- Role Switcher for Demonstration & Testing -->
+						<div class="mt-2 pt-2 border-t border-surface-border">
+							<div class="text-[10px] font-bold text-text-secondary uppercase tracking-wider mb-1.5" data-i18n="switchRoleTitle">Рөлді ауыстыру (Тест):</div>
+							<div class="grid grid-cols-2 gap-1 text-[11px]">
+								<button onclick="setTestRole('PLAYER')" class="p-1.5 rounded-lg border border-surface-border hover:border-primary text-center font-medium bg-white">
+									⚽ Ойыншы
+								</button>
+								<button onclick="setTestRole('OWNER')" class="p-1.5 rounded-lg border border-amber-300 hover:bg-amber-50 text-amber-800 text-center font-medium bg-amber-50/50">
+									🏟️ Алаң иесі
+								</button>
+								<button onclick="setTestRole('ADMIN')" class="p-1.5 rounded-lg border border-emerald-300 hover:bg-emerald-50 text-emerald-800 text-center font-medium bg-emerald-50/50">
+									🛡️ Әкімші
+								</button>
+								<button onclick="setTestRole('GUEST')" class="p-1.5 rounded-lg border border-slate-300 hover:bg-slate-100 text-slate-700 text-center font-medium bg-slate-50">
+									👤 Қонақ
+								</button>
+							</div>
+						</div>
+
+						<!-- Logout -->
+						<div class="mt-2 pt-2 border-t border-surface-border">
+							<button onclick="logoutAction()" class="w-full flex items-center gap-2 p-2 rounded-lg text-red-600 hover:bg-red-50 text-left text-xs font-semibold">
+								<span class="material-symbols-outlined text-base">logout</span>
+								<span data-i18n="logoutBtn">Шығу</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- ========================================== -->
+	<!-- NOTIFICATION TOAST                         -->
+	<!-- ========================================== -->
+	<div id="toast" class="fixed bottom-20 md:bottom-8 right-6 z-50 hidden max-w-sm bg-surface-default border border-surface-border shadow-xl rounded-xl p-4 flex items-center gap-3 transition-all duration-300">
+		<div id="toast-icon-box" class="w-9 h-9 rounded-full bg-primary-soft text-primary flex items-center justify-center shrink-0">
+			<span id="toast-icon" class="material-symbols-outlined text-xl">check_circle</span>
+		</div>
+		<div class="flex-1">
+			<h4 id="toast-title" class="text-sm font-semibold text-text-primary">Хабарлама</h4>
+			<p id="toast-message" class="text-xs text-text-secondary">Сәтті орындалды</p>
+		</div>
+		<button onclick="hideToast()" class="text-text-muted hover:text-text-primary">
+			<span class="material-symbols-outlined text-base">close</span>
+		</button>
+	</div>
+
+	<!-- ========================================== -->
+	<!-- MAIN CONTENT CANVAS                        -->
+	<!-- ========================================== -->
+	<main class="flex-grow">
+
+		<!-- ---------------------------------------- -->
+		<!-- VIEW 1: HOME PAGE                        -->
+		<!-- ---------------------------------------- -->
+		<div id="view-home" class="view-panel hidden">
+			<!-- Hero Section -->
+			<section class="relative bg-surface-default border-b border-surface-border overflow-hidden">
+				<div class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20 flex flex-col items-center text-center relative z-10">
+					<!-- Pill Badge -->
+					<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-soft text-primary text-xs font-semibold mb-6 border border-primary/20">
+						<span class="material-symbols-outlined text-sm">sports</span>
+						<span data-i18n="heroBadge">Қазақстан бойынша 120+ спорт алаңы бір жерде</span>
+					</div>
+
+					<!-- Hero Headline -->
+					<h1 class="text-3xl md:text-5xl font-bold text-text-primary max-w-3xl tracking-tight leading-tight">
+						<span data-i18n="heroTitle1">Спорт алаңын оңай тап және </span>
+						<span class="text-primary underline decoration-primary-soft decoration-8 underline-offset-4" data-i18n="heroTitle2">онлайн бронда</span>
+					</h1>
+					<p class="mt-4 max-w-2xl text-base text-text-secondary leading-relaxed" data-i18n="heroSubtitle">
+						Қаладағы спорт алаңдарын жылдам іздеу, бағасын салыстыру және бос уақыт слоттарын секунд ішінде брондау. Кезексіз әрі сенімді.
+					</p>
+
+					<!-- Filter / Search Box -->
+					<div class="mt-10 w-full max-w-4xl bg-surface-default p-3 md:p-4 rounded-2xl border border-surface-border shadow-md">
+						<div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+							<!-- City Selection -->
+							<div class="text-left p-2.5 rounded-xl bg-slate-50 border border-surface-border focus-within:border-primary transition-colors">
+								<label class="block text-xs font-medium text-text-secondary" data-i18n="searchCityLabel">Қала / Аймақ</label>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="material-symbols-outlined text-primary text-xl">location_on</span>
+									<select id="search-city" class="bg-transparent text-sm font-semibold text-text-primary w-full focus:outline-none cursor-pointer border-none p-0 focus:ring-0">
+										<option value="Алматы" data-i18n="cityAlmaty">Алматы қаласы</option>
+										<option value="Астана" data-i18n="cityAstana">Астана қаласы</option>
+									</select>
+								</div>
+							</div>
+
+							<!-- Sport Selection -->
+							<div class="text-left p-2.5 rounded-xl bg-slate-50 border border-surface-border focus-within:border-primary transition-colors">
+								<label class="block text-xs font-medium text-text-secondary" data-i18n="searchSportLabel">Спорт түрі</label>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="material-symbols-outlined text-primary text-xl">sports_soccer</span>
+									<select id="search-sport" class="bg-transparent text-sm font-semibold text-text-primary w-full focus:outline-none cursor-pointer border-none p-0 focus:ring-0">
+										<option value="all" data-i18n="sportAll">Барлық спорттар</option>
+										<option value="Футбол" data-i18n="sportFootball">Футбол</option>
+										<option value="Теннис" data-i18n="sportTennis">Теннис</option>
+										<option value="Баскетбол" data-i18n="sportBasketball">Баскетбол</option>
+										<option value="Волейбол" data-i18n="sportVolleyball">Волейбол</option>
+									</select>
+								</div>
+							</div>
+
+							<!-- Date Picker -->
+							<div class="text-left p-2.5 rounded-xl bg-slate-50 border border-surface-border focus-within:border-primary transition-colors">
+								<label class="block text-xs font-medium text-text-secondary" data-i18n="searchDateLabel">Күні</label>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="material-symbols-outlined text-primary text-xl">calendar_month</span>
+									<input id="search-date" type="date" value="2025-10-24" class="bg-transparent text-sm font-semibold text-text-primary w-full focus:outline-none border-none p-0 focus:ring-0 cursor-pointer" />
+								</div>
+							</div>
+
+							<!-- Submit Button -->
+							<button onclick="handleHeroSearch()" class="h-full min-h-[52px] w-full rounded-xl bg-primary text-white text-sm font-semibold flex items-center justify-center gap-2 hover:bg-primary-hover active:scale-95 transition-all shadow-sm">
+								<span class="material-symbols-outlined">search</span>
+								<span data-i18n="searchButton">Алаңдарды көру</span>
+							</button>
+						</div>
+					</div>
+
+					<!-- Metrics Counter -->
+					<div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 text-center border-t border-surface-border pt-8 w-full max-w-4xl">
+						<div>
+							<div class="text-2xl md:text-3xl font-bold text-text-primary">120+</div>
+							<div class="text-xs text-text-secondary mt-1" data-i18n="metric1">Спорт алаңы мен зал</div>
+						</div>
+						<div>
+							<div class="text-2xl md:text-3xl font-bold text-text-primary">450+</div>
+							<div class="text-xs text-text-secondary mt-1" data-i18n="metric2">Белсенді ойыншы</div>
+						</div>
+						<div>
+							<div class="text-2xl md:text-3xl font-bold text-primary">98%</div>
+							<div class="text-xs text-text-secondary mt-1" data-i18n="metric3">Оң пікірлер деңгейі</div>
+						</div>
+						<div>
+							<div class="text-2xl md:text-3xl font-bold text-text-primary">&lt; 60 сек</div>
+							<div class="text-xs text-text-secondary mt-1" data-i18n="metric4">Орташа брондау уақыты</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Sports Categories -->
+			<section class="max-w-7xl mx-auto px-4 md:px-8 py-10">
+				<div class="flex items-center justify-between mb-6">
+					<h2 class="text-xl md:text-2xl font-bold text-text-primary" data-i18n="sportsTypes">Спорт түрлері</h2>
+					<span class="text-xs text-text-secondary" data-i18n="sportsTypesSub">Қалауыңыз бойынша таңдаңыз</span>
+				</div>
+
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+					<!-- Football -->
+					<div onclick="filterBySportAndNavigate('Футбол')" class="cursor-pointer p-4 bg-surface-default rounded-xl border border-surface-border hover:border-primary hover:shadow-md transition-all group">
+						<div class="flex items-center justify-between">
+							<span class="w-12 h-12 rounded-xl bg-primary-soft text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+								<span class="material-symbols-outlined text-2xl">sports_soccer</span>
+							</span>
+							<span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-text-secondary" data-i18n="catFootballCount">64 алаң</span>
+						</div>
+						<h3 class="mt-4 text-base font-bold text-text-primary" data-i18n="sportFootball">Футбол</h3>
+						<p class="text-xs text-text-secondary mt-1" data-i18n="catFootballDesc">Жабық манеждер және ашық газон</p>
+					</div>
+
+					<!-- Basketball -->
+					<div onclick="filterBySportAndNavigate('Баскетбол')" class="cursor-pointer p-4 bg-surface-default rounded-xl border border-surface-border hover:border-primary hover:shadow-md transition-all group">
+						<div class="flex items-center justify-between">
+							<span class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+								<span class="material-symbols-outlined text-2xl">sports_basketball</span>
+							</span>
+							<span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-text-secondary" data-i18n="catBasketballCount">28 алаң</span>
+						</div>
+						<h3 class="mt-4 text-base font-bold text-text-primary" data-i18n="sportBasketball">Баскетбол</h3>
+						<p class="text-xs text-text-secondary mt-1" data-i18n="catBasketballDesc">Кәсіби паркет және стритборд</p>
+					</div>
+
+					<!-- Tennis -->
+					<div onclick="filterBySportAndNavigate('Теннис')" class="cursor-pointer p-4 bg-surface-default rounded-xl border border-surface-border hover:border-primary hover:shadow-md transition-all group">
+						<div class="flex items-center justify-between">
+							<span class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+								<span class="material-symbols-outlined text-2xl">sports_tennis</span>
+							</span>
+							<span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-text-secondary" data-i18n="catTennisCount">19 корт</span>
+						</div>
+						<h3 class="mt-4 text-base font-bold text-text-primary" data-i18n="sportTennis">Теннис</h3>
+						<p class="text-xs text-text-secondary mt-1" data-i18n="catTennisDesc">Хард және топырақ корттары</p>
+					</div>
+
+					<!-- Volleyball -->
+					<div onclick="filterBySportAndNavigate('Волейбол')" class="cursor-pointer p-4 bg-surface-default rounded-xl border border-surface-border hover:border-primary hover:shadow-md transition-all group">
+						<div class="flex items-center justify-between">
+							<span class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+								<span class="material-symbols-outlined text-2xl">sports_volleyball</span>
+							</span>
+							<span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-text-secondary" data-i18n="catVolleyballCount">15 зал</span>
+						</div>
+						<h3 class="mt-4 text-base font-bold text-text-primary" data-i18n="sportVolleyball">Волейбол</h3>
+						<p class="text-xs text-text-secondary mt-1" data-i18n="catVolleyballDesc">Жарықтандырылған жабық алаңдар</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Featured Courts Grid -->
+			<section class="max-w-7xl mx-auto px-4 md:px-8 py-8">
+				<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+					<div>
+						<div class="text-xs uppercase tracking-wider text-primary font-bold" data-i18n="featuredSubtitle">Таңдаулы орындар</div>
+						<h2 class="text-xl md:text-2xl font-bold text-text-primary mt-1" data-i18n="featuredTitle">Қаланың үздік спорт алаңдары</h2>
+					</div>
+					<button onclick="switchView('courts')" class="inline-flex items-center gap-1 text-sm text-primary font-semibold hover:gap-2 transition-all">
+						<span data-i18n="viewAllCourts">Барлық алаңдарды қарау</span>
+						<span class="material-symbols-outlined text-lg">arrow_forward</span>
+					</button>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="home-featured-grid">
+					<!-- Card 1: Central Arena -->
+					<div class="bg-surface-default border border-surface-border rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all flex flex-col">
+						<div class="relative h-48 bg-slate-200 overflow-hidden">
+							<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz9M066xpLPAXFEhaqvS-ZRnQAZjk_XZAfiLY4wD5UQZV76HqROgRLq1dKnM0FYaC5DxKSMW16i7q-ycpmoLiGfb6Ch6ohrnocE1Z82OKNKT0q4pOmtCV4MWRobRDHcxMulI6q2u4a3M_ZgLlcY0OGhgnQmRorySY3G9XBwH_sl7AKnhVFoHwlfhgSWpWWwGPl2NgNVeZFtajoWMf_huGFbEiVsYGbE7G96_B8J7dsqmfqoA7yYACkxA" alt="Central Arena" class="w-full h-full object-cover" />
+							<div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-primary text-xs px-2.5 py-1 rounded-md shadow-sm font-semibold" data-i18n="sportFootball">Футбол</div>
+							<div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-text-primary text-xs px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1 font-bold">
+								<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+								<span>4.8</span>
+								<span class="text-text-muted text-[10px]">(48)</span>
+							</div>
+						</div>
+						<div class="p-5 flex-1 flex flex-col justify-between">
+							<div>
+								<h3 class="text-base font-bold text-text-primary">Central Arena</h3>
+								<div class="flex items-center gap-1 text-text-secondary text-xs mt-1">
+									<span class="material-symbols-outlined text-sm">location_on</span>
+									<span data-i18n="court1Location">Алматы, Бостандық ауданы</span>
+								</div>
+								<div class="flex flex-wrap gap-1.5 mt-3">
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityParking">Паркинг</span>
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityShower">Душ</span>
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityLocker">Киім бөлмесі</span>
+								</div>
+							</div>
+							<div class="mt-5 pt-4 border-t border-surface-border flex items-center justify-between">
+								<div>
+									<span class="text-lg font-bold text-text-primary">6 000 ₸</span>
+									<span class="text-xs text-text-secondary" data-i18n="perHour"> / сағ</span>
+								</div>
+								<button onclick="openBooking('Central Arena (Футбол)', 6000)" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="bookButton">Брондау</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Card 2: Dostyk Tennis Club -->
+					<div class="bg-surface-default border border-surface-border rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all flex flex-col">
+						<div class="relative h-48 bg-slate-200 overflow-hidden">
+							<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4gj2xa6JArrTfEk2SEtTCzGCtOrBra8UUglPsLMLUk8IzXSRpM1rVpTwzwmZspCnCAdprJYOnA3MELprnv1twpoTrKOw0SaG8yTzNIaKpp-7kG3sUJoD1Fc4ZI6LZFsb2Qz4ebInm7gKALbYgkvE6hosiJZBRPDiOC99pFHZ9UZMdmHyc2oH-bhudzzarfr0i8wwXMMZ4_mQOWotEc2dLfEiAIczX95USKW9zbmr1cgVSWaA6zsk1BQ" alt="Dostyk Tennis" class="w-full h-full object-cover" />
+							<div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-primary text-xs px-2.5 py-1 rounded-md shadow-sm font-semibold" data-i18n="sportTennis">Теннис</div>
+							<div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-text-primary text-xs px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1 font-bold">
+								<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+								<span>4.9</span>
+								<span class="text-text-muted text-[10px]">(62)</span>
+							</div>
+						</div>
+						<div class="p-5 flex-1 flex flex-col justify-between">
+							<div>
+								<h3 class="text-base font-bold text-text-primary">Dostyk Tennis Club</h3>
+								<div class="flex items-center gap-1 text-text-secondary text-xs mt-1">
+									<span class="material-symbols-outlined text-sm">location_on</span>
+									<span data-i18n="court2Location">Алматы, Медеу ауданы</span>
+								</div>
+								<div class="flex flex-wrap gap-1.5 mt-3">
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityHardCourt">Жабық корт</span>
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityEquipment">Pro жабдықтар</span>
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityCafe">Кафе</span>
+								</div>
+							</div>
+							<div class="mt-5 pt-4 border-t border-surface-border flex items-center justify-between">
+								<div>
+									<span class="text-lg font-bold text-text-primary">10 000 ₸</span>
+									<span class="text-xs text-text-secondary" data-i18n="perHour"> / сағ</span>
+								</div>
+								<button onclick="openBooking('Dostyk Tennis Club (Теннис)', 10000)" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="bookButton">Брондау</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Card 3: Nomad Basketball Hall -->
+					<div class="bg-surface-default border border-surface-border rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all flex flex-col">
+						<div class="relative h-48 bg-slate-200 overflow-hidden">
+							<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1vPlOlBHYw8lx2tXJQee4xoX_sw8nNoVHHwc_aSwyNML60JEYv-mf3wmrJUQlGbKlSJ2nDjeGplG8ogrPU8k5Eg4f6W6qfBOmjyoVtevTEox5d_Kv3YYTUHzZY7dfBh7154ZfW3nidIFPvjnjUo1fTZl_zfmGU_Mg-pwuPldRxU_tr7hOoRWxD-KcCL9DG7TyhKucNV7K6hsMtTtSq6846i_TRHu--HiRF13dnE7IBaxSufRmHg4W4w" alt="Nomad Basketball" class="w-full h-full object-cover" />
+							<div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-primary text-xs px-2.5 py-1 rounded-md shadow-sm font-semibold" data-i18n="sportBasketball">Баскетбол</div>
+							<div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-text-primary text-xs px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1 font-bold">
+								<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+								<span>4.7</span>
+								<span class="text-text-muted text-[10px]">(31)</span>
+							</div>
+						</div>
+						<div class="p-5 flex-1 flex flex-col justify-between">
+							<div>
+								<h3 class="text-base font-bold text-text-primary">Nomad Basketball Hall</h3>
+								<div class="flex items-center gap-1 text-text-secondary text-xs mt-1">
+									<span class="material-symbols-outlined text-sm">location_on</span>
+									<span data-i18n="court3Location">Астана, Есіл ауданы</span>
+								</div>
+								<div class="flex flex-wrap gap-1.5 mt-3">
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityParquet">Паркет</span>
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityBleachers">Трибуна</span>
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityBalls">Доптар</span>
+								</div>
+							</div>
+							<div class="mt-5 pt-4 border-t border-surface-border flex items-center justify-between">
+								<div>
+									<span class="text-lg font-bold text-text-primary">7 500 ₸</span>
+									<span class="text-xs text-text-secondary" data-i18n="perHour"> / сағ</span>
+								</div>
+								<button onclick="openBooking('Nomad Basketball Hall (Баскетбол)', 7500)" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="bookButton">Брондау</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Card 4: Sunkar Volleyball Arena -->
+					<div class="bg-surface-default border border-surface-border rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all flex flex-col">
+						<div class="relative h-48 bg-slate-200 overflow-hidden">
+							<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuIJhBibIJ2KFD8Uf1RtA5iIuP_9h4H0IWoRhAq87dTk1TIioQ2eUcX0CoE-6WwzAs7RR-OMt_k1oJCQM9E3qTYw_ejc5Yfi6VMHXHEkjKsrUzYu70oabEkYS2yKSQDkGjKZEpxROf06x53mxngwS1YUvhriJz25nXt5rmicLhSg2AMEX5Qhou3dW2JDwfAMh_o5a943xF3lq7iKohQFjC95bQtHv8qOquVLeA_rY4JcxyEXECF8ySQw" alt="Sunkar Volleyball" class="w-full h-full object-cover" />
+							<div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-primary text-xs px-2.5 py-1 rounded-md shadow-sm font-semibold" data-i18n="sportVolleyball">Волейбол</div>
+							<div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-text-primary text-xs px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1 font-bold">
+								<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+								<span>4.6</span>
+								<span class="text-text-muted text-[10px]">(24)</span>
+							</div>
+						</div>
+						<div class="p-5 flex-1 flex flex-col justify-between">
+							<div>
+								<h3 class="text-base font-bold text-text-primary">Sunkar Volleyball Arena</h3>
+								<div class="flex items-center gap-1 text-text-secondary text-xs mt-1">
+									<span class="material-symbols-outlined text-sm">location_on</span>
+									<span data-i18n="court4Location">Алматы, Әуезов ауданы</span>
+								</div>
+								<div class="flex flex-wrap gap-1.5 mt-3">
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityTaraflex">Тарафлекс</span>
+									<span class="px-2 py-0.5 rounded bg-slate-100 text-text-secondary text-[11px] font-medium" data-i18n="amenityShower">Душ</span>
+								</div>
+							</div>
+							<div class="mt-5 pt-4 border-t border-surface-border flex items-center justify-between">
+								<div>
+									<span class="text-lg font-bold text-text-primary">5 000 ₸</span>
+									<span class="text-xs text-text-secondary" data-i18n="perHour"> / сағ</span>
+								</div>
+								<button onclick="openBooking('Sunkar Volleyball Arena (Волейбол)', 5000)" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="bookButton">Брондау</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Community Teaser Banner -->
+			<section class="max-w-7xl mx-auto px-4 md:px-8 py-12">
+				<div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 md:p-12 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 shadow-lg">
+					<div class="relative z-10 max-w-xl">
+						<span class="px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold uppercase tracking-wider" data-i18n="communityBadge">Қауымдастық</span>
+						<h2 class="text-2xl md:text-3xl font-bold mt-4 leading-tight" data-i18n="communityTitle">Команда тап, ашық ойынға қосыл немесе өз матчыңды ұйымдастыр</h2>
+						<p class="text-sm text-slate-300 mt-2" data-i18n="communityDesc">
+							Ойыншылар жетіспей жатыр ма? PlaySlot арқылы деңгейіңізге сай пікірлестер тауып, бірлесіп ойнаңыз.
+						</p>
+						<div class="mt-6 flex flex-wrap gap-3">
+							<button onclick="switchView('games')" class="px-5 py-2.5 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors flex items-center gap-2">
+								<span class="material-symbols-outlined text-sm">group_add</span>
+								<span data-i18n="openGamesList">Ойындар тізімін ашу</span>
+							</button>
+							<button onclick="openCreateGameModal()" class="px-5 py-2.5 rounded-xl bg-white/10 text-white text-xs font-semibold hover:bg-white/20 transition-colors border border-white/20" data-i18n="createGameBtn">
+								+ Жаңа ойын құру
+							</button>
+						</div>
+					</div>
+
+					<div class="relative z-10 w-full md:w-auto flex flex-col sm:flex-row gap-4">
+						<div class="p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 text-center sm:text-left">
+							<div class="text-2xl font-bold text-amber-300">35+</div>
+							<div class="text-xs text-slate-300" data-i18n="metricActiveGames">Бүгінгі белсенді ойындар</div>
+						</div>
+						<div class="p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 text-center sm:text-left">
+							<div class="text-2xl font-bold text-emerald-400">0 ₸</div>
+							<div class="text-xs text-slate-300" data-i18n="metricCommission">Қосылу комиссиясы жоқ</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- ---------------------------------------- -->
+		<!-- VIEW 2: COURTS PAGE (LIST & MAP)         -->
+		<!-- ---------------------------------------- -->
+		<div id="view-courts" class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8">
+			<!-- Header & View Switcher -->
+			<div class="flex flex-col gap-4 mb-6">
+				<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div>
+						<h1 class="text-2xl md:text-3xl font-bold text-text-primary" data-i18n="courtsPageTitle">Спорт алаңдары</h1>
+						<p class="text-xs text-text-secondary" data-i18n="courtsPageSub">Қолжетімді уақыт слоттары мен онлайн төлем</p>
+					</div>
+
+					<div class="flex items-center p-1 bg-surface-secondary rounded-xl border border-surface-border self-start">
+						<button id="view-mode-list-btn" onclick="setCourtViewMode('list')" class="px-4 py-1.5 rounded-lg text-text-secondary hover:text-text-primary text-xs font-semibold flex items-center gap-1.5 transition-all">
+							<span class="material-symbols-outlined text-base">format_list_bulleted</span>
+							<span data-i18n="viewListOnly">Тізім</span>
+						</button>
+						<button id="view-mode-split-btn" onclick="setCourtViewMode('split')" class="px-4 py-1.5 rounded-lg bg-surface-default text-text-primary text-xs font-semibold shadow-sm flex items-center gap-1.5 transition-all">
+							<span class="material-symbols-outlined text-base">map</span>
+							<span data-i18n="viewListAndMap">Тізім + Карта</span>
+						</button>
+					</div>
+				</div>
+
+				<!-- Filter Toolbar -->
+				<div class="bg-surface-default p-4 rounded-xl border border-surface-border shadow-sm flex flex-wrap items-center justify-between gap-4">
+					<!-- Sport Chips -->
+					<div class="flex flex-wrap items-center gap-2">
+						<button onclick="filterCourts('Барлығы')" data-sport="Барлығы" class="court-filter-chip px-3.5 py-1.5 rounded-full text-xs font-semibold bg-primary text-white transition-colors" data-i18n="sportAll">Барлығы</button>
+						<button onclick="filterCourts('Футбол')" data-sport="Футбол" class="court-filter-chip px-3.5 py-1.5 rounded-full text-xs font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors" data-i18n="sportFootball">Футбол</button>
+						<button onclick="filterCourts('Теннис')" data-sport="Теннис" class="court-filter-chip px-3.5 py-1.5 rounded-full text-xs font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors" data-i18n="sportTennis">Теннис</button>
+						<button onclick="filterCourts('Баскетбол')" data-sport="Баскетбол" class="court-filter-chip px-3.5 py-1.5 rounded-full text-xs font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors" data-i18n="sportBasketball">Баскетбол</button>
+						<button onclick="filterCourts('Волейбол')" data-sport="Волейбол" class="court-filter-chip px-3.5 py-1.5 rounded-full text-xs font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors" data-i18n="sportVolleyball">Волейбол</button>
+					</div>
+
+					<!-- Secondary Filters -->
+					<div class="flex flex-wrap items-center gap-3">
+						<select id="filter-district" onchange="applyCourtFilters()" class="px-3 py-1.5 rounded-lg border border-surface-border text-xs bg-surface-default focus:ring-1 focus:ring-primary">
+							<option value="all" data-i18n="districtAll">Барлық аудандар</option>
+							<option value="Бостандық" data-i18n="districtBostandyk">Бостандық ауданы</option>
+							<option value="Медеу" data-i18n="districtMedeu">Медеу ауданы</option>
+							<option value="Әуезов" data-i18n="districtAuezov">Әуезов ауданы</option>
+							<option value="Есіл" data-i18n="districtEsil">Есіл ауданы (Астана)</option>
+						</select>
+
+						<select id="filter-price" onchange="applyCourtFilters()" class="px-3 py-1.5 rounded-lg border border-surface-border text-xs bg-surface-default focus:ring-1 focus:ring-primary">
+							<option value="all" data-i18n="priceAll">Кез келген баға</option>
+							<option value="5000" data-i18n="priceUnder5k">&lt; 5 000 ₸</option>
+							<option value="8000" data-i18n="price5kTo8k">5 000 ₸ – 8 000 ₸</option>
+							<option value="expensive" data-i18n="priceOver8k">&gt; 8 000 ₸</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Grid: Left Feed & Right Map -->
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start" id="courts-layout-container">
+				<!-- Feed Column -->
+				<div class="lg:col-span-7 space-y-4" id="courts-listing-col">
+					<!-- Item 1 -->
+					<div class="court-item-card bg-surface-default border border-surface-border rounded-xl p-4 flex flex-col sm:flex-row gap-4 hover:border-primary hover:shadow-sm transition-all" data-district="Бостандық" data-price="6000" data-sport="Футбол">
+						<div class="w-full sm:w-48 h-36 rounded-lg bg-slate-200 overflow-hidden relative shrink-0">
+							<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz9M066xpLPAXFEhaqvS-ZRnQAZjk_XZAfiLY4wD5UQZV76HqROgRLq1dKnM0FYaC5DxKSMW16i7q-ycpmoLiGfb6Ch6ohrnocE1Z82OKNKT0q4pOmtCV4MWRobRDHcxMulI6q2u4a3M_ZgLlcY0OGhgnQmRorySY3G9XBwH_sl7AKnhVFoHwlfhgSWpWWwGPl2NgNVeZFtajoWMf_huGFbEiVsYGbE7G96_B8J7dsqmfqoA7yYACkxA" alt="Central Arena" class="w-full h-full object-cover" />
+							<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-default/90 text-primary text-[11px] font-bold" data-i18n="sportFootball">Футбол</span>
+						</div>
+						<div class="flex-1 flex flex-col justify-between">
+							<div>
+								<div class="flex items-center justify-between">
+									<h3 class="text-base font-bold text-text-primary">Central Arena</h3>
+									<div class="flex items-center gap-1 text-xs">
+										<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+										<span class="font-bold">4.8</span>
+									</div>
+								</div>
+								<p class="text-xs text-text-secondary flex items-center gap-1 mt-1">
+									<span class="material-symbols-outlined text-sm">location_on</span>
+									<span data-i18n="court1FullAddress">Алматы, Бостандық ауданы, Сәтбаев к-сі 22</span>
+								</p>
+								<div class="flex flex-wrap gap-1.5 mt-2">
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityIndoor">Жабық</span>
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityShower">Душ</span>
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityParking">Паркинг</span>
+								</div>
+							</div>
+							<div class="flex items-center justify-between mt-3 pt-3 border-t border-surface-border">
+								<div>
+									<span class="text-base font-bold text-text-primary">6 000 ₸</span>
+									<span class="text-xs text-text-secondary" data-i18n="perHour"> / сағ</span>
+								</div>
+								<button onclick="openBooking('Central Arena (Футбол)', 6000)" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="bookButton">Брондау</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Item 2 -->
+					<div class="court-item-card bg-surface-default border border-surface-border rounded-xl p-4 flex flex-col sm:flex-row gap-4 hover:border-primary hover:shadow-sm transition-all" data-district="Медеу" data-price="10000" data-sport="Теннис">
+						<div class="w-full sm:w-48 h-36 rounded-lg bg-slate-200 overflow-hidden relative shrink-0">
+							<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4gj2xa6JArrTfEk2SEtTCzGCtOrBra8UUglPsLMLUk8IzXSRpM1rVpTwzwmZspCnCAdprJYOnA3MELprnv1twpoTrKOw0SaG8yTzNIaKpp-7kG3sUJoD1Fc4ZI6LZFsb2Qz4ebInm7gKALbYgkvE6hosiJZBRPDiOC99pFHZ9UZMdmHyc2oH-bhudzzarfr0i8wwXMMZ4_mQOWotEc2dLfEiAIczX95USKW9zbmr1cgVSWaA6zsk1BQ" alt="Dostyk Tennis" class="w-full h-full object-cover" />
+							<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-default/90 text-primary text-[11px] font-bold" data-i18n="sportTennis">Теннис</span>
+						</div>
+						<div class="flex-1 flex flex-col justify-between">
+							<div>
+								<div class="flex items-center justify-between">
+									<h3 class="text-base font-bold text-text-primary">Dostyk Tennis Club</h3>
+									<div class="flex items-center gap-1 text-xs">
+										<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+										<span class="font-bold">4.9</span>
+									</div>
+								</div>
+								<p class="text-xs text-text-secondary flex items-center gap-1 mt-1">
+									<span class="material-symbols-outlined text-sm">location_on</span>
+									<span data-i18n="court2FullAddress">Алматы, Медеу ауданы, Достық даңғылы 105</span>
+								</p>
+								<div class="flex flex-wrap gap-1.5 mt-2">
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityHardCourt">Hard корт</span>
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityCoach">Жаттықтырушы</span>
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityInventory">Инвентарь</span>
+								</div>
+							</div>
+							<div class="flex items-center justify-between mt-3 pt-3 border-t border-surface-border">
+								<div>
+									<span class="text-base font-bold text-text-primary">10 000 ₸</span>
+									<span class="text-xs text-text-secondary" data-i18n="perHour"> / сағ</span>
+								</div>
+								<button onclick="openBooking('Dostyk Tennis Club (Теннис)', 10000)" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="bookButton">Брондау</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Item 3 -->
+					<div class="court-item-card bg-surface-default border border-surface-border rounded-xl p-4 flex flex-col sm:flex-row gap-4 hover:border-primary hover:shadow-sm transition-all" data-district="Есіл" data-price="7500" data-sport="Баскетбол">
+						<div class="w-full sm:w-48 h-36 rounded-lg bg-slate-200 overflow-hidden relative shrink-0">
+							<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1vPlOlBHYw8lx2tXJQee4xoX_sw8nNoVHHwc_aSwyNML60JEYv-mf3wmrJUQlGbKlSJ2nDjeGplG8ogrPU8k5Eg4f6W6qfBOmjyoVtevTEox5d_Kv3YYTUHzZY7dfBh7154ZfW3nidIFPvjnjUo1fTZl_zfmGU_Mg-pwuPldRxU_tr7hOoRWxD-KcCL9DG7TyhKucNV7K6hsMtTtSq6846i_TRHu--HiRF13dnE7IBaxSufRmHg4W4w" alt="Nomad Basketball" class="w-full h-full object-cover" />
+							<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-default/90 text-primary text-[11px] font-bold" data-i18n="sportBasketball">Баскетбол</span>
+						</div>
+						<div class="flex-1 flex flex-col justify-between">
+							<div>
+								<div class="flex items-center justify-between">
+									<h3 class="text-base font-bold text-text-primary">Nomad Basketball Hall</h3>
+									<div class="flex items-center gap-1 text-xs">
+										<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+										<span class="font-bold">4.7</span>
+									</div>
+								</div>
+								<p class="text-xs text-text-secondary flex items-center gap-1 mt-1">
+									<span class="material-symbols-outlined text-sm">location_on</span>
+									<span data-i18n="court3FullAddress">Астана, Есіл ауданы, Мәңгілік Ел 55</span>
+								</p>
+								<div class="flex flex-wrap gap-1.5 mt-2">
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityFibaParquet">FIBA паркет</span>
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityBleachers">Трибуна</span>
+								</div>
+							</div>
+							<div class="flex items-center justify-between mt-3 pt-3 border-t border-surface-border">
+								<div>
+									<span class="text-base font-bold text-text-primary">7 500 ₸</span>
+									<span class="text-xs text-text-secondary" data-i18n="perHour"> / сағ</span>
+								</div>
+								<button onclick="openBooking('Nomad Basketball Hall (Баскетбол)', 7500)" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="bookButton">Брондау</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Item 4 -->
+					<div class="court-item-card bg-surface-default border border-surface-border rounded-xl p-4 flex flex-col sm:flex-row gap-4 hover:border-primary hover:shadow-sm transition-all" data-district="Әуезов" data-price="5000" data-sport="Волейбол">
+						<div class="w-full sm:w-48 h-36 rounded-lg bg-slate-200 overflow-hidden relative shrink-0">
+							<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuIJhBibIJ2KFD8Uf1RtA5iIuP_9h4H0IWoRhAq87dTk1TIioQ2eUcX0CoE-6WwzAs7RR-OMt_k1oJCQM9E3qTYw_ejc5Yfi6VMHXHEkjKsrUzYu70oabEkYS2yKSQDkGjKZEpxROf06x53mxngwS1YUvhriJz25nXt5rmicLhSg2AMEX5Qhou3dW2JDwfAMh_o5a943xF3lq7iKohQFjC95bQtHv8qOquVLeA_rY4JcxyEXECF8ySQw" alt="Sunkar Volleyball" class="w-full h-full object-cover" />
+							<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-default/90 text-primary text-[11px] font-bold" data-i18n="sportVolleyball">Волейбол</span>
+						</div>
+						<div class="flex-1 flex flex-col justify-between">
+							<div>
+								<div class="flex items-center justify-between">
+									<h3 class="text-base font-bold text-text-primary">Sunkar Volleyball Arena</h3>
+									<div class="flex items-center gap-1 text-xs">
+										<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+										<span class="font-bold">4.6</span>
+									</div>
+								</div>
+								<p class="text-xs text-text-secondary flex items-center gap-1 mt-1">
+									<span class="material-symbols-outlined text-sm">location_on</span>
+									<span data-i18n="court4FullAddress">Алматы, Әуезов ауданы, Төле би 180</span>
+								</p>
+								<div class="flex flex-wrap gap-1.5 mt-2">
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityTaraflex">Тарафлекс</span>
+									<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]" data-i18n="amenityShower">Душ</span>
+								</div>
+							</div>
+							<div class="flex items-center justify-between mt-3 pt-3 border-t border-surface-border">
+								<div>
+									<span class="text-base font-bold text-text-primary">5 000 ₸</span>
+									<span class="text-xs text-text-secondary" data-i18n="perHour"> / сағ</span>
+								</div>
+								<button onclick="openBooking('Sunkar Volleyball Arena (Волейбол)', 5000)" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="bookButton">Брондау</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Vector Map Column -->
+				<div class="lg:col-span-5 sticky top-20 hidden lg:block" id="courts-map-col">
+					<div class="bg-surface-default border border-surface-border rounded-xl p-4 shadow-sm overflow-hidden">
+						<div class="flex items-center justify-between mb-3">
+							<span class="text-xs font-semibold text-text-primary flex items-center gap-1.5">
+								<span class="material-symbols-outlined text-primary text-base">near_me</span>
+								<span data-i18n="interactiveMap">Интерактивті карта: Алматы</span>
+							</span>
+							<span class="text-xs text-text-secondary" data-i18n="courtsShown">4 алаң көрсетілді</span>
+						</div>
+
+						<div class="w-full h-[520px] bg-slate-100 rounded-lg relative overflow-hidden border border-surface-border">
+							<!-- Vector Map SVG -->
+							<svg class="w-full h-full" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<line x1="0" y1="100" x2="400" y2="100" stroke="#E2E8F0" stroke-width="2" />
+								<line x1="0" y1="200" x2="400" y2="200" stroke="#E2E8F0" stroke-width="2" />
+								<line x1="0" y1="320" x2="400" y2="320" stroke="#E2E8F0" stroke-width="3" />
+								<line x1="120" y1="0" x2="120" y2="500" stroke="#E2E8F0" stroke-width="2" />
+								<line x1="260" y1="0" x2="260" y2="500" stroke="#E2E8F0" stroke-width="2" />
+								<path d="M-20 180 Q 200 240 420 190" stroke="#CBD5E1" stroke-width="6" />
+								<path d="M150 -10 Q 210 250 180 510" stroke="#CBD5E1" stroke-width="6" />
+								<rect x="40" y="50" width="70" height="40" rx="8" fill="#DCFCE7" opacity="0.7" />
+								<rect x="230" y="270" width="110" height="60" rx="10" fill="#DCFCE7" opacity="0.7" />
+								<rect x="70" y="380" width="80" height="50" rx="6" fill="#DCFCE7" opacity="0.6" />
+							</svg>
+
+							<!-- Map Pin 1: Central Arena -->
+							<button onclick="openBooking('Central Arena (Футбол)', 6000)" class="absolute top-[180px] left-[140px] -translate-x-1/2 -translate-y-1/2 group z-10 text-left">
+								<div class="px-2 py-1 rounded-md bg-white border border-primary shadow-md text-[11px] font-bold text-text-primary flex items-center gap-1 group-hover:bg-primary group-hover:text-white transition-colors">
+									<span class="w-2 h-2 rounded-full bg-primary group-hover:bg-white"></span>
+									<span>6 000 ₸</span>
+								</div>
+								<div class="w-2 h-2 bg-white border-r border-b border-primary rotate-45 mx-auto -mt-1"></div>
+							</button>
+
+							<!-- Map Pin 2: Dostyk Tennis -->
+							<button onclick="openBooking('Dostyk Tennis Club (Теннис)', 10000)" class="absolute top-[110px] left-[270px] -translate-x-1/2 -translate-y-1/2 group z-10 text-left">
+								<div class="px-2 py-1 rounded-md bg-white border border-primary shadow-md text-[11px] font-bold text-text-primary flex items-center gap-1 group-hover:bg-primary group-hover:text-white transition-colors">
+									<span class="w-2 h-2 rounded-full bg-primary group-hover:bg-white"></span>
+									<span>10 000 ₸</span>
+								</div>
+								<div class="w-2 h-2 bg-white border-r border-b border-primary rotate-45 mx-auto -mt-1"></div>
+							</button>
+
+							<!-- Map Pin 3: Sunkar Volleyball -->
+							<button onclick="openBooking('Sunkar Volleyball Arena (Волейбол)', 5000)" class="absolute top-[310px] left-[90px] -translate-x-1/2 -translate-y-1/2 group z-10 text-left">
+								<div class="px-2 py-1 rounded-md bg-white border border-primary shadow-md text-[11px] font-bold text-text-primary flex items-center gap-1 group-hover:bg-primary group-hover:text-white transition-colors">
+									<span class="w-2 h-2 rounded-full bg-primary group-hover:bg-white"></span>
+									<span>5 000 ₸</span>
+								</div>
+								<div class="w-2 h-2 bg-white border-r border-b border-primary rotate-45 mx-auto -mt-1"></div>
+							</button>
+
+							<!-- Map Pin 4: Nomad Basketball -->
+							<button onclick="openBooking('Nomad Basketball Hall (Баскетбол)', 7500)" class="absolute top-[390px] left-[290px] -translate-x-1/2 -translate-y-1/2 group z-10 text-left">
+								<div class="px-2 py-1 rounded-md bg-white border border-secondary shadow-md text-[11px] font-bold text-text-primary flex items-center gap-1 group-hover:bg-secondary group-hover:text-white transition-colors">
+									<span class="w-2 h-2 rounded-full bg-secondary group-hover:bg-white"></span>
+									<span>7 500 ₸</span>
+								</div>
+								<div class="w-2 h-2 bg-white border-r border-b border-secondary rotate-45 mx-auto -mt-1"></div>
+							</button>
+
+							<!-- Controls -->
+							<div class="absolute bottom-3 right-3 flex flex-col gap-1 bg-surface-default p-1 rounded-lg border border-surface-border shadow-sm">
+								<button class="w-7 h-7 flex items-center justify-center text-text-secondary hover:text-text-primary font-bold text-base">+</button>
+								<div class="h-px bg-surface-border"></div>
+								<button class="w-7 h-7 flex items-center justify-center text-text-secondary hover:text-text-primary font-bold text-base">-</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ---------------------------------------- -->
+		<!-- VIEW 3: COURT BOOKING FLOW               -->
+		<!-- ---------------------------------------- -->
+		<div id="view-booking" class="view-panel block max-w-7xl mx-auto px-4 md:px-8 py-8">
+			<!-- Header -->
+			<div class="flex items-center gap-3 mb-6">
+				<button onclick="switchView('courts')" class="w-10 h-10 rounded-xl bg-surface-default border border-surface-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-primary transition-colors">
+					<span class="material-symbols-outlined">arrow_back</span>
+				</button>
+				<div>
+					<span class="text-xs text-text-secondary" data-i18n="bookingStepLabel">Брондау кезеңі</span>
+					<h1 id="booking-court-name" class="text-xl md:text-2xl font-bold text-text-primary">Central Arena (Футбол)</h1>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+				<!-- Left: Slot Matrix (8 cols) -->
+				<div class="lg:col-span-8 space-y-6">
+					<!-- Step 1: Date -->
+					<div class="bg-surface-default p-4 rounded-xl border border-surface-border shadow-sm">
+						<h2 class="text-sm font-semibold text-text-primary mb-3" data-i18n="step1Date">1. Күнді таңдаңыз</h2>
+						<div class="grid grid-cols-3 sm:grid-cols-5 gap-2.5">
+							<button onclick="selectBookingDate(this, '24 Қазан 2025, Бүгін')" class="date-chip p-2.5 rounded-xl border-2 border-primary bg-primary-soft text-primary font-semibold text-center transition-all">
+								<div class="text-[11px] uppercase tracking-wider text-primary" data-i18n="todayLabel">Бүгін</div>
+								<div class="text-sm font-bold mt-0.5">24 Қаз</div>
+							</button>
+							<button onclick="selectBookingDate(this, '25 Қазан 2025, Сенбі')" class="date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all">
+								<div class="text-[11px] text-text-secondary" data-i18n="satLabel">Сенбі</div>
+								<div class="text-sm font-bold mt-0.5">25 Қаз</div>
+							</button>
+							<button onclick="selectBookingDate(this, '26 Қазан 2025, Жексенбі')" class="date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all">
+								<div class="text-[11px] text-text-secondary" data-i18n="sunLabel">Жексенбі</div>
+								<div class="text-sm font-bold mt-0.5">26 Қаз</div>
+							</button>
+							<button onclick="selectBookingDate(this, '27 Қазан 2025, Дүйсенбі')" class="date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all hidden sm:block">
+								<div class="text-[11px] text-text-secondary" data-i18n="monLabel">Дүйсенбі</div>
+								<div class="text-sm font-bold mt-0.5">27 Қаз</div>
+							</button>
+							<button onclick="selectBookingDate(this, '28 Қазан 2025, Сейсенбі')" class="date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all hidden sm:block">
+								<div class="text-[11px] text-text-secondary" data-i18n="tueLabel">Сейсенбі</div>
+								<div class="text-sm font-bold mt-0.5">28 Қаз</div>
+							</button>
+						</div>
+					</div>
+
+					<!-- Step 2: Time Slots -->
+					<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+						<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+							<h2 class="text-sm font-semibold text-text-primary" data-i18n="step2Time">2. Уақыт слотын таңдаңыз (бір немесе бірнеше сағат)</h2>
+							<div class="flex items-center gap-3 text-xs text-text-secondary">
+								<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded border border-surface-border bg-white"></span> <span data-i18n="slotAvail">Бос</span></div>
+								<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-primary"></span> <span data-i18n="slotSelected">Таңдалды</span></div>
+								<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-200 border border-surface-border"></span> <span data-i18n="slotBooked">Брондалған</span></div>
+							</div>
+						</div>
+
+						<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+							<!-- 09:00 - 10:00 (Available) -->
+							<button onclick="toggleSlot(this, '09:00 - 10:00')" class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all">
+								<div class="text-sm font-bold text-text-primary">09:00 - 10:00</div>
+								<div class="text-xs text-primary font-medium mt-1" data-i18n="slotAvailableText">Қолжетімді</div>
+							</button>
+
+							<!-- 10:00 - 11:00 (Booked) -->
+							<div class="p-3 rounded-xl border border-surface-border bg-surface-secondary text-text-muted cursor-not-allowed">
+								<div class="text-sm font-medium line-through">10:00 - 11:00</div>
+								<div class="text-xs text-text-muted mt-1" data-i18n="slotBookedText">Брондалған</div>
+							</div>
+
+							<!-- 11:00 - 12:00 (Available) -->
+							<button onclick="toggleSlot(this, '11:00 - 12:00')" class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all">
+								<div class="text-sm font-bold text-text-primary">11:00 - 12:00</div>
+								<div class="text-xs text-primary font-medium mt-1" data-i18n="slotAvailableText">Қолжетімді</div>
+							</button>
+
+							<!-- 14:00 - 15:00 (Available) -->
+							<button onclick="toggleSlot(this, '14:00 - 15:00')" class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all">
+								<div class="text-sm font-bold text-text-primary">14:00 - 15:00</div>
+								<div class="text-xs text-primary font-medium mt-1" data-i18n="slotAvailableText">Қолжетімді</div>
+							</button>
+
+							<!-- 16:00 - 17:00 (Booked) -->
+							<div class="p-3 rounded-xl border border-surface-border bg-surface-secondary text-text-muted cursor-not-allowed">
+								<div class="text-sm font-medium line-through">16:00 - 17:00</div>
+								<div class="text-xs text-text-muted mt-1" data-i18n="slotBookedText">Брондалған</div>
+							</div>
+
+							<!-- 18:00 - 19:00 (Available) -->
+							<button onclick="toggleSlot(this, '18:00 - 19:00')" class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all">
+								<div class="text-sm font-bold text-text-primary">18:00 - 19:00</div>
+								<div class="text-xs text-primary font-medium mt-1" data-i18n="slotPopularText">Танымал уақыт</div>
+							</button>
+
+							<!-- 19:00 - 20:00 (Selected by Default) -->
+							<button onclick="toggleSlot(this, '19:00 - 20:00')" class="slot-btn p-3 rounded-xl border-2 border-primary bg-primary text-white text-left transition-all">
+								<div class="text-sm font-bold">19:00 - 20:00</div>
+								<div class="text-xs text-white/90 font-medium mt-1" data-i18n="slotSelectedText">Таңдалды ✓</div>
+							</button>
+
+							<!-- 20:00 - 21:00 (Available) -->
+							<button onclick="toggleSlot(this, '20:00 - 21:00')" class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all">
+								<div class="text-sm font-bold text-text-primary">20:00 - 21:00</div>
+								<div class="text-xs text-primary font-medium mt-1" data-i18n="slotAvailableText">Қолжетімді</div>
+							</button>
+						</div>
+					</div>
+
+					<!-- Security Notice -->
+					<div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 flex items-start gap-3">
+						<span class="material-symbols-outlined text-primary text-xl mt-0.5">verified_user</span>
+						<div class="text-xs">
+							<span class="font-semibold text-text-primary" data-i18n="safetyTitle">Брондау қауіпсіздігі:</span>
+							<span class="text-text-secondary" data-i18n="safetyDesc"> Өтінішіңізді алаң иесі жедел қарастырады. Растау 15 минут ішінде жіберіледі. Жою ережесі: ойынға 2 сағат қалғанға дейін тегін бас тартуға болады.</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Right: Live Summary Panel (4 cols) -->
+				<div class="lg:col-span-4 sticky top-20 space-y-4">
+					<div class="bg-surface-default p-6 rounded-2xl border border-surface-border shadow-md">
+						<h2 class="text-base font-bold text-text-primary mb-4 pb-3 border-b border-surface-border" data-i18n="summaryTitle">Бронь мәліметтері</h2>
+						<div class="space-y-3 text-xs">
+							<div class="flex justify-between">
+								<span class="text-text-secondary" data-i18n="summaryCourt">Алаң:</span>
+								<span id="summary-court-title" class="font-semibold text-text-primary text-right">Central Arena</span>
+							</div>
+							<div class="flex justify-between">
+								<span class="text-text-secondary" data-i18n="summaryDate">Күні:</span>
+								<span id="summary-date" class="font-semibold text-text-primary text-right">24 Қазан 2025</span>
+							</div>
+							<div class="flex justify-between">
+								<span class="text-text-secondary" data-i18n="summaryTime">Уақыты:</span>
+								<span id="summary-slots" class="font-semibold text-primary text-right">19:00 - 20:00</span>
+							</div>
+							<div class="flex justify-between">
+								<span class="text-text-secondary" data-i18n="summaryDuration">Ұзақтығы:</span>
+								<span id="summary-hours" class="font-semibold text-text-primary text-right">1 сағат</span>
+							</div>
+							<div class="flex justify-between">
+								<span class="text-text-secondary" data-i18n="summaryRate">Сағаттық баға:</span>
+								<span id="summary-rate" class="font-semibold text-text-primary text-right">6 000 ₸</span>
+							</div>
+							<div class="pt-3 border-t border-surface-border flex justify-between items-baseline">
+								<span class="text-sm font-bold text-text-primary" data-i18n="summaryTotal">Жалпы төлем:</span>
+								<span id="summary-total" class="text-xl font-bold text-primary">6 000 ₸</span>
+							</div>
+						</div>
+
+						<button onclick="confirmBookingAction()" class="mt-6 w-full py-3.5 px-4 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all shadow-sm flex items-center justify-center gap-2">
+							<span class="material-symbols-outlined text-base">check_circle</span>
+							<span data-i18n="confirmBookingBtn">Броньды растау</span>
+						</button>
+						<p class="text-center text-[11px] text-text-muted mt-2" data-i18n="summaryPaymentNotice">Төлем бронь расталғаннан кейін алынады</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Success Modal -->
+			<div id="booking-success-modal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+				<div class="bg-surface-default max-w-md w-full rounded-2xl border border-surface-border p-6 shadow-2xl text-center">
+					<div class="w-16 h-16 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto mb-4 animate-bounce">
+						<span class="material-symbols-outlined text-3xl">hourglass_top</span>
+					</div>
+					<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold mb-3">
+						<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+						<span data-i18n="statusPending">Тексерілуде</span>
+					</div>
+					<h3 class="text-lg font-bold text-text-primary" data-i18n="bookingSuccessTitle">Бронь сәтті қабылданды!</h3>
+					<p class="text-xs text-text-secondary mt-2" data-i18n="bookingSuccessDesc">
+						Өтінішіңіз тіркелді. Алаң иесі жақын арада бекітеді. Статусты Жеке кабинеттен бақылай аласыз.
+					</p>
+					<div class="mt-6 p-4 rounded-xl bg-surface-secondary text-left space-y-1.5 text-xs">
+						<div class="text-text-muted">Бронь коды: <span class="text-text-primary font-bold">#PS-8491</span></div>
+						<div id="modal-court-info" class="font-semibold text-text-primary">Central Arena • 24 Қазан 19:00</div>
+					</div>
+					<div class="mt-6 flex flex-col sm:flex-row gap-3">
+						<button onclick="goToMyBookings()" class="flex-1 py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors" data-i18n="goToBookingsBtn">
+							Менің броньдарыма өту
+						</button>
+						<button onclick="closeSuccessModalAndGoHome()" class="py-2.5 px-4 rounded-xl border border-surface-border text-text-primary text-xs font-semibold hover:bg-surface-secondary transition-colors" data-i18n="goToHomeBtn">
+							Басты бетке
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ---------------------------------------- -->
+		<!-- VIEW 4: TEAMS & GAMES                    -->
+		<!-- ---------------------------------------- -->
+		<div id="view-games" class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8">
+			<!-- Header -->
+			<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+				<div>
+					<h1 class="text-2xl md:text-3xl font-bold text-text-primary" data-i18n="gamesPageTitle">Ойындар мен командалар</h1>
+					<p class="text-xs text-text-secondary" data-i18n="gamesPageSub">Қалалық ашық матчтарға қосылыңыз немесе өз ойыныңызға серіктес табыңыз</p>
+				</div>
+				<button onclick="openCreateGameModal()" class="px-5 py-2.5 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-all shadow-sm flex items-center gap-2 self-start">
+					<span class="material-symbols-outlined text-base">add_circle</span>
+					<span data-i18n="createGameBtn">+ Жаңа ойын құру</span>
+				</button>
+			</div>
+
+			<!-- Games Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="games-container">
+				<!-- Game 1 -->
+				<div class="bg-surface-default border border-surface-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all flex flex-col justify-between">
+					<div>
+						<div class="flex items-center justify-between">
+							<span class="px-2.5 py-1 rounded-md bg-primary-soft text-primary text-xs font-semibold" data-i18n="game1Sport">Футбол 7x7</span>
+							<span class="text-xs text-text-muted" data-i18n="game1Time">Бүгін, 19:00</span>
+						</div>
+						<h3 class="text-base font-bold text-text-primary mt-3" data-i18n="game1Title">Жұма кешкі ойын</h3>
+						<p class="text-xs text-text-secondary flex items-center gap-1 mt-1">
+							<span class="material-symbols-outlined text-sm">stadium</span>
+							<span>Central Arena, Алматы</span>
+						</p>
+						<div class="flex items-center gap-2 mt-4 pt-3 border-t border-surface-border">
+							<div class="w-7 h-7 rounded-full bg-slate-200 text-text-primary flex items-center justify-center font-bold text-xs">АЕ</div>
+							<div class="text-xs text-text-primary">
+								<span data-i18n="organizerLabel">Ұйымдастырушы:</span> <span class="font-semibold">Асқар Е.</span>
+							</div>
+						</div>
+						<div class="mt-4">
+							<div class="flex justify-between text-xs mb-1.5">
+								<span class="text-text-secondary" data-i18n="playersLabel">Қатысушылар:</span>
+								<span id="game-count-1" class="font-bold text-primary">7 / 10 ойыншы (3 орын қалды)</span>
+							</div>
+							<div class="w-full h-2 rounded-full bg-surface-secondary overflow-hidden">
+								<div id="game-progress-1" class="h-full bg-primary rounded-full transition-all duration-300" style="width: 70%"></div>
+							</div>
+						</div>
+					</div>
+					<div class="mt-6 pt-4 border-t border-surface-border flex items-center justify-between">
+						<div>
+							<span class="text-base font-bold text-text-primary">1 200 ₸</span>
+							<span class="text-xs text-text-secondary" data-i18n="perPlayer"> / ойыншыдан</span>
+						</div>
+						<button id="join-btn-1" onclick="joinGame(1, 10, 'Жұма кешкі ойын')" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="joinBtn">Қосылу</button>
+					</div>
+				</div>
+
+				<!-- Game 2 -->
+				<div class="bg-surface-default border border-surface-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all flex flex-col justify-between">
+					<div>
+						<div class="flex items-center justify-between">
+							<span class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-800 text-xs font-semibold" data-i18n="game2Sport">Волейбол MIX</span>
+							<span class="text-xs text-text-muted" data-i18n="game2Time">Сенбі, 16:00</span>
+						</div>
+						<h3 class="text-base font-bold text-text-primary mt-3" data-i18n="game2Title">Сенбілік волейбол микс</h3>
+						<p class="text-xs text-text-secondary flex items-center gap-1 mt-1">
+							<span class="material-symbols-outlined text-sm">stadium</span>
+							<span>Sunkar Arena, Алматы</span>
+						</p>
+						<div class="flex items-center gap-2 mt-4 pt-3 border-t border-surface-border">
+							<div class="w-7 h-7 rounded-full bg-slate-200 text-text-primary flex items-center justify-center font-bold text-xs">ДҚ</div>
+							<div class="text-xs text-text-primary">
+								<span data-i18n="organizerLabel">Ұйымдастырушы:</span> <span class="font-semibold">Данияр Қ.</span>
+							</div>
+						</div>
+						<div class="mt-4">
+							<div class="flex justify-between text-xs mb-1.5">
+								<span class="text-text-secondary" data-i18n="playersLabel">Қатысушылар:</span>
+								<span id="game-count-2" class="font-bold text-amber-600">9 / 12 ойыншы (3 орын қалды)</span>
+							</div>
+							<div class="w-full h-2 rounded-full bg-surface-secondary overflow-hidden">
+								<div id="game-progress-2" class="h-full bg-amber-500 rounded-full transition-all duration-300" style="width: 75%"></div>
+							</div>
+						</div>
+					</div>
+					<div class="mt-6 pt-4 border-t border-surface-border flex items-center justify-between">
+						<div>
+							<span class="text-base font-bold text-text-primary">900 ₸</span>
+							<span class="text-xs text-text-secondary" data-i18n="perPlayer"> / ойыншыдан</span>
+						</div>
+						<button id="join-btn-2" onclick="joinGame(2, 12, 'Сенбілік волейбол микс')" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="joinBtn">Қосылу</button>
+					</div>
+				</div>
+
+				<!-- Game 3 -->
+				<div class="bg-surface-default border border-surface-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all flex flex-col justify-between">
+					<div>
+						<div class="flex items-center justify-between">
+							<span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-semibold" data-i18n="game3Sport">Баскетбол 3x3</span>
+							<span class="text-xs text-text-muted" data-i18n="game3Time">Жексенбі, 18:30</span>
+						</div>
+						<h3 class="text-base font-bold text-text-primary mt-3" data-i18n="game3Title">Баскетбол Streetball</h3>
+						<p class="text-xs text-text-secondary flex items-center gap-1 mt-1">
+							<span class="material-symbols-outlined text-sm">stadium</span>
+							<span>Nomad Hall, Астана</span>
+						</p>
+						<div class="flex items-center gap-2 mt-4 pt-3 border-t border-surface-border">
+							<div class="w-7 h-7 rounded-full bg-slate-200 text-text-primary flex items-center justify-center font-bold text-xs">МС</div>
+							<div class="text-xs text-text-primary">
+								<span data-i18n="organizerLabel">Ұйымдастырушы:</span> <span class="font-semibold">Мұрат С.</span>
+							</div>
+						</div>
+						<div class="mt-4">
+							<div class="flex justify-between text-xs mb-1.5">
+								<span class="text-text-secondary" data-i18n="playersLabel">Қатысушылар:</span>
+								<span id="game-count-3" class="font-bold text-red-600">5 / 6 ойыншы (1 орын қалды)</span>
+							</div>
+							<div class="w-full h-2 rounded-full bg-surface-secondary overflow-hidden">
+								<div id="game-progress-3" class="h-full bg-red-500 rounded-full transition-all duration-300" style="width: 83%"></div>
+							</div>
+						</div>
+					</div>
+					<div class="mt-6 pt-4 border-t border-surface-border flex items-center justify-between">
+						<div>
+							<span class="text-base font-bold text-text-primary">1 500 ₸</span>
+							<span class="text-xs text-text-secondary" data-i18n="perPlayer"> / ойыншыдан</span>
+						</div>
+						<button id="join-btn-3" onclick="joinGame(3, 6, 'Баскетбол Streetball')" class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover active:scale-95 transition-all" data-i18n="joinBtn">Қосылу</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Create Game Modal -->
+			<div id="create-game-modal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+				<div class="bg-surface-default max-w-lg w-full rounded-2xl border border-surface-border p-6 shadow-2xl">
+					<div class="flex items-center justify-between pb-3 border-b border-surface-border">
+						<h3 class="text-base font-bold text-text-primary" data-i18n="createGameModalTitle">Жаңа ойын ұйымдастыру</h3>
+						<button onclick="closeCreateGameModal()" class="text-text-secondary hover:text-text-primary">
+							<span class="material-symbols-outlined">close</span>
+						</button>
+					</div>
+
+					<form onsubmit="handleCreateGameSubmit(event)" class="mt-4 space-y-4">
+						<div>
+							<label class="block text-xs font-medium text-text-primary mb-1" data-i18n="gameNameInput">Ойын атауы</label>
+							<input id="input-game-title" type="text" required placeholder="Мысалы: Жұмалық футбол матчы" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs focus:border-primary focus:ring-1 focus:ring-primary" />
+						</div>
+
+						<div class="grid grid-cols-2 gap-3">
+							<div>
+								<label class="block text-xs font-medium text-text-primary mb-1" data-i18n="searchSportLabel">Спорт түрі</label>
+								<select id="input-game-sport" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs focus:border-primary focus:ring-1 focus:ring-primary">
+									<option data-i18n="sportFootball">Футбол</option>
+									<option data-i18n="sportBasketball">Баскетбол</option>
+									<option data-i18n="sportVolleyball">Волейбол</option>
+									<option data-i18n="sportTennis">Теннис</option>
+								</select>
+							</div>
+							<div>
+								<label class="block text-xs font-medium text-text-primary mb-1" data-i18n="playersCountInput">Ойыншылар саны</label>
+								<input id="input-game-max" type="number" min="2" max="30" value="10" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs focus:border-primary focus:ring-1 focus:ring-primary" />
+							</div>
+						</div>
+
+						<div class="grid grid-cols-2 gap-3">
+							<div>
+								<label class="block text-xs font-medium text-text-primary mb-1" data-i18n="summaryCourt">Алаң</label>
+								<select id="input-game-court" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs focus:border-primary focus:ring-1 focus:ring-primary">
+									<option>Central Arena (Алматы)</option>
+									<option>Dostyk Tennis (Алматы)</option>
+									<option>Nomad Hall (Астана)</option>
+									<option>Sunkar Arena (Алматы)</option>
+								</select>
+							</div>
+							<div>
+								<label class="block text-xs font-medium text-text-primary mb-1" data-i18n="summaryTime">Уақыты</label>
+								<input id="input-game-time" type="time" value="20:00" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs focus:border-primary focus:ring-1 focus:ring-primary" />
+							</div>
+						</div>
+
+						<div class="pt-3 border-t border-surface-border flex justify-end gap-2">
+							<button type="button" onclick="closeCreateGameModal()" class="px-4 py-2 rounded-xl border border-surface-border text-xs text-text-primary hover:bg-surface-secondary" data-i18n="cancelBtn">Бас тарту</button>
+							<button type="submit" class="px-5 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover" data-i18n="publishGameBtn">Ойынды жариялау</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- ---------------------------------------- -->
+		<!-- VIEW 5: USER PROFILE                     -->
+		<!-- ---------------------------------------- -->
+		<div id="view-profile" class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8">
+			<!-- Header Card -->
+			<div class="bg-surface-default border border-surface-border rounded-2xl p-6 shadow-sm mb-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+				<div class="flex items-center gap-4">
+					<div id="profile-page-avatar" class="w-20 h-20 rounded-2xl bg-primary-soft text-primary font-bold text-2xl flex items-center justify-center border-2 border-primary/20">ЕС</div>
+					<div>
+						<div class="flex items-center gap-2">
+							<h1 id="profile-page-name" class="text-xl font-bold text-text-primary">Ерлан Серіков</h1>
+							<span id="profile-page-role" class="px-2.5 py-0.5 rounded-full bg-primary-soft text-primary text-[11px] font-bold" data-i18n="rolePlayer">Ойыншы</span>
+						</div>
+						<p id="profile-page-email" class="text-xs text-text-secondary mt-0.5">erlan.serikov@example.kz • +7 (777) 345-67-89</p>
+						<div class="flex items-center gap-4 text-xs text-text-muted mt-2">
+							<span><span data-i18n="cityLabel">Қаласы:</span> <strong class="text-text-primary">Алматы</strong></span>
+							<span><span data-i18n="memberSince">Тіркелген күні:</span> <strong class="text-text-primary">Мамыр 2024</strong></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex items-center gap-3">
+					<button onclick="showToast(t('profileSavedToast'), 'check_circle')" class="px-4 py-2 rounded-xl border border-surface-border text-xs font-semibold text-text-primary hover:bg-surface-secondary transition-colors" data-i18n="editBtn">Өңдеу</button>
+					<button onclick="logoutAction()" class="px-4 py-2 rounded-xl bg-red-100 text-red-700 text-xs font-semibold hover:bg-red-200 transition-colors" data-i18n="logoutBtn">Шығу</button>
+				</div>
+			</div>
+
+			<!-- Tabs -->
+			<div class="border-b border-surface-border flex gap-8 mb-6">
+				<button id="profile-tab-bookings" onclick="switchProfileTab('bookings')" class="border-b-2 border-primary text-primary text-xs font-bold pb-3" data-i18n="myBookingsTab">Менің броньдарым (3)</button>
+				<button id="profile-tab-games" onclick="switchProfileTab('games')" class="text-text-secondary hover:text-text-primary text-xs pb-3 transition-colors" data-i18n="myGamesTab">Қатысқан ойындарым (2)</button>
+				<button id="profile-tab-settings" onclick="switchProfileTab('settings')" class="text-text-secondary hover:text-text-primary text-xs pb-3 transition-colors" data-i18n="mySettingsTab">Баптаулар</button>
+			</div>
+
+			<!-- Tab 1: Bookings -->
+			<div id="tab-content-bookings" class="space-y-4">
+				<!-- Booking 1 -->
+				<div class="bg-surface-default border border-surface-border rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div class="flex items-start gap-4">
+						<div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+							<span class="material-symbols-outlined text-2xl">hourglass_top</span>
+						</div>
+						<div>
+							<div class="flex items-center gap-2.5">
+								<h3 class="text-base font-bold text-text-primary">Central Arena (Футбол)</h3>
+								<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-semibold">
+									<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+									<span data-i18n="statusPending">Тексерілуде</span>
+								</span>
+							</div>
+							<p class="text-xs text-text-secondary mt-1">24 Қазан 2025 • 19:00 - 20:00 (1 сағат)</p>
+							<div class="text-[11px] text-text-muted mt-0.5">Бронь нөмірі: #PS-8491 • 6 000 ₸</div>
+						</div>
+					</div>
+					<div class="flex items-center gap-2">
+						<button onclick="cancelBooking(this, '#PS-8491')" class="px-3.5 py-2 rounded-xl border border-red-200 text-red-600 hover:bg-red-50 text-xs font-semibold transition-colors" data-i18n="cancelBtn">Бас тарту</button>
+						<button onclick="openBooking('Central Arena (Футбол)', 6000)" class="px-3.5 py-2 rounded-xl bg-surface-secondary text-text-primary hover:bg-slate-200 text-xs font-semibold transition-colors" data-i18n="viewDetailsBtn">Толық көру</button>
+					</div>
+				</div>
+
+				<!-- Booking 2 -->
+				<div class="bg-surface-default border border-surface-border rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+					<div class="flex items-start gap-4">
+						<div class="w-12 h-12 rounded-xl bg-primary-soft text-primary flex items-center justify-center shrink-0">
+							<span class="material-symbols-outlined text-2xl">check_circle</span>
+						</div>
+						<div>
+							<div class="flex items-center gap-2.5">
+								<h3 class="text-base font-bold text-text-primary">Dostyk Tennis Club (Теннис)</h3>
+								<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-soft text-primary text-[11px] font-semibold">
+									<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+									<span data-i18n="statusConfirmed">Расталды</span>
+								</span>
+							</div>
+							<p class="text-xs text-text-secondary mt-1">26 Қазан 2025 • 11:00 - 12:00 (1 сағат)</p>
+							<div class="text-[11px] text-text-muted mt-0.5">Бронь нөмірі: #PS-7922 • 10 000 ₸ (Төленді)</div>
+						</div>
+					</div>
+					<div class="flex items-center gap-2">
+						<button onclick="openBooking('Dostyk Tennis Club (Теннис)', 10000)" class="px-3.5 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors" data-i18n="goToCourtBtn">Алаңға өту</button>
+					</div>
+				</div>
+
+				<!-- Booking 3 -->
+				<div class="bg-surface-default border border-surface-border rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 opacity-75">
+					<div class="flex items-start gap-4">
+						<div class="w-12 h-12 rounded-xl bg-surface-secondary text-text-secondary flex items-center justify-center shrink-0">
+							<span class="material-symbols-outlined text-2xl">sports_volleyball</span>
+						</div>
+						<div>
+							<div class="flex items-center gap-2.5">
+								<h3 class="text-base font-bold text-text-primary">Sunkar Arena (Волейбол)</h3>
+								<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-secondary text-text-secondary text-[11px] font-semibold" data-i18n="statusCompleted">Аяқталды</span>
+							</div>
+							<p class="text-xs text-text-secondary mt-1">18 Қазан 2025 • 18:00 - 19:00</p>
+							<div class="text-[11px] text-text-muted mt-0.5">Бронь нөмірі: #PS-6102 • 5 000 ₸</div>
+						</div>
+					</div>
+					<button onclick="showToast(t('reviewToast'), 'rate_review')" class="px-3.5 py-2 rounded-xl border border-surface-border text-text-primary hover:bg-surface-secondary text-xs font-semibold" data-i18n="leaveReviewBtn">Пікір қалдыру</button>
+				</div>
+			</div>
+
+			<!-- Tab 2: Games -->
+			<div id="tab-content-games" class="hidden space-y-4">
+				<div class="bg-surface-default border border-surface-border rounded-xl p-5">
+					<h3 class="text-base font-bold text-text-primary">Жұма кешкі ойын (Футбол 7x7)</h3>
+					<p class="text-xs text-text-secondary mt-1">Central Arena • Бүгін, 19:00 • Рөлі: Ойыншы</p>
+					<div class="mt-3 flex items-center gap-2">
+						<span class="px-2.5 py-1 rounded-md bg-primary-soft text-primary text-xs" data-i18n="registeredBadge">Тіркелгенсіз ✓</span>
+						<button onclick="showToast(t('teamChatToast'), 'forum')" class="px-3 py-1 rounded-lg border border-surface-border text-xs" data-i18n="teamChatBtn">Команда чаты</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Tab 3: Settings -->
+			<div id="tab-content-settings" class="hidden bg-surface-default border border-surface-border rounded-xl p-6">
+				<h3 class="text-base font-bold text-text-primary mb-4" data-i18n="settingsTitle">Байланыс деректерін жаңарту</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl">
+					<div>
+						<label class="block text-xs text-text-secondary mb-1" data-i18n="fullNameLabel">Аты-жөні</label>
+						<input type="text" value="Ерлан Серіков" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs" />
+					</div>
+					<div>
+						<label class="block text-xs text-text-secondary mb-1" data-i18n="phoneLabel">Телефон нөмірі</label>
+						<input type="text" value="+7 (777) 345-67-89" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs" />
+					</div>
+				</div>
+				<button onclick="showToast(t('settingsSavedToast'), 'save')" class="mt-4 px-5 py-2 rounded-xl bg-primary text-white text-xs font-semibold" data-i18n="saveBtn">Сақтау</button>
+			</div>
+		</div>
+
+		<!-- ---------------------------------------- -->
+		<!-- VIEW 6: OWNER DASHBOARD (VENUE PARTNER)  -->
+		<!-- ---------------------------------------- -->
+		<div id="view-owner" class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8">
+			<!-- Access Guard for Non-Owners -->
+			<div id="owner-guard-banner" class="hidden bg-surface-default border border-surface-border rounded-2xl p-8 text-center max-w-lg mx-auto shadow-md">
+				<div class="w-16 h-16 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto mb-4">
+					<span class="material-symbols-outlined text-3xl">lock</span>
+				</div>
+				<h2 class="text-lg font-bold text-text-primary" data-i18n="ownerLockTitle">Бұл бет тек спорт алаңдарының иелеріне арналған</h2>
+				<p class="text-xs text-text-secondary mt-2" data-i18n="ownerLockDesc">
+					Алаңдарыңызды, кестелерді және клиенттік броньдарды басқару үшін «Алаң иесі» (OWNER) аккаунты қажет.
+				</p>
+				<button onclick="setTestRole('OWNER')" class="mt-6 px-6 py-2.5 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors shadow-sm" data-i18n="loginAsOwnerBtn">
+					Алаң иесі ретінде кіру
+				</button>
+			</div>
+
+			<!-- Main Owner Content -->
+			<div id="owner-main-content">
+				<!-- Header -->
+				<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+					<div>
+						<div class="flex items-center gap-2">
+							<span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold">Venue Partner</span>
+							<span class="text-xs text-text-secondary" data-i18n="ownerCourtsSub">Менің алаңдарым: Алматы спорт кешендері желісі</span>
+						</div>
+						<h1 class="text-2xl md:text-3xl font-bold text-text-primary mt-1" data-i18n="ownerTitle">Алаң иесінің басқару панелі</h1>
+					</div>
+					<button onclick="openNewCourtModal()" class="px-4 py-2.5 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-all flex items-center gap-2 self-start shadow-sm">
+						<span class="material-symbols-outlined text-base">add_business</span>
+						<span data-i18n="addNewCourtBtn">Жаңа алаң қосу</span>
+					</button>
+				</div>
+
+				<!-- Metric Cards -->
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+					<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+						<div class="flex items-center justify-between">
+							<span class="text-xs text-text-secondary font-medium" data-i18n="kpiTotalCourts">Барлық алаңдар</span>
+							<span class="material-symbols-outlined text-primary text-xl">stadium</span>
+						</div>
+						<div class="text-2xl font-bold text-text-primary mt-2">3</div>
+						<div class="text-xs text-primary font-medium mt-1" data-i18n="kpiAllActive">Барлығы белсенді</div>
+					</div>
+
+					<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+						<div class="flex items-center justify-between">
+							<span class="text-xs text-text-secondary font-medium" data-i18n="kpiNewBookings">Жаңа броньдар</span>
+							<span class="material-symbols-outlined text-amber-600 text-xl">pending_actions</span>
+						</div>
+						<div id="kpi-pending-count" class="text-2xl font-bold text-amber-600 mt-2">5</div>
+						<div class="text-xs text-amber-600 font-medium mt-1" data-i18n="kpiPendingVerification">Растауды күтуде</div>
+					</div>
+
+					<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+						<div class="flex items-center justify-between">
+							<span class="text-xs text-text-secondary font-medium" data-i18n="kpiConfirmedBookings">Бекітілген броньдар</span>
+							<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+						</div>
+						<div class="text-2xl font-bold text-text-primary mt-2">42</div>
+						<div class="text-xs text-text-secondary mt-1" data-i18n="kpiThisMonth">Осы айда</div>
+					</div>
+
+					<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+						<div class="flex items-center justify-between">
+							<span class="text-xs text-text-secondary font-medium" data-i18n="kpiMonthlyIncome">Айлық табыс</span>
+							<span class="material-symbols-outlined text-primary text-xl">payments</span>
+						</div>
+						<div class="text-2xl font-bold text-primary mt-2">480 000 ₸</div>
+						<div class="text-xs text-primary font-medium mt-1" data-i18n="kpiGrowth">+18% өткен аймен салыстырғанда</div>
+					</div>
+				</div>
+
+				<!-- Booking Moderation Table -->
+				<div class="bg-surface-default rounded-xl border border-surface-border shadow-sm overflow-hidden mb-8">
+					<div class="p-5 border-b border-surface-border flex items-center justify-between">
+						<div>
+							<h2 class="text-base font-bold text-text-primary" data-i18n="ownerBookingsTitle">Броньдарды жедел басқару</h2>
+							<p class="text-xs text-text-secondary" data-i18n="ownerBookingsSub">Келген тапсырыстарды растаңыз немесе бас тартыңыз</p>
+						</div>
+						<span class="px-2.5 py-1 rounded bg-amber-100 text-amber-800 text-xs font-semibold" data-i18n="realtimeMode">Нақты уақыт режимі</span>
+					</div>
+
+					<div class="overflow-x-auto">
+						<table class="w-full text-left text-xs">
+							<thead class="bg-surface-secondary text-text-secondary font-semibold">
+								<tr>
+									<th class="px-5 py-3" data-i18n="thClient">Клиент</th>
+									<th class="px-5 py-3" data-i18n="thCourt">Алаң</th>
+									<th class="px-5 py-3" data-i18n="thDateTime">Күні мен Уақыты</th>
+									<th class="px-5 py-3" data-i18n="thAmount">Сомасы</th>
+									<th class="px-5 py-3" data-i18n="thStatus">Күйі</th>
+									<th class="px-5 py-3 text-right" data-i18n="thActions">Әрекеттер</th>
+								</tr>
+							</thead>
+							<tbody class="divide-y divide-surface-border">
+								<!-- Row 1 -->
+								<tr id="owner-row-1" class="hover:bg-slate-50 transition-colors">
+									<td class="px-5 py-4">
+										<div class="font-semibold text-text-primary">Ерлан Серіков</div>
+										<div class="text-[11px] text-text-muted">+7 777 345 6789</div>
+									</td>
+									<td class="px-5 py-4 text-text-primary">Central Arena (Футбол)</td>
+									<td class="px-5 py-4">
+										<div>24 Қазан 2025</div>
+										<div class="text-primary font-semibold">19:00 - 20:00</div>
+									</td>
+									<td class="px-5 py-4 font-bold text-text-primary">6 000 ₸</td>
+									<td id="owner-status-1" class="px-5 py-4">
+										<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-semibold">
+											<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+											<span data-i18n="statusPending">Тексерілуде</span>
+										</span>
+									</td>
+									<td class="px-5 py-4 text-right">
+										<div id="owner-actions-1" class="flex items-center justify-end gap-2">
+											<button onclick="ownerConfirm(1)" class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors" data-i18n="confirmAction">Растау</button>
+											<button onclick="ownerReject(1)" class="px-3 py-1.5 rounded-lg border border-red-200 text-red-600 hover:bg-red-50 text-xs font-semibold transition-colors" data-i18n="rejectAction">Бас тарту</button>
+										</div>
+									</td>
+								</tr>
+
+								<!-- Row 2 -->
+								<tr id="owner-row-2" class="hover:bg-slate-50 transition-colors">
+									<td class="px-5 py-4">
+										<div class="font-semibold text-text-primary">Бауыржан Нұрланұлы</div>
+										<div class="text-[11px] text-text-muted">+7 701 112 3344</div>
+									</td>
+									<td class="px-5 py-4 text-text-primary">Central Arena (Футбол)</td>
+									<td class="px-5 py-4">
+										<div>25 Қазан 2025</div>
+										<div class="text-primary font-semibold">20:00 - 22:00</div>
+									</td>
+									<td class="px-5 py-4 font-bold text-text-primary">12 000 ₸</td>
+									<td id="owner-status-2" class="px-5 py-4">
+										<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-semibold">
+											<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+											<span data-i18n="statusPending">Тексерілуде</span>
+										</span>
+									</td>
+									<td class="px-5 py-4 text-right">
+										<div id="owner-actions-2" class="flex items-center justify-end gap-2">
+											<button onclick="ownerConfirm(2)" class="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors" data-i18n="confirmAction">Растау</button>
+											<button onclick="ownerReject(2)" class="px-3 py-1.5 rounded-lg border border-red-200 text-red-600 hover:bg-red-50 text-xs font-semibold transition-colors" data-i18n="rejectAction">Бас тарту</button>
+										</div>
+									</td>
+								</tr>
+
+								<!-- Row 3 -->
+								<tr class="hover:bg-slate-50 transition-colors">
+									<td class="px-5 py-4">
+										<div class="font-semibold text-text-primary">Алина Ким</div>
+										<div class="text-[11px] text-text-muted">+7 775 889 9001</div>
+									</td>
+									<td class="px-5 py-4 text-text-primary">Dostyk Tennis Club</td>
+									<td class="px-5 py-4">
+										<div>26 Қазан 2025</div>
+										<div class="text-text-secondary">10:00 - 11:00</div>
+									</td>
+									<td class="px-5 py-4 font-bold text-text-primary">10 000 ₸</td>
+									<td class="px-5 py-4">
+										<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-soft text-primary text-[11px] font-semibold">
+											<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+											<span data-i18n="statusConfirmed">Расталды</span>
+										</span>
+									</td>
+									<td class="px-5 py-4 text-right text-text-muted">
+										<span data-i18n="processedBadge">Өңделді ✓</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<!-- Add Court Modal -->
+			<div id="new-court-modal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+				<div class="bg-surface-default max-w-lg w-full rounded-2xl border border-surface-border p-6 shadow-2xl">
+					<div class="flex items-center justify-between pb-3 border-b border-surface-border">
+						<h3 class="text-base font-bold text-text-primary" data-i18n="addCourtModalTitle">Жаңа спорт алаңын қосу</h3>
+						<button onclick="closeNewCourtModal()" class="text-text-secondary hover:text-text-primary">
+							<span class="material-symbols-outlined">close</span>
+						</button>
+					</div>
+
+					<form onsubmit="handleNewCourtSubmit(event)" class="mt-4 space-y-4">
+						<div>
+							<label class="block text-xs font-medium text-text-primary mb-1" data-i18n="courtNameInput">Алаң атауы</label>
+							<input type="text" required placeholder="Мысалы: Arena Mega Sport" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs" />
+						</div>
+
+						<div class="grid grid-cols-2 gap-3">
+							<div>
+								<label class="block text-xs font-medium text-text-primary mb-1" data-i18n="searchSportLabel">Спорт түрі</label>
+								<select class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs">
+									<option data-i18n="sportFootball">Футбол</option>
+									<option data-i18n="sportBasketball">Баскетбол</option>
+									<option data-i18n="sportTennis">Теннис</option>
+									<option data-i18n="sportVolleyball">Волейбол</option>
+								</select>
+							</div>
+							<div>
+								<label class="block text-xs font-medium text-text-primary mb-1" data-i18n="courtPriceInput">Сағаттық баға (₸)</label>
+								<input type="number" required placeholder="8000" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs" />
+							</div>
+						</div>
+
+						<div>
+							<label class="block text-xs font-medium text-text-primary mb-1" data-i18n="courtAddressInput">Мекен-жайы</label>
+							<input type="text" required placeholder="Қала, көше, ғимарат" class="w-full px-3 py-2 rounded-xl border border-surface-border text-xs" />
+						</div>
+
+						<div class="pt-3 border-t border-surface-border flex justify-end gap-2">
+							<button type="button" onclick="closeNewCourtModal()" class="px-4 py-2 rounded-xl border border-surface-border text-xs text-text-primary" data-i18n="cancelBtn">Бас тарту</button>
+							<button type="submit" class="px-5 py-2 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover" data-i18n="submitModerationBtn">Модерацияға жіберу</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- ---------------------------------------- -->
+		<!-- VIEW 7: ADMIN PANEL (SUPERADMIN)         -->
+		<!-- ---------------------------------------- -->
+		<div id="view-admin" class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8">
+			<!-- Access Guard for Non-Admins -->
+			<div id="admin-guard-banner" class="hidden bg-surface-default border border-surface-border rounded-2xl p-8 text-center max-w-lg mx-auto shadow-md">
+				<div class="w-16 h-16 rounded-full bg-red-100 text-red-700 flex items-center justify-center mx-auto mb-4">
+					<span class="material-symbols-outlined text-3xl">admin_panel_settings</span>
+				</div>
+				<h2 class="text-lg font-bold text-text-primary" data-i18n="adminLockTitle">Бұл бетке тек әкімшілерге рұқсат етілген</h2>
+				<p class="text-xs text-text-secondary mt-2" data-i18n="adminLockDesc">
+					Платформаны және модерацияны басқару үшін «Әкімші» (ADMIN) аккаунтымен жүйеге кіріңіз.
+				</p>
+				<button onclick="setTestRole('ADMIN')" class="mt-6 px-6 py-2.5 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors shadow-sm" data-i18n="loginAsAdminBtn">
+					Әкімші ретінде кіру
+				</button>
+			</div>
+
+			<!-- Main Admin Content -->
+			<div id="admin-main-content">
+				<!-- Header -->
+				<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+					<div>
+						<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary text-white text-[11px] font-bold">
+							<span class="material-symbols-outlined text-xs">admin_panel_settings</span>
+							<span>Бас Әкімші (SuperAdmin)</span>
+						</div>
+						<h1 class="text-2xl md:text-3xl font-bold text-text-primary mt-1" data-i18n="adminTitle">PlaySlot Басқару жүйесі</h1>
+					</div>
+					<span class="text-xs text-text-secondary bg-surface-default px-3 py-1.5 rounded-lg border border-surface-border" data-i18n="adminLastSync">
+						Соңғы синхрондау: 24 Қазан 2025, 14:35
+					</span>
+				</div>
+
+				<!-- KPI Cards -->
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+					<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+						<div class="text-xs text-text-secondary" data-i18n="adminKpiCourts">Тіркелген алаңдар</div>
+						<div class="text-2xl font-bold text-text-primary mt-1">24</div>
+						<div class="text-xs text-primary font-semibold mt-1" data-i18n="adminKpiActiveSub">20 белсенді, 4 кезекте</div>
+					</div>
+
+					<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+						<div class="text-xs text-text-secondary" data-i18n="adminKpiBookings">Жалпы броньдар саны</div>
+						<div class="text-2xl font-bold text-text-primary mt-1">1,280</div>
+						<div class="text-xs text-primary font-semibold mt-1" data-i18n="adminKpiWeeklyGrowth">↑ +24% апталық өсім</div>
+					</div>
+
+					<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+						<div class="text-xs text-text-secondary" data-i18n="adminKpiUsers">Пайдаланушылар</div>
+						<div class="text-2xl font-bold text-text-primary mt-1">3,450</div>
+						<div class="text-xs text-text-secondary mt-1" data-i18n="adminKpiUsersSub">3,100 ойыншы, 350 ие</div>
+					</div>
+
+					<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+						<div class="text-xs text-text-secondary" data-i18n="adminKpiModQueue">Модерация кезекте</div>
+						<div id="admin-mod-count" class="text-2xl font-bold text-amber-600 mt-1">4</div>
+						<div class="text-xs text-amber-600 font-semibold mt-1" data-i18n="adminKpiModAction">Шұғыл тексеру қажет</div>
+					</div>
+				</div>
+
+				<!-- Moderation Queue -->
+				<div class="bg-surface-default rounded-xl border border-surface-border shadow-sm overflow-hidden mb-8">
+					<div class="p-5 border-b border-surface-border flex items-center justify-between">
+						<div>
+							<h2 class="text-base font-bold text-text-primary" data-i18n="modQueueTitle">Алаңдарды модерациялау кезегі</h2>
+							<p class="text-xs text-text-secondary" data-i18n="modQueueSub">Жаңа өтінімдердің құжаттары мен фотосуреттерін тексеру</p>
+						</div>
+						<span class="px-2.5 py-1 rounded bg-amber-100 text-amber-800 text-xs font-semibold" data-i18n="modQueueCountBadge">4 өтінім күтуде</span>
+					</div>
+
+					<div class="divide-y divide-surface-border">
+						<!-- Item 1 -->
+						<div id="admin-queue-1" class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+							<div class="flex items-start gap-3">
+								<div class="w-10 h-10 rounded-xl bg-primary-soft text-primary flex items-center justify-center shrink-0">
+									<span class="material-symbols-outlined text-xl">stadium</span>
+								</div>
+								<div>
+									<div class="flex items-center gap-2">
+										<h3 class="text-xs font-bold text-text-primary">Spartak Mini Pitch (Астана, Алматы ауданы)</h3>
+										<span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 text-[11px] font-bold" data-i18n="newCourtBadge">Жаңа алаң</span>
+									</div>
+									<div class="text-xs text-text-secondary mt-1" data-i18n="adminMod1Details">Иесі: Серікбай Т. • Бағасы: 7 000 ₸/сағ • Құжаттар жүктелді (Мемлекеттік акт, фото)</div>
+								</div>
+							</div>
+							<div class="flex items-center gap-2 self-start sm:self-center">
+								<button onclick="adminApprove(1)" class="px-3.5 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors" data-i18n="approveBtn">Бекіту</button>
+								<button onclick="adminReject(1)" class="px-3.5 py-1.5 rounded-lg border border-surface-border text-text-secondary hover:text-red-600 text-xs font-semibold transition-colors" data-i18n="returnBtn">Қайтару</button>
+							</div>
+						</div>
+
+						<!-- Item 2 -->
+						<div id="admin-queue-2" class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 transition-colors">
+							<div class="flex items-start gap-3">
+								<div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+									<span class="material-symbols-outlined text-xl">sports_tennis</span>
+								</div>
+								<div>
+									<div class="flex items-center gap-2">
+										<h3 class="text-xs font-bold text-text-primary">Almaty Tennis Dome (Алматы, Самал)</h3>
+										<span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 text-[11px] font-bold" data-i18n="tariffUpdateBadge">Тариф жаңарту</span>
+									</div>
+									<div class="text-xs text-text-secondary mt-1" data-i18n="adminMod2Details">Иесі: Дәулет М. • Жаңа баға: 12 000 ₸/сағ • Сертификат тексерілді</div>
+								</div>
+							</div>
+							<div class="flex items-center gap-2 self-start sm:self-center">
+								<button onclick="adminApprove(2)" class="px-3.5 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-hover transition-colors" data-i18n="approveBtn">Бекіту</button>
+								<button onclick="adminReject(2)" class="px-3.5 py-1.5 rounded-lg border border-surface-border text-text-secondary hover:text-red-600 text-xs font-semibold transition-colors" data-i18n="returnBtn">Қайтару</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<!-- ========================================== -->
+	<!-- LOGIN / AUTH MODAL                         -->
+	<!-- ========================================== -->
+	<div id="login-modal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+		<div class="bg-surface-default max-w-sm w-full rounded-2xl border border-surface-border p-6 shadow-2xl">
+			<div class="flex items-center justify-between pb-3 border-b border-surface-border">
+				<h3 class="text-base font-bold text-text-primary" data-i18n="loginModalTitle">Жеке кабинетке кіру</h3>
+				<button onclick="closeLoginModal()" class="text-text-secondary hover:text-text-primary">
+					<span class="material-symbols-outlined">close</span>
+				</button>
+			</div>
+
+			<div class="mt-4 space-y-3">
+				<p class="text-xs text-text-secondary" data-i18n="loginModalDesc">
+					Қажетті аккаунт түрін таңдап кіріңіз немесе рөлді өзгертіңіз:
+				</p>
+				<button onclick="setTestRole('PLAYER'); closeLoginModal()" class="w-full p-3 rounded-xl border border-surface-border hover:border-primary flex items-center gap-3 text-left transition-colors bg-white">
+					<div class="w-9 h-9 rounded-lg bg-primary-soft text-primary font-bold flex items-center justify-center text-sm">⚽</div>
+					<div>
+						<div class="text-xs font-bold text-text-primary">Ерлан Серіков (Ойыншы)</div>
+						<div class="text-[11px] text-text-secondary">Брондау және ойындарға қатысу</div>
+					</div>
+				</button>
+
+				<button onclick="setTestRole('OWNER'); closeLoginModal()" class="w-full p-3 rounded-xl border border-amber-300 hover:border-amber-500 flex items-center gap-3 text-left transition-colors bg-amber-50/40">
+					<div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-800 font-bold flex items-center justify-center text-sm">🏟️</div>
+					<div>
+						<div class="text-xs font-bold text-amber-900">Асқар Е. (Алаң иесі)</div>
+						<div class="text-[11px] text-amber-700">Алаңдар мен броньдарды басқару</div>
+					</div>
+				</button>
+
+				<button onclick="setTestRole('ADMIN'); closeLoginModal()" class="w-full p-3 rounded-xl border border-emerald-300 hover:border-emerald-500 flex items-center gap-3 text-left transition-colors bg-emerald-50/40">
+					<div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm">🛡️</div>
+					<div>
+						<div class="text-xs font-bold text-emerald-900">Бас Әкімші (SuperAdmin)</div>
+						<div class="text-[11px] text-emerald-700">Модерация және платформа басқару</div>
+					</div>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- ========================================== -->
+	<!-- FOOTER                                     -->
+	<!-- ========================================== -->
+	<footer class="bg-surface-default border-t border-surface-border mt-auto">
+		<div class="max-w-7xl mx-auto px-4 md:px-8 py-12 flex flex-col gap-8 w-full">
+			<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+				<div>
+					<a href="javascript:switchView('home')" class="text-xl font-bold text-primary flex items-center gap-2">
+						<span class="material-symbols-outlined text-2xl">sports_soccer</span>
+						<span>PlaySlot</span>
+					</a>
+					<p class="text-xs text-text-secondary mt-1 max-w-md" data-i18n="footerDesc">
+						Қазақстан бойынша спорт алаңдарын онлайн брондау платформасы. Алматы және Астана қалаларындағы ең үздік корттар мен залдар.
+					</p>
+				</div>
+
+				<nav class="flex flex-wrap gap-x-6 gap-y-2 text-xs">
+					<a href="javascript:switchView('courts')" class="text-text-secondary hover:text-primary transition-colors" data-i18n="navCourts">Спорт алаңдары</a>
+					<a href="javascript:switchView('courts')" class="text-text-secondary hover:text-primary transition-colors" data-i18n="cityAlmaty">Алматы</a>
+					<a href="javascript:switchView('courts')" class="text-text-secondary hover:text-primary transition-colors" data-i18n="cityAstana">Астана</a>
+					<a href="javascript:switchView('games')" class="text-text-secondary hover:text-primary transition-colors" data-i18n="footerGamesLink">Ойындар мен қауымдастық</a>
+					<a id="footer-link-owner" href="javascript:switchView('owner')" class="hidden text-text-secondary hover:text-primary transition-colors" data-i18n="footerOwnerLink">Алаң иелеріне</a>
+					<a href="javascript:showToast(t('privacyPolicyToast'), 'shield')" class="text-text-secondary hover:text-primary transition-colors" data-i18n="privacyPolicy">Құпиялылық саясаты</a>
+					<a href="javascript:showToast(t('contactCenterToast'), 'call')" class="text-text-secondary hover:text-primary transition-colors" data-i18n="contactLink">Байланыс</a>
+				</nav>
+			</div>
+
+			<div class="pt-6 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
+				<div data-i18n="footerCopyright">
+					© 2025 PlaySlot. Барлық құқықтар қорғалған. Қазақстан бойынша спорт алаңдарын онлайн брондау.
+				</div>
+				<div class="flex items-center gap-4">
+					<div class="flex items-center gap-2">
+						<button onclick="setLanguage('kk')" class="hover:text-text-primary cursor-pointer transition-colors font-medium">Қазақша (KZ)</button>
+						<span>•</span>
+						<button onclick="setLanguage('en')" class="hover:text-text-primary cursor-pointer transition-colors font-medium">English (EN)</button>
+						<span>•</span>
+						<button onclick="setLanguage('ru')" class="hover:text-text-primary cursor-pointer transition-colors font-medium">Русский (RU)</button>
+					</div>
+					<span>•</span>
+					<span class="text-text-secondary" data-i18n="sslSecure">Төлем қауіпсіздігі SSL 256-bit</span>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- ========================================== -->
+	<!-- MOBILE BOTTOM NAVIGATION                   -->
+	<!-- ========================================== -->
+	<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-default border-t border-surface-border shadow-lg">
+		<button id="mobile-nav-home" onclick="switchView('home')" class="flex flex-col items-center justify-center bg-primary-soft text-primary rounded-xl px-3 py-1 text-xs">
+			<span class="material-symbols-outlined text-xl">home</span>
+			<span data-i18n="mobileNavHome">Басты</span>
+		</button>
+		<button id="mobile-nav-courts" onclick="switchView('courts')" class="flex flex-col items-center justify-center text-text-secondary px-3 py-1 text-xs">
+			<span class="material-symbols-outlined text-xl">stadium</span>
+			<span data-i18n="mobileNavCourts">Алаңдар</span>
+		</button>
+		<button id="mobile-nav-games" onclick="switchView('games')" class="flex flex-col items-center justify-center text-text-secondary px-3 py-1 text-xs">
+			<span class="material-symbols-outlined text-xl">groups</span>
+			<span data-i18n="mobileNavGames">Ойындар</span>
+		</button>
+		<button id="mobile-nav-profile" onclick="switchView('profile')" class="flex flex-col items-center justify-center text-text-secondary px-3 py-1 text-xs">
+			<span class="material-symbols-outlined text-xl">person</span>
+			<span data-i18n="mobileNavProfile">Профиль</span>
+		</button>
+	</nav>
+
+	<!-- ========================================== -->
+	<!-- CORE JAVASCRIPT & I18N DICTIONARY          -->
+	<!-- ========================================== -->
+	<script>
+		// --- 1. Multi-language Dictionary ---
+		const i18nData = {
+			kk: {
+				navHome: "Басты бет",
+				navCourts: "Спорт алаңдары",
+				navGames: "Ойындар мен командалар",
+				navProfile: "Жеке кабинет",
+				navOwner: "Алаң иесі",
+				navAdmin: "Әкімші",
+				brandSubtitle: "Спорт алаңдары",
+				loginBtnHeader: "Жеке кабинет",
+				switchRoleTitle: "Рөлді ауыстыру (Тест):",
+				ownerLockTitle: "Бұл бет тек спорт алаңдарының иелеріне арналған",
+				ownerLockDesc: "Алаңдарыңызды, кестелерді және клиенттік броньдарды басқару үшін «Алаң иесі» (OWNER) аккаунты қажет.",
+				loginAsOwnerBtn: "Алаң иесі ретінде кіру",
+				adminLockTitle: "Бұл бетке тек әкімшілерге рұқсат етілген",
+				adminLockDesc: "Платформаны және модерацияны басқару үшін «Әкімші» (ADMIN) аккаунтымен жүйеге кіріңіз.",
+				loginAsAdminBtn: "Әкімші ретінде кіру",
+				loginModalTitle: "Жеке кабинетке кіру",
+				loginModalDesc: "Қажетті аккаунт түрін таңдап кіріңіз немесе рөлді өзгертіңіз:",
+				ownerCourtsSub: "Менің алаңдарым: Алматы спорт кешендері желісі",
+				heroBadge: "Қазақстан бойынша 120+ спорт алаңы бір жерде",
+				heroTitle1: "Спорт алаңын оңай тап және ",
+				heroTitle2: "онлайн бронда",
+				heroSubtitle: "Қаладағы спорт алаңдарын жылдам іздеу, бағасын салыстыру және бос уақыт слоттарын секунд ішінде брондау. Кезексіз әрі сенімді.",
+				searchCityLabel: "Қала / Аймақ",
+				cityAlmaty: "Алматы қаласы",
+				cityAstana: "Астана қаласы",
+				searchSportLabel: "Спорт түрі",
+				sportAll: "Барлық спорттар",
+				sportFootball: "Футбол",
+				sportTennis: "Теннис",
+				sportBasketball: "Баскетбол",
+				sportVolleyball: "Волейбол",
+				searchDateLabel: "Күні",
+				searchButton: "Алаңдарды көру",
+				metric1: "Спорт алаңы мен зал",
+				metric2: "Белсенді ойыншы",
+				metric3: "Оң пікірлер деңгейі",
+				metric4: "Орташа брондау уақыты",
+				sportsTypes: "Спорт түрлері",
+				sportsTypesSub: "Қалауыңыз бойынша таңдаңыз",
+				catFootballCount: "64 алаң",
+				catFootballDesc: "Жабық манеждер және ашық газон",
+				catBasketballCount: "28 алаң",
+				catBasketballDesc: "Кәсіби паркет және стритборд",
+				catTennisCount: "19 корт",
+				catTennisDesc: "Хард және топырақ корттары",
+				catVolleyballCount: "15 зал",
+				catVolleyballDesc: "Жарықтандырылған жабық алаңдар",
+				featuredSubtitle: "Таңдаулы орындар",
+				featuredTitle: "Қаланың үздік спорт алаңдары",
+				viewAllCourts: "Барлық алаңдарды қарау",
+				court1Location: "Алматы, Бостандық ауданы",
+				court2Location: "Алматы, Медеу ауданы",
+				court3Location: "Астана, Есіл ауданы",
+				court4Location: "Алматы, Әуезов ауданы",
+				court1FullAddress: "Алматы, Бостандық ауданы, Сәтбаев к-сі 22",
+				court2FullAddress: "Алматы, Медеу ауданы, Достық даңғылы 105",
+				court3FullAddress: "Астана, Есіл ауданы, Мәңгілік Ел 55",
+				court4FullAddress: "Алматы, Әуезов ауданы, Төле би 180",
+				amenityParking: "Паркинг",
+				amenityShower: "Душ",
+				amenityLocker: "Киім бөлмесі",
+				amenityIndoor: "Жабық",
+				amenityHardCourt: "Hard корт",
+				amenityEquipment: "Pro жабдықтар",
+				amenityCafe: "Кафе",
+				amenityCoach: "Жаттықтырушы",
+				amenityInventory: "Инвентарь",
+				amenityParquet: "Паркет",
+				amenityFibaParquet: "FIBA паркет",
+				amenityBleachers: "Трибуна",
+				amenityBalls: "Доптар",
+				amenityTaraflex: "Тарафлекс",
+				amenityLighting: "Жарық",
+				perHour: " / сағ",
+				bookButton: "Брондау",
+				communityBadge: "Қауымдастық",
+				communityTitle: "Команда тап, ашық ойынға қосыл немесе өз матчыңды ұйымдастыр",
+				communityDesc: "Ойыншылар жетіспей жатыр ма? PlaySlot арқылы деңгейіңізге сай пікірлестер тауып, бірлесіп ойнаңыз.",
+				openGamesList: "Ойындар тізімін ашу",
+				createGameBtn: "+ Жаңа ойын құру",
+				metricActiveGames: "Бүгінгі белсенді ойындар",
+				metricCommission: "Қосылу комиссиясы жоқ",
+				courtsPageTitle: "Спорт алаңдары",
+				courtsPageSub: "Қолжетімді уақыт слоттары мен онлайн төлем",
+				viewListOnly: "Тізім",
+				viewListAndMap: "Тізім + Карта",
+				districtAll: "Барлық аудандар",
+				districtBostandyk: "Бостандық ауданы",
+				districtMedeu: "Медеу ауданы",
+				districtAuezov: "Әуезов ауданы",
+				districtEsil: "Есіл ауданы (Астана)",
+				priceAll: "Кез келген баға",
+				priceUnder5k: "< 5 000 ₸",
+				price5kTo8k: "5 000 ₸ – 8 000 ₸",
+				priceOver8k: "> 8 000 ₸",
+				interactiveMap: "Интерактивті карта: Алматы",
+				courtsShown: "4 алаң көрсетілді",
+				bookingStepLabel: "Брондау кезеңі",
+				step1Date: "1. Күнді таңдаңыз",
+				todayLabel: "Бүгін",
+				satLabel: "Сенбі",
+				sunLabel: "Жексенбі",
+				monLabel: "Дүйсенбі",
+				tueLabel: "Сейсенбі",
+				step2Time: "2. Уақыт слотын таңдаңыз (бір немесе бірнеше сағат)",
+				slotAvail: "Бос",
+				slotSelected: "Таңдалды",
+				slotBooked: "Брондалған",
+				slotAvailableText: "Қолжетімді",
+				slotBookedText: "Брондалған",
+				slotPopularText: "Танымал уақыт",
+				slotSelectedText: "Таңдалды ✓",
+				safetyTitle: "Брондау қауіпсіздігі:",
+				safetyDesc: " Өтінішіңізді алаң иесі жедел қарастырады. Растау 15 минут ішінде жіберіледі. Жою ережесі: ойынға 2 сағат қалғанға дейін тегін бас тартуға болады.",
+				summaryTitle: "Бронь мәліметтері",
+				summaryCourt: "Алаң:",
+				summaryDate: "Күні:",
+				summaryTime: "Уақыты:",
+				summaryDuration: "Ұзақтығы:",
+				summaryRate: "Сағаттық баға:",
+				summaryTotal: "Жалпы төлем:",
+				confirmBookingBtn: "Броньды растау",
+				summaryPaymentNotice: "Төлем бронь расталғаннан кейін алынады",
+				statusPending: "Тексерілуде",
+				statusConfirmed: "Расталды",
+				statusCompleted: "Аяқталды",
+				bookingSuccessTitle: "Бронь сәтті қабылданды!",
+				bookingSuccessDesc: "Өтінішіңіз тіркелді. Алаң иесі жақын арада бекітеді. Статусты Жеке кабинеттен бақылай аласыз.",
+				goToBookingsBtn: "Менің броньдарыма өту",
+				goToHomeBtn: "Басты бетке",
+				gamesPageTitle: "Ойындар мен командалар",
+				gamesPageSub: "Қалалық ашық матчтарға қосылыңыз немесе өз ойыныңызға серіктес табыңыз",
+				game1Sport: "Футбол 7x7",
+				game1Time: "Бүгін, 19:00",
+				game1Title: "Жұма кешкі ойын",
+				game2Sport: "Волейбол MIX",
+				game2Time: "Сенбі, 16:00",
+				game2Title: "Сенбілік волейбол микс",
+				game3Sport: "Баскетбол 3x3",
+				game3Time: "Жексенбі, 18:30",
+				game3Title: "Баскетбол Streetball",
+				organizerLabel: "Ұйымдастырушы:",
+				playersLabel: "Қатысушылар:",
+				perPlayer: " / ойыншыдан",
+				joinBtn: "Қосылу",
+				createGameModalTitle: "Жаңа ойын ұйымдастыру",
+				gameNameInput: "Ойын атауы",
+				playersCountInput: "Ойыншылар саны",
+				cancelBtn: "Бас тарту",
+				publishGameBtn: "Ойынды жариялау",
+				rolePlayer: "Ойыншы",
+				cityLabel: "Қаласы:",
+				memberSince: "Тіркелген күні:",
+				editBtn: "Өңдеу",
+				logoutBtn: "Шығу",
+				myBookingsTab: "Менің броньдарым (3)",
+				myGamesTab: "Қатысқан ойындарым (2)",
+				mySettingsTab: "Баптаулар",
+				viewDetailsBtn: "Толық көру",
+				goToCourtBtn: "Алаңға өту",
+				leaveReviewBtn: "Пікір қалдыру",
+				registeredBadge: "Тіркелгенсіз ✓",
+				teamChatBtn: "Команда чаты",
+				settingsTitle: "Байланыс деректерін жаңарту",
+				fullNameLabel: "Аты-жөні",
+				phoneLabel: "Телефон нөмірі",
+				saveBtn: "Сақтау",
+				ownerTitle: "Алаң иесінің басқару панелі",
+				addNewCourtBtn: "Жаңа алаң қосу",
+				kpiTotalCourts: "Барлық алаңдар",
+				kpiAllActive: "Барлығы белсенді",
+				kpiNewBookings: "Жаңа броньдар",
+				kpiPendingVerification: "Растауды күтуде",
+				kpiConfirmedBookings: "Бекітілген броньдар",
+				kpiThisMonth: "Осы айда",
+				kpiMonthlyIncome: "Айлық табыс",
+				kpiGrowth: "+18% өткен аймен салыстырғанда",
+				ownerBookingsTitle: "Броньдарды жедел басқару",
+				ownerBookingsSub: "Келген тапсырыстарды растаңыз немесе бас тартыңыз",
+				realtimeMode: "Нақты уақыт режимі",
+				thClient: "Клиент",
+				thCourt: "Алаң",
+				thDateTime: "Күні мен Уақыты",
+				thAmount: "Сомасы",
+				thStatus: "Күйі",
+				thActions: "Әрекеттер",
+				confirmAction: "Растау",
+				rejectAction: "Бас тарту",
+				processedBadge: "Өңделді ✓",
+				addCourtModalTitle: "Жаңа спорт алаңын қосу",
+				courtNameInput: "Алаң атауы",
+				courtPriceInput: "Сағаттық баға (₸)",
+				courtAddressInput: "Мекен-жайы",
+				submitModerationBtn: "Модерацияға жіберу",
+				adminTitle: "PlaySlot Басқару жүйесі",
+				adminLastSync: "Соңғы синхрондау: 24 Қазан 2025, 14:35",
+				adminKpiCourts: "Тіркелген алаңдар",
+				adminKpiActiveSub: "20 белсенді, 4 кезекте",
+				adminKpiBookings: "Жалпы броньдар саны",
+				adminKpiWeeklyGrowth: "↑ +24% апталық өсім",
+				adminKpiUsers: "Пайдаланушылар",
+				adminKpiUsersSub: "3,100 ойыншы, 350 ие",
+				adminKpiModQueue: "Модерация кезекте",
+				adminKpiModAction: "Шұғыл тексеру қажет",
+				modQueueTitle: "Алаңдарды модерациялау кезегі",
+				modQueueSub: "Жаңа өтінімдердің құжаттары мен фотосуреттерін тексеру",
+				modQueueCountBadge: "4 өтінім күтуде",
+				newCourtBadge: "Жаңа алаң",
+				tariffUpdateBadge: "Тариф жаңарту",
+				adminMod1Details: "Иесі: Серікбай Т. • Бағасы: 7 000 ₸/сағ • Құжаттар жүктелді (Мемлекеттік акт, фото)",
+				adminMod2Details: "Иесі: Дәулет М. • Жаңа баға: 12 000 ₸/сағ • Сертификат тексерілді",
+				approveBtn: "Бекіту",
+				returnBtn: "Қайтару",
+				footerDesc: "Қазақстан бойынша спорт алаңдарын онлайн брондау платформасы. Алматы және Астана қалаларындағы ең үздік корттар мен залдар.",
+				footerGamesLink: "Ойындар мен қауымдастық",
+				footerOwnerLink: "Алаң иелеріне",
+				privacyPolicy: "Құпиялылық саясаты",
+				contactLink: "Байланыс",
+				footerCopyright: "© 2025 PlaySlot. Барлық құқықтар қорғалған. Қазақстан бойынша спорт алаңдарын онлайн брондау.",
+				sslSecure: "Төлем қауіпсіздігі SSL 256-bit",
+				mobileNavHome: "Басты",
+				mobileNavCourts: "Алаңдар",
+				mobileNavGames: "Ойындар",
+				mobileNavProfile: "Профиль",
+				notificationToast: "Жүйеде жаңа хабарлама жоқ",
+				profileSavedToast: "Профиль өзгерістері сақталды!",
+				reviewToast: "Пікір қалдыру терезесі ашылды",
+				teamChatToast: "Командалық чат жүктелуде...",
+				settingsSavedToast: "Баптаулар сәтті сақталды!",
+				privacyPolicyToast: "Құпиялылық саясаты қолжетімді",
+				contactCenterToast: "Байланыс: +7 (727) 300-11-22"
+			},
+			en: {
+				navHome: "Home",
+				navCourts: "Courts",
+				navGames: "Games & Teams",
+				navProfile: "My Account",
+				navOwner: "My Venues (Owner)",
+				navAdmin: "Admin Panel",
+				brandSubtitle: "Sports Courts",
+				loginBtnHeader: "My Account",
+				switchRoleTitle: "Switch Role (Test):",
+				ownerLockTitle: "This page is strictly for Venue Owners",
+				ownerLockDesc: "An OWNER account is required to manage venues, schedules, and reservations.",
+				loginAsOwnerBtn: "Log in as Venue Owner",
+				adminLockTitle: "Administrator Access Required",
+				adminLockDesc: "Please sign in with an ADMIN account to access platform management and moderation.",
+				loginAsAdminBtn: "Log in as Administrator",
+				loginModalTitle: "Sign In to Account",
+				loginModalDesc: "Select an account type to simulate role-based authorization:",
+				ownerCourtsSub: "My Venues: Almaty Sports Complex Chain",
+				heroBadge: "120+ sports courts across Kazakhstan in one place",
+				heroTitle1: "Find sports courts easily and ",
+				heroTitle2: "book online",
+				heroSubtitle: "Quickly search courts in your city, compare prices, and reserve open time slots in seconds. Queue-free and trusted.",
+				searchCityLabel: "City / Region",
+				cityAlmaty: "Almaty City",
+				cityAstana: "Astana City",
+				searchSportLabel: "Sport Type",
+				sportAll: "All Sports",
+				sportFootball: "Football",
+				sportTennis: "Tennis",
+				sportBasketball: "Basketball",
+				sportVolleyball: "Volleyball",
+				searchDateLabel: "Date",
+				searchButton: "Search Courts",
+				metric1: "Courts and Gyms",
+				metric2: "Active Players",
+				metric3: "Positive Reviews",
+				metric4: "Avg Booking Time",
+				sportsTypes: "Sports Disciplines",
+				sportsTypesSub: "Select according to your preference",
+				catFootballCount: "64 courts",
+				catFootballDesc: "Indoor arenas and outdoor turf",
+				catBasketballCount: "28 courts",
+				catBasketballDesc: "Pro hardwood and street courts",
+				catTennisCount: "19 courts",
+				catTennisDesc: "Hard and clay tennis courts",
+				catVolleyballCount: "15 gyms",
+				catVolleyballDesc: "Illuminated indoor halls",
+				featuredSubtitle: "Featured Venues",
+				featuredTitle: "Top sports courts in the city",
+				viewAllCourts: "View all courts",
+				court1Location: "Almaty, Bostandyk District",
+				court2Location: "Almaty, Medeu District",
+				court3Location: "Astana, Esil District",
+				court4Location: "Almaty, Auezov District",
+				court1FullAddress: "Almaty, Bostandyk District, Satbayev St. 22",
+				court2FullAddress: "Almaty, Medeu District, Dostyk Ave. 105",
+				court3FullAddress: "Astana, Esil District, Mangilik El 55",
+				court4FullAddress: "Almaty, Auezov District, Tole Bi 180",
+				amenityParking: "Parking",
+				amenityShower: "Showers",
+				amenityLocker: "Locker Room",
+				amenityIndoor: "Indoor",
+				amenityHardCourt: "Hard Court",
+				amenityEquipment: "Pro Gear",
+				amenityCafe: "Cafe",
+				amenityCoach: "Coaches",
+				amenityInventory: "Gear Rental",
+				amenityParquet: "Hardwood",
+				amenityFibaParquet: "FIBA Parquet",
+				amenityBleachers: "Bleachers",
+				amenityBalls: "Balls Included",
+				amenityTaraflex: "Taraflex Floor",
+				amenityLighting: "LED Lighting",
+				perHour: " / hr",
+				bookButton: "Book Now",
+				communityBadge: "Community",
+				communityTitle: "Find a team, join an open match or organize your own game",
+				communityDesc: "Short on players? PlaySlot connects you with matching sports enthusiasts at your level.",
+				openGamesList: "Open Games List",
+				createGameBtn: "+ Create New Match",
+				metricActiveGames: "Active Games Today",
+				metricCommission: "0 ₸ Booking Fee",
+				courtsPageTitle: "Sports Courts",
+				courtsPageSub: "Available time slots and secure online payment",
+				viewListOnly: "List",
+				viewListAndMap: "List + Map",
+				districtAll: "All Districts",
+				districtBostandyk: "Bostandyk District",
+				districtMedeu: "Medeu District",
+				districtAuezov: "Auezov District",
+				districtEsil: "Esil District (Astana)",
+				priceAll: "Any Price",
+				priceUnder5k: "< 5,000 ₸",
+				price5kTo8k: "5,000 ₸ – 8,000 ₸",
+				priceOver8k: "> 8,000 ₸",
+				interactiveMap: "Interactive Map: Almaty",
+				courtsShown: "4 courts shown",
+				bookingStepLabel: "Booking Stage",
+				step1Date: "1. Select Date",
+				todayLabel: "Today",
+				satLabel: "Saturday",
+				sunLabel: "Sunday",
+				monLabel: "Monday",
+				tueLabel: "Tuesday",
+				step2Time: "2. Select Time Slots (one or more hours)",
+				slotAvail: "Open",
+				slotSelected: "Selected",
+				slotBooked: "Booked",
+				slotAvailableText: "Available",
+				slotBookedText: "Booked",
+				slotPopularText: "Popular Slot",
+				slotSelectedText: "Selected ✓",
+				safetyTitle: "Booking Guarantee:",
+				safetyDesc: " The venue manager promptly reviews your request. Confirmation within 15 minutes. Free cancellation up to 2 hours before match.",
+				summaryTitle: "Booking Summary",
+				summaryCourt: "Court:",
+				summaryDate: "Date:",
+				summaryTime: "Time:",
+				summaryDuration: "Duration:",
+				summaryRate: "Hourly Rate:",
+				summaryTotal: "Total Amount:",
+				confirmBookingBtn: "Confirm Booking",
+				summaryPaymentNotice: "Payment processed upon confirmation",
+				statusPending: "Pending Review",
+				statusConfirmed: "Confirmed",
+				statusCompleted: "Completed",
+				bookingSuccessTitle: "Booking Request Received!",
+				bookingSuccessDesc: "Your request is recorded. The venue owner will confirm shortly. Track status in your account.",
+				goToBookingsBtn: "Go to My Bookings",
+				goToHomeBtn: "Return Home",
+				gamesPageTitle: "Games and Teams",
+				gamesPageSub: "Join public pickup games or recruit teammates for your court reservation",
+				game1Sport: "Football 7x7",
+				game1Time: "Today, 19:00",
+				game1Title: "Friday Evening Match",
+				game2Sport: "Volleyball MIX",
+				game2Time: "Saturday, 16:00",
+				game2Title: "Saturday Volleyball Mix",
+				game3Sport: "Basketball 3x3",
+				game3Time: "Sunday, 18:30",
+				game3Title: "Basketball Streetball",
+				organizerLabel: "Organizer:",
+				playersLabel: "Participants:",
+				perPlayer: " / player",
+				joinBtn: "Join",
+				createGameModalTitle: "Organize a New Match",
+				gameNameInput: "Match Title",
+				playersCountInput: "Player Count",
+				cancelBtn: "Cancel",
+				publishGameBtn: "Publish Match",
+				rolePlayer: "Player",
+				cityLabel: "City:",
+				memberSince: "Member Since:",
+				editBtn: "Edit",
+				logoutBtn: "Log Out",
+				myBookingsTab: "My Bookings (3)",
+				myGamesTab: "My Games (2)",
+				mySettingsTab: "Settings",
+				viewDetailsBtn: "View Details",
+				goToCourtBtn: "View Court",
+				leaveReviewBtn: "Write Review",
+				registeredBadge: "Registered ✓",
+				teamChatBtn: "Team Chat",
+				settingsTitle: "Update Contact Information",
+				fullNameLabel: "Full Name",
+				phoneLabel: "Phone Number",
+				saveBtn: "Save",
+				ownerTitle: "Venue Partner Dashboard",
+				addNewCourtBtn: "Add New Court",
+				kpiTotalCourts: "Total Venues",
+				kpiAllActive: "All Active",
+				kpiNewBookings: "New Bookings",
+				kpiPendingVerification: "Pending Confirmation",
+				kpiConfirmedBookings: "Confirmed Bookings",
+				kpiThisMonth: "This Month",
+				kpiMonthlyIncome: "Monthly Revenue",
+				kpiGrowth: "+18% compared to last month",
+				ownerBookingsTitle: "Live Booking Management",
+				ownerBookingsSub: "Approve or decline customer booking requests",
+				realtimeMode: "Real-time Mode",
+				thClient: "Client",
+				thCourt: "Court",
+				thDateTime: "Date & Time",
+				thAmount: "Total",
+				thStatus: "Status",
+				thActions: "Actions",
+				confirmAction: "Approve",
+				rejectAction: "Decline",
+				processedBadge: "Processed ✓",
+				addCourtModalTitle: "Add New Sports Venue",
+				courtNameInput: "Venue Name",
+				courtPriceInput: "Hourly Rate (₸)",
+				courtAddressInput: "Address",
+				submitModerationBtn: "Submit for Moderation",
+				adminTitle: "PlaySlot Administration",
+				adminLastSync: "Last synced: Oct 24, 2025, 14:35",
+				adminKpiCourts: "Registered Courts",
+				adminKpiActiveSub: "20 active, 4 pending",
+				adminKpiBookings: "Total Bookings",
+				adminKpiWeeklyGrowth: "↑ +24% weekly growth",
+				adminKpiUsers: "Active Users",
+				adminKpiUsersSub: "3,100 players, 350 owners",
+				adminKpiModQueue: "Moderation Queue",
+				adminKpiModAction: "Urgent review required",
+				modQueueTitle: "Venue Moderation Queue",
+				modQueueSub: "Verify documents and photo authenticity",
+				modQueueCountBadge: "4 requests pending",
+				newCourtBadge: "New Venue",
+				tariffUpdateBadge: "Tariff Update",
+				adminMod1Details: "Owner: Serikbay T. • Price: 7,000 ₸/hr • Documents verified (Gov act, photos)",
+				adminMod2Details: "Owner: Daulet M. • New price: 12,000 ₸/hr • Certificate checked",
+				approveBtn: "Approve",
+				returnBtn: "Return",
+				footerDesc: "Online booking platform for sports courts across Kazakhstan. Best pitches and gyms in Almaty and Astana.",
+				footerGamesLink: "Games & Community",
+				footerOwnerLink: "For Venue Owners",
+				privacyPolicy: "Privacy Policy",
+				contactLink: "Contacts",
+				footerCopyright: "© 2025 PlaySlot. All rights reserved. Online sports court bookings in Kazakhstan.",
+				sslSecure: "256-bit SSL Secure Payment",
+				mobileNavHome: "Home",
+				mobileNavCourts: "Courts",
+				mobileNavGames: "Games",
+				mobileNavProfile: "Profile",
+				notificationToast: "No new notifications",
+				profileSavedToast: "Profile updated successfully!",
+				reviewToast: "Review form opened",
+				teamChatToast: "Loading team chat...",
+				settingsSavedToast: "Settings saved successfully!",
+				privacyPolicyToast: "Privacy policy available",
+				contactCenterToast: "Call center: +7 (727) 300-11-22"
+			},
+			ru: {
+				navHome: "Главная",
+				navCourts: "Площадки",
+				navGames: "Игры и команды",
+				navProfile: "Личный кабинет",
+				navOwner: "Мои площадки (Владелец)",
+				navAdmin: "Панель администратора",
+				brandSubtitle: "Спортивные площадки",
+				loginBtnHeader: "Личный кабинет",
+				switchRoleTitle: "Сменить роль (Тест):",
+				ownerLockTitle: "Этот раздел предназначен только для владельцев площадок",
+				ownerLockDesc: "Для управления спортплощадками, расписанием и бронированиями требуется аккаунт со статусом «Владелец» (OWNER).",
+				loginAsOwnerBtn: "Войти как владелец площадки",
+				adminLockTitle: "Требуются права администратора",
+				adminLockDesc: "Для доступа к модерации и управлению платформой войдите под аккаунтом «Администратор» (ADMIN).",
+				loginAsAdminBtn: "Войти как администратор",
+				loginModalTitle: "Вход в аккаунт",
+				loginModalDesc: "Выберите тип учетной записи для демонстрации ролей:",
+				ownerCourtsSub: "Мои площадки: Сеть спорткомплексов Алматы",
+				heroBadge: "120+ спортплощадок по всему Казахстану в одном месте",
+				heroTitle1: "Удобный поиск спортплощадок и ",
+				heroTitle2: "онлайн бронирование",
+				heroSubtitle: "Быстрый поиск площадок в городе, сравнение цен и бронирование свободных слотов за секунды. Без очередей и надежно.",
+				searchCityLabel: "Город / Регион",
+				cityAlmaty: "город Алматы",
+				cityAstana: "город Астана",
+				searchSportLabel: "Вид спорта",
+				sportAll: "Все виды спорта",
+				sportFootball: "Футбол",
+				sportTennis: "Теннис",
+				sportBasketball: "Баскетбол",
+				sportVolleyball: "Волейбол",
+				searchDateLabel: "Дата",
+				searchButton: "Посмотреть площадки",
+				metric1: "Площадок и залов",
+				metric2: "Активных игроков",
+				metric3: "Положительных отзывов",
+				metric4: "Среднее время брони",
+				sportsTypes: "Виды спорта",
+				sportsTypesSub: "Выберите по вашему предпочтению",
+				catFootballCount: "64 площадки",
+				catFootballDesc: "Крытые манежи и открытый газон",
+				catBasketballCount: "28 площадок",
+				catBasketballDesc: "Профессиональный паркет и стритбол",
+				catTennisCount: "19 кортов",
+				catTennisDesc: "Хард и грунтовые корты",
+				catVolleyballCount: "15 залов",
+				catVolleyballDesc: "Освещенные крытые залы",
+				featuredSubtitle: "Избранные места",
+				featuredTitle: "Лучшие спортплощадки города",
+				viewAllCourts: "Смотреть все площадки",
+				court1Location: "Алматы, Бостандыкский район",
+				court2Location: "Алматы, Медеуский район",
+				court3Location: "Астана, район Есиль",
+				court4Location: "Алматы, Ауэзовский район",
+				court1FullAddress: "Алматы, Бостандыкский район, ул. Сатпаева 22",
+				court2FullAddress: "Алматы, Медеуский район, пр. Достык 105",
+				court3FullAddress: "Астана, район Есиль, пр. Мангилик Ел 55",
+				court4FullAddress: "Алматы, Ауэзовский район, ул. Толе би 180",
+				amenityParking: "Парковка",
+				amenityShower: "Душ",
+				amenityLocker: "Раздевалка",
+				amenityIndoor: "Крытый",
+				amenityHardCourt: "Хард корт",
+				amenityEquipment: "Про экипировка",
+				amenityCafe: "Кафе",
+				amenityCoach: "Тренеры",
+				amenityInventory: "Аренда инвентаря",
+				amenityParquet: "Паркет",
+				amenityFibaParquet: "ФИБА паркет",
+				amenityBleachers: "Трибуны",
+				amenityBalls: "Мячи включены",
+				amenityTaraflex: "Тарафлекс",
+				amenityLighting: "LED свет",
+				perHour: " / час",
+				bookButton: "Забронировать",
+				communityBadge: "Сообщество",
+				communityTitle: "Найди команду, вступи в открытый матч или создай свою игру",
+				communityDesc: "Не хватает игроков? PlaySlot объединяет единомышленников вашего уровня для совместной игры.",
+				openGamesList: "Открыть список игр",
+				createGameBtn: "+ Создать новую игру",
+				metricActiveGames: "Активных игр сегодня",
+				metricCommission: "0 ₸ комиссия за вход",
+				courtsPageTitle: "Спортивные площадки",
+				courtsPageSub: "Доступные временные слоты и онлайн оплата",
+				viewListOnly: "Список",
+				viewListAndMap: "Список + Карта",
+				districtAll: "Все районы",
+				districtBostandyk: "Бостандыкский район",
+				districtMedeu: "Медеуский район",
+				districtAuezov: "Ауэзовский район",
+				districtEsil: "Район Есиль (Астана)",
+				priceAll: "Любая цена",
+				priceUnder5k: "< 5 000 ₸",
+				price5kTo8k: "5 000 ₸ – 8 000 ₸",
+				priceOver8k: "> 8 000 ₸",
+				interactiveMap: "Интерактивная карта: Алматы",
+				courtsShown: "Показано 4 площадки",
+				bookingStepLabel: "Этап бронирования",
+				step1Date: "1. Выберите дату",
+				todayLabel: "Сегодня",
+				satLabel: "Суббота",
+				sunLabel: "Воскресенье",
+				monLabel: "Понедельник",
+				tueLabel: "Вторник",
+				step2Time: "2. Выберите временной слот (один или несколько часов)",
+				slotAvail: "Свободно",
+				slotSelected: "Выбрано",
+				slotBooked: "Занято",
+				slotAvailableText: "Доступно",
+				slotBookedText: "Забронировано",
+				slotPopularText: "Популярное время",
+				slotSelectedText: "Выбрано ✓",
+				safetyTitle: "Безопасность бронирования:",
+				safetyDesc: " Вашу заявку оперативно подтверждает владелец площадки. Подтверждение в течение 15 минут. Бесплатная отмена за 2 часа до игры.",
+				summaryTitle: "Детали брони",
+				summaryCourt: "Площадка:",
+				summaryDate: "Дата:",
+				summaryTime: "Время:",
+				summaryDuration: "Длительность:",
+				summaryRate: "Цена за час:",
+				summaryTotal: "Итого к оплате:",
+				confirmBookingBtn: "Подтвердить бронь",
+				summaryPaymentNotice: "Оплата списывается после подтверждения",
+				statusPending: "На проверке",
+				statusConfirmed: "Подтверждено",
+				statusCompleted: "Завершено",
+				bookingSuccessTitle: "Бронь успешно принята!",
+				bookingSuccessDesc: "Заявка зарегистрирована. Владелец площадки подтвердит ее в ближайшее время. Статус можно отслеживать в Личном кабинете.",
+				goToBookingsBtn: "Перейти к моим броням",
+				goToHomeBtn: "На главную",
+				gamesPageTitle: "Игры и команды",
+				gamesPageSub: "Присоединяйтесь к открытым матчам города или найдите партнеров для своей игры",
+				game1Sport: "Футбол 7x7",
+				game1Time: "Сегодня, 19:00",
+				game1Title: "Пятничный вечерний матч",
+				game2Sport: "Волейбол MIX",
+				game2Time: "Суббота, 16:00",
+				game2Title: "Субботний волейбол микс",
+				game3Sport: "Баскетбол 3x3",
+				game3Time: "Воскресенье, 18:30",
+				game3Title: "Баскетбол Стритбол",
+				organizerLabel: "Организатор:",
+				playersLabel: "Участники:",
+				perPlayer: " / с игрока",
+				joinBtn: "Присоединиться",
+				createGameModalTitle: "Организовать новую игру",
+				gameNameInput: "Название игры",
+				playersCountInput: "Количество игроков",
+				cancelBtn: "Отмена",
+				publishGameBtn: "Опубликовать игру",
+				rolePlayer: "Игрок",
+				cityLabel: "Город:",
+				memberSince: "Дата регистрации:",
+				editBtn: "Изменить",
+				logoutBtn: "Выйти",
+				myBookingsTab: "Мои брони (3)",
+				myGamesTab: "Мои игры (2)",
+				mySettingsTab: "Настройки",
+				viewDetailsBtn: "Подробнее",
+				goToCourtBtn: "К площадке",
+				leaveReviewBtn: "Оставить отзыв",
+				registeredBadge: "Вы записаны ✓",
+				teamChatBtn: "Чат команды",
+				settingsTitle: "Обновление контактных данных",
+				fullNameLabel: "ФИО",
+				phoneLabel: "Номер телефона",
+				saveBtn: "Сохранить",
+				ownerTitle: "Панель управления владельца площадки",
+				addNewCourtBtn: "Добавить новую площадку",
+				kpiTotalCourts: "Все площадки",
+				kpiAllActive: "Все активны",
+				kpiNewBookings: "Новые брони",
+				kpiPendingVerification: "Ожидают подтверждения",
+				kpiConfirmedBookings: "Подтвержденные брони",
+				kpiThisMonth: "В этом месяце",
+				kpiMonthlyIncome: "Доход за месяц",
+				kpiGrowth: "+18% по сравнению с прошлым месяцем",
+				ownerBookingsTitle: "Оперативное управление бронями",
+				ownerBookingsSub: "Подтверждайте или отклоняйте поступающие заявки",
+				realtimeMode: "Режим реального времени",
+				thClient: "Клиент",
+				thCourt: "Площадка",
+				thDateTime: "Дата и время",
+				thAmount: "Сумма",
+				thStatus: "Статус",
+				thActions: "Действия",
+				confirmAction: "Подтвердить",
+				rejectAction: "Отклонить",
+				processedBadge: "Обработано ✓",
+				addCourtModalTitle: "Добавить спортивную площадку",
+				courtNameInput: "Название площадки",
+				courtPriceInput: "Почасовая цена (₸)",
+				courtAddressInput: "Адрес",
+				submitModerationBtn: "Отправить на модерацию",
+				adminTitle: "Система управления PlaySlot",
+				adminLastSync: "Синхронизация: 24 октября 2025, 14:35",
+				adminKpiCourts: "Зарегистрированные площадки",
+				adminKpiActiveSub: "20 активных, 4 в очереди",
+				adminKpiBookings: "Всего бронирований",
+				adminKpiWeeklyGrowth: "↑ +24% еженедельный рост",
+				adminKpiUsers: "Пользователи",
+				adminKpiUsersSub: "3 100 игроков, 350 владельцев",
+				adminKpiModQueue: "Очередь модерации",
+				adminKpiModAction: "Требует проверки",
+				modQueueTitle: "Очередь модерации площадок",
+				modQueueSub: "Проверка подлинности документов и фотографий новых заявок",
+				modQueueCountBadge: "4 заявки в ожидании",
+				newCourtBadge: "Новая площадка",
+				tariffUpdateBadge: "Обновление тарифа",
+				adminMod1Details: "Владелец: Серикбай Т. • Цена: 7 000 ₸/час • Документы загружены (Госакт, фото)",
+				adminMod2Details: "Владелец: Даулет М. • Новая цена: 12 000 ₸/час • Сертификат проверен",
+				approveBtn: "Одобрить",
+				returnBtn: "Вернуть",
+				footerDesc: "Платформа онлайн-бронирования спортплощадок в Казахстане. Лучшие корты, поля и залы в Алматы и Астане.",
+				footerGamesLink: "Игры и сообщество",
+				footerOwnerLink: "Владельцам площадок",
+				privacyPolicy: "Политика конфиденциальности",
+				contactLink: "Контакты",
+				footerCopyright: "© 2025 PlaySlot. Все права защищены. Онлайн бронирование спортплощадок в Казахстане.",
+				sslSecure: "Безопасность платежей SSL 256-bit",
+				mobileNavHome: "Главная",
+				mobileNavCourts: "Площадки",
+				mobileNavGames: "Игры",
+				mobileNavProfile: "Профиль",
+				notificationToast: "Нет новых уведомлений",
+				profileSavedToast: "Изменения профиля успешно сохранены!",
+				reviewToast: "Окно отзыва открыто",
+				teamChatToast: "Загрузка командного чата...",
+				settingsSavedToast: "Настройки успешно сохранены!",
+				privacyPolicyToast: "Политика конфиденциальности доступна",
+				contactCenterToast: "Контакт-центр: +7 (727) 300-11-22"
+			}
+		};
+
+		// --- 2. Application State & Role Authorization ---
+		const usersDB = {
+			PLAYER: {
+				id: 'u-player-1',
+				name: 'Ерлан Серіков',
+				email: 'erlan.serikov@example.kz',
+				phone: '+7 (777) 345-67-89',
+				city: 'Алматы',
+				role: 'PLAYER',
+				initials: 'ЕС',
+				roleNameKk: 'Ойыншы',
+				roleNameEn: 'Player',
+				roleNameRu: 'Игрок'
+			},
+			OWNER: {
+				id: 'u-owner-1',
+				name: 'Асқар Есімов',
+				email: 'askar.esimov@arena.kz',
+				phone: '+7 (701) 888-99-00',
+				city: 'Алматы',
+				role: 'OWNER',
+				initials: 'АЕ',
+				roleNameKk: 'Алаң иесі (Owner)',
+				roleNameEn: 'Venue Owner',
+				roleNameRu: 'Владелец площадки'
+			},
+			ADMIN: {
+				id: 'u-admin-1',
+				name: 'Бас Әкімші',
+				email: 'admin@playslot.kz',
+				phone: '+7 (727) 300-11-22',
+				city: 'Алматы & Астана',
+				role: 'ADMIN',
+				initials: 'АД',
+				roleNameKk: 'Бас Әкімші (SuperAdmin)',
+				roleNameEn: 'SuperAdmin',
+				roleNameRu: 'Администратор'
+			}
+		};
+
+		const state = {
+			currentLang: localStorage.getItem('playslot_lang') || 'kk',
+			currentRole: localStorage.getItem('playslot_role') || 'PLAYER', // 'GUEST', 'PLAYER', 'OWNER', 'ADMIN'
+			currentView: 'booking',
+			selectedCourt: 'Central Arena (Футбол)',
+			hourlyRate: 6000,
+			selectedDate: '24 Қазан 2025',
+			selectedSlots: ['19:00 - 20:00'],
+			totalPrice: 6000,
+			viewMode: 'split'
+		};
+
+		function t(key) {
+			const dict = i18nData[state.currentLang] || i18nData.kk;
+			return dict[key] || i18nData.kk[key] || key;
+		}
+
+		// --- 3. Language Switching Function ---
+		function setLanguage(lang) {
+			if (!i18nData[lang]) return;
+			state.currentLang = lang;
+			localStorage.setItem('playslot_lang', lang);
+			document.documentElement.lang = lang;
+
+			// Update language pills in the white header
+			['kk', 'en', 'ru'].forEach(l => {
+				const btn = document.getElementById('lang-btn-' + l);
+				if (btn) {
+					if (l === lang) {
+						btn.className = "px-2.5 py-1 rounded-lg text-xs font-bold bg-primary text-white shadow-sm transition-all";
+					} else {
+						btn.className = "px-2.5 py-1 rounded-lg text-xs font-bold text-text-secondary hover:text-text-primary transition-all";
+					}
+				}
+			});
+
+			// Update all elements with data-i18n
+			document.querySelectorAll('[data-i18n]').forEach(el => {
+				const key = el.getAttribute('data-i18n');
+				if (key && i18nData[lang][key]) {
+					el.textContent = i18nData[lang][key];
+				}
+			});
+
+			updateUIForRole();
+			showToast(lang === 'kk' ? 'Қазақ тілі таңдалды' : lang === 'en' ? 'English language selected' : 'Русский язык выбран', 'translate');
+		}
+
+		// --- 4. Role-Based Access Control and UI Sync ---
+		function updateUIForRole() {
+			const role = state.currentRole;
+			const navOwner = document.getElementById('nav-link-owner');
+			const navAdmin = document.getElementById('nav-link-admin');
+			const dropdownOwner = document.getElementById('dropdown-link-owner');
+			const dropdownAdmin = document.getElementById('dropdown-link-admin');
+			const footerOwner = document.getElementById('footer-link-owner');
+			const guestLoginBtn = document.getElementById('btn-guest-login');
+			const userMenuContainer = document.getElementById('user-menu-container');
+
+			if (role === 'GUEST') {
+				// Guest / Unauthenticated:
+				// Hide owner & admin nav links
+				navOwner.classList.add('hidden');
+				navOwner.classList.remove('inline-flex');
+				navAdmin.classList.add('hidden');
+				navAdmin.classList.remove('inline-flex');
+				if (dropdownOwner) dropdownOwner.classList.add('hidden');
+				if (dropdownAdmin) dropdownAdmin.classList.add('hidden');
+				if (footerOwner) footerOwner.classList.add('hidden');
+
+				// Show only "Жеке кабинет" login button
+				guestLoginBtn.classList.remove('hidden');
+				guestLoginBtn.classList.add('inline-flex');
+				userMenuContainer.classList.add('hidden');
+			} else {
+				// Authenticated
+				guestLoginBtn.classList.add('hidden');
+				guestLoginBtn.classList.remove('inline-flex');
+				userMenuContainer.classList.remove('hidden');
+
+				const u = usersDB[role] || usersDB.PLAYER;
+				document.getElementById('user-display-name').textContent = u.name.split(' ')[0] + ' ' + (u.name.split(' ')[1] ? u.name.split(' ')[1][0] + '.' : '');
+				document.getElementById('user-avatar-badge').textContent = u.initials;
+				document.getElementById('dropdown-user-name').textContent = u.name;
+				document.getElementById('dropdown-user-email').textContent = u.email;
+
+				const roleText = state.currentLang === 'en' ? u.roleNameEn : state.currentLang === 'ru' ? u.roleNameRu : u.roleNameKk;
+				document.getElementById('user-display-role').textContent = roleText;
+				document.getElementById('dropdown-user-role-badge').textContent = `${role} (${roleText})`;
+
+				// Profile page update
+				const pName = document.getElementById('profile-page-name');
+				const pRole = document.getElementById('profile-page-role');
+				const pEmail = document.getElementById('profile-page-email');
+				const pAvatar = document.getElementById('profile-page-avatar');
+				if (pName) pName.textContent = u.name;
+				if (pRole) pRole.textContent = roleText;
+				if (pEmail) pEmail.textContent = `${u.email} • ${u.phone}`;
+				if (pAvatar) pAvatar.textContent = u.initials;
+
+				// OWNER permissions: "Алаң иесі" visible
+				if (role === 'OWNER' || role === 'ADMIN') {
+					navOwner.classList.remove('hidden');
+					navOwner.classList.add('inline-flex');
+					if (dropdownOwner) dropdownOwner.classList.remove('hidden');
+					if (footerOwner) footerOwner.classList.remove('hidden');
+				} else {
+					navOwner.classList.add('hidden');
+					navOwner.classList.remove('inline-flex');
+					if (dropdownOwner) dropdownOwner.classList.add('hidden');
+					if (footerOwner) footerOwner.classList.add('hidden');
+				}
+
+				// ADMIN permissions: "Әкімші" visible
+				if (role === 'ADMIN') {
+					navAdmin.classList.remove('hidden');
+					navAdmin.classList.add('inline-flex');
+					if (dropdownAdmin) dropdownAdmin.classList.remove('hidden');
+				} else {
+					navAdmin.classList.add('hidden');
+					navAdmin.classList.remove('inline-flex');
+					if (dropdownAdmin) dropdownAdmin.classList.add('hidden');
+				}
+			}
+
+			// Check view permission gate if currently on owner or admin page
+			if (state.currentView === 'owner') {
+				applyOwnerViewAccess();
+			} else if (state.currentView === 'admin') {
+				applyAdminViewAccess();
+			}
+		}
+
+		function applyOwnerViewAccess() {
+			const guard = document.getElementById('owner-guard-banner');
+			const content = document.getElementById('owner-main-content');
+			if (state.currentRole === 'OWNER' || state.currentRole === 'ADMIN') {
+				guard.classList.add('hidden');
+				content.classList.remove('hidden');
+			} else {
+				guard.classList.remove('hidden');
+				content.classList.add('hidden');
+			}
+		}
+
+		function applyAdminViewAccess() {
+			const guard = document.getElementById('admin-guard-banner');
+			const content = document.getElementById('admin-main-content');
+			if (state.currentRole === 'ADMIN') {
+				guard.classList.add('hidden');
+				content.classList.remove('hidden');
+			} else {
+				guard.classList.remove('hidden');
+				content.classList.add('hidden');
+			}
+		}
+
+		function setTestRole(newRole) {
+			state.currentRole = newRole;
+			localStorage.setItem('playslot_role', newRole);
+			updateUIForRole();
+			closeUserMenu();
+
+			const roleName = newRole === 'PLAYER' ? 'Ойыншы (Player)' : newRole === 'OWNER' ? 'Алаң иесі (Owner)' : newRole === 'ADMIN' ? 'Бас Әкімші (Admin)' : 'Қонақ (Guest)';
+			showToast(`Рөл ауыстырылды: ${roleName}`, 'switch_account');
+		}
+
+		function logoutAction() {
+			setTestRole('GUEST');
+			switchView('home');
+			showToast('Жүйеден сәтті шықтыңыз', 'logout');
+		}
+
+		// --- 5. Navigation & View Switching ---
+		function switchView(viewName) {
+			// If guest tries to access profile, open login modal
+			if (viewName === 'profile' && state.currentRole === 'GUEST') {
+				openLoginModal();
+				return;
+			}
+
+			state.currentView = viewName;
+
+			// Hide all panels
+			document.querySelectorAll('.view-panel').forEach(p => p.classList.add('hidden'));
+
+			// Show target view
+			const panel = document.getElementById('view-' + viewName);
+			if (panel) {
+				panel.classList.remove('hidden');
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			}
+
+			// Update Header Nav Links
+			const navIds = ['home', 'courts', 'games', 'owner', 'admin'];
+			navIds.forEach(id => {
+				const el = document.getElementById('nav-link-' + id);
+				if (el) {
+					if (id === viewName) {
+						el.className = "border-b-2 border-primary text-primary pb-1 font-semibold transition-colors inline-flex items-center gap-1.5";
+					} else {
+						el.className = "text-text-secondary hover:text-text-primary pb-1 transition-colors inline-flex items-center gap-1.5";
+					}
+				}
+			});
+
+			// Update Mobile Bottom Nav
+			const mobileIds = ['home', 'courts', 'games', 'profile'];
+			mobileIds.forEach(id => {
+				const mEl = document.getElementById('mobile-nav-' + id);
+				if (mEl) {
+					if (id === viewName) {
+						mEl.className = "flex flex-col items-center justify-center bg-primary-soft text-primary rounded-xl px-3 py-1 text-xs font-semibold";
+					} else {
+						mEl.className = "flex flex-col items-center justify-center text-text-secondary px-3 py-1 text-xs";
+					}
+				}
+			});
+
+			if (viewName === 'owner') applyOwnerViewAccess();
+			if (viewName === 'admin') applyAdminViewAccess();
+		}
+
+		// --- 6. Dropdown and Modal Helpers ---
+		function toggleUserMenu() {
+			const m = document.getElementById('user-dropdown-menu');
+			m.classList.toggle('hidden');
+		}
+		function closeUserMenu() {
+			document.getElementById('user-dropdown-menu').classList.add('hidden');
+		}
+
+		function openLoginModal() {
+			document.getElementById('login-modal').classList.remove('hidden');
+		}
+		function closeLoginModal() {
+			document.getElementById('login-modal').classList.add('hidden');
+		}
+
+		// Close menu on outside click
+		document.addEventListener('click', (e) => {
+			const container = document.getElementById('user-menu-container');
+			if (container && !container.contains(e.target)) {
+				closeUserMenu();
+			}
+		});
+
+		// --- 7. Booking Flow Interactions ---
+		function openBooking(courtTitle, rate) {
+			state.selectedCourt = courtTitle;
+			state.hourlyRate = rate;
+			state.selectedSlots = ['19:00 - 20:00'];
+
+			document.getElementById('booking-court-name').textContent = courtTitle;
+			document.getElementById('summary-court-title').textContent = courtTitle;
+			document.getElementById('summary-rate').textContent = rate.toLocaleString('kk-KZ') + ' ₸';
+
+			recalcSummary();
+			switchView('booking');
+		}
+
+		function toggleSlot(buttonEl, timeRange) {
+			const idx = state.selectedSlots.indexOf(timeRange);
+			if (idx > -1) {
+				if (state.selectedSlots.length === 1) {
+					showToast(t('slotSelected') + ' (min 1)', 'info');
+					return;
+				}
+				state.selectedSlots.splice(idx, 1);
+				buttonEl.className = "slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all";
+				buttonEl.innerHTML = `
+					<div class="text-sm font-bold text-text-primary">${timeRange}</div>
+					<div class="text-xs text-primary font-medium mt-1">${t('slotAvailableText')}</div>
+				`;
+			} else {
+				state.selectedSlots.push(timeRange);
+				buttonEl.className = "slot-btn p-3 rounded-xl border-2 border-primary bg-primary text-white text-left transition-all";
+				buttonEl.innerHTML = `
+					<div class="text-sm font-bold">${timeRange}</div>
+					<div class="text-xs text-white/90 font-medium mt-1">${t('slotSelectedText')}</div>
+				`;
+			}
+			recalcSummary();
+		}
+
+		function selectBookingDate(buttonEl, dateStr) {
+			state.selectedDate = dateStr;
+			document.querySelectorAll('.date-chip').forEach(btn => {
+				btn.className = "date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all";
+			});
+			buttonEl.className = "date-chip p-2.5 rounded-xl border-2 border-primary bg-primary-soft text-primary font-semibold text-center transition-all";
+			document.getElementById('summary-date').textContent = dateStr;
+		}
+
+		function recalcSummary() {
+			const count = state.selectedSlots.length;
+			state.totalPrice = count * state.hourlyRate;
+			document.getElementById('summary-slots').textContent = state.selectedSlots.join(', ');
+			document.getElementById('summary-hours').textContent = count + ' ' + (state.currentLang === 'en' ? 'hour(s)' : state.currentLang === 'ru' ? 'час(а)' : 'сағат');
+			document.getElementById('summary-total').textContent = state.totalPrice.toLocaleString('kk-KZ') + ' ₸';
+		}
+
+		function confirmBookingAction() {
+			document.getElementById('modal-court-info').textContent = `${state.selectedCourt} • ${state.selectedDate} • ${state.selectedSlots.join(', ')}`;
+			document.getElementById('booking-success-modal').classList.remove('hidden');
+		}
+
+		function goToMyBookings() {
+			document.getElementById('booking-success-modal').classList.add('hidden');
+			switchView('profile');
+			switchProfileTab('bookings');
+		}
+
+		function closeSuccessModalAndGoHome() {
+			document.getElementById('booking-success-modal').classList.add('hidden');
+			switchView('home');
+		}
+
+		// --- 8. Courts Catalog Filters ---
+		function setCourtViewMode(mode) {
+			state.viewMode = mode;
+			const listCol = document.getElementById('courts-listing-col');
+			const mapCol = document.getElementById('courts-map-col');
+			const listBtn = document.getElementById('view-mode-list-btn');
+			const splitBtn = document.getElementById('view-mode-split-btn');
+
+			if (mode === 'list') {
+				listCol.className = 'lg:col-span-12 space-y-4';
+				mapCol.classList.add('hidden');
+				listBtn.className = 'px-4 py-1.5 rounded-lg bg-surface-default text-text-primary text-xs font-semibold shadow-sm flex items-center gap-1.5 transition-all';
+				splitBtn.className = 'px-4 py-1.5 rounded-lg text-text-secondary hover:text-text-primary text-xs font-semibold flex items-center gap-1.5 transition-all';
+			} else {
+				listCol.className = 'lg:col-span-7 space-y-4';
+				mapCol.classList.remove('hidden');
+				splitBtn.className = 'px-4 py-1.5 rounded-lg bg-surface-default text-text-primary text-xs font-semibold shadow-sm flex items-center gap-1.5 transition-all';
+				listBtn.className = 'px-4 py-1.5 rounded-lg text-text-secondary hover:text-text-primary text-xs font-semibold flex items-center gap-1.5 transition-all';
+			}
+		}
+
+		function filterCourts(sportName) {
+			document.querySelectorAll('.court-filter-chip').forEach(chip => {
+				if (chip.getAttribute('data-sport') === sportName) {
+					chip.className = 'court-filter-chip px-3.5 py-1.5 rounded-full text-xs font-semibold bg-primary text-white transition-colors';
+				} else {
+					chip.className = 'court-filter-chip px-3.5 py-1.5 rounded-full text-xs font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors';
+				}
+			});
+			applyCourtFilters(sportName);
+		}
+
+		function applyCourtFilters(targetSport) {
+			let activeSport = targetSport;
+			if (!activeSport) {
+				const activeChip = document.querySelector('.court-filter-chip.bg-primary');
+				activeSport = activeChip ? activeChip.getAttribute('data-sport') : 'Барлығы';
+			}
+
+			const district = document.getElementById('filter-district').value;
+			const pricePref = document.getElementById('filter-price').value;
+
+			const cards = document.querySelectorAll('.court-item-card');
+			cards.forEach(card => {
+				const cardSport = card.getAttribute('data-sport');
+				const cardDistrict = card.getAttribute('data-district');
+				const cardPrice = parseInt(card.getAttribute('data-price'), 10);
+
+				let matchSport = (activeSport === 'Барлығы' || cardSport === activeSport);
+				let matchDistrict = (district === 'all' || cardDistrict.includes(district));
+				let matchPrice = true;
+				if (pricePref === '5000') matchPrice = cardPrice <= 5000;
+				if (pricePref === '8000') matchPrice = cardPrice > 5000 && cardPrice <= 8000;
+				if (pricePref === 'expensive') matchPrice = cardPrice > 8000;
+
+				if (matchSport && matchDistrict && matchPrice) {
+					card.classList.remove('hidden');
+				} else {
+					card.classList.add('hidden');
+				}
+			});
+		}
+
+		function handleHeroSearch() {
+			const sport = document.getElementById('search-sport').value;
+			switchView('courts');
+			if (sport !== 'all') {
+				filterCourts(sport);
+			}
+		}
+
+		function filterBySportAndNavigate(sport) {
+			switchView('courts');
+			filterCourts(sport);
+		}
+
+		// --- 9. Community Games Interactions ---
+		function joinGame(gameId, maxPlayers, title) {
+			const countEl = document.getElementById('game-count-' + gameId);
+			const progEl = document.getElementById('game-progress-' + gameId);
+			const btnEl = document.getElementById('join-btn-' + gameId);
+
+			btnEl.disabled = true;
+			btnEl.textContent = state.currentLang === 'en' ? 'Joined ✓' : state.currentLang === 'ru' ? 'Вы записаны ✓' : 'Қосылдыңыз ✓';
+			btnEl.className = 'px-4 py-2 rounded-xl bg-surface-secondary text-primary text-xs font-semibold cursor-default';
+
+			if (gameId === 1) {
+				countEl.textContent = '8 / 10 (' + (state.currentLang === 'en' ? '2 spots left' : state.currentLang === 'ru' ? '2 места осталось' : '2 орын қалды') + ')';
+				progEl.style.width = '80%';
+			} else if (gameId === 2) {
+				countEl.textContent = '10 / 12 (' + (state.currentLang === 'en' ? '2 spots left' : state.currentLang === 'ru' ? '2 места осталось' : '2 орын қалды') + ')';
+				progEl.style.width = '83%';
+			} else if (gameId === 3) {
+				countEl.textContent = '6 / 6 (' + (state.currentLang === 'en' ? 'Full' : state.currentLang === 'ru' ? 'Мест нет' : 'Орын қалмады') + ')';
+				progEl.style.width = '100%';
+			}
+
+			showToast(`«${title}» - ` + (state.currentLang === 'en' ? 'Successfully joined!' : state.currentLang === 'ru' ? 'Успешно присоединились!' : 'Сәтті тіркелдіңіз!'), 'groups');
+		}
+
+		function openCreateGameModal() {
+			document.getElementById('create-game-modal').classList.remove('hidden');
+		}
+		function closeCreateGameModal() {
+			document.getElementById('create-game-modal').classList.add('hidden');
+		}
+		function handleCreateGameSubmit(e) {
+			e.preventDefault();
+			closeCreateGameModal();
+			showToast(state.currentLang === 'en' ? 'New match created & published!' : state.currentLang === 'ru' ? 'Новая игра успешно опубликована!' : 'Жаңа ойын сәтті құрылды және жарияланды!', 'check_circle');
+		}
+
+		// --- 10. Profile Tabs Switching ---
+		function switchProfileTab(tabName) {
+			const tabs = ['bookings', 'games', 'settings'];
+			tabs.forEach(t => {
+				const btn = document.getElementById('profile-tab-' + t);
+				const content = document.getElementById('tab-content-' + t);
+				if (t === tabName) {
+					btn.className = "border-b-2 border-primary text-primary text-xs font-bold pb-3";
+					content.classList.remove('hidden');
+				} else {
+					btn.className = "text-text-secondary hover:text-text-primary text-xs pb-3 transition-colors";
+					content.classList.add('hidden');
+				}
+			});
+		}
+
+		function cancelBooking(buttonEl, code) {
+			const confirmMsg = state.currentLang === 'en' ? `Confirm cancellation for booking ${code}?` : state.currentLang === 'ru' ? `Отменить бронь ${code}?` : `${code} броньынан бас тартуды растайсыз ба?`;
+			if (confirm(confirmMsg)) {
+				const card = buttonEl.closest('.bg-surface-default');
+				card.style.opacity = '0.5';
+				buttonEl.outerHTML = '<span class="text-xs text-red-600 font-semibold">' + (state.currentLang === 'en' ? 'Cancelled' : state.currentLang === 'ru' ? 'Отменено' : 'Бас тартылды') + '</span>';
+				showToast(`${code} ` + (state.currentLang === 'en' ? 'Booking cancelled' : state.currentLang === 'ru' ? 'Бронь отменена' : 'броньы жойылды'), 'cancel');
+			}
+		}
+
+		// --- 11. Venue Owner Dashboard Interactions ---
+		function ownerConfirm(rowId) {
+			const statusCell = document.getElementById('owner-status-' + rowId);
+			const actionsCell = document.getElementById('owner-actions-' + rowId);
+			statusCell.innerHTML = `
+				<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-soft text-primary text-[11px] font-semibold">
+					<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+					<span>${t('statusConfirmed')}</span>
+				</span>
+			`;
+			actionsCell.innerHTML = `<span class="text-xs text-primary font-semibold">${t('statusConfirmed')} ✓</span>`;
+			updateOwnerKPI();
+			showToast(state.currentLang === 'en' ? 'Booking confirmed! SMS dispatched.' : state.currentLang === 'ru' ? 'Бронь подтверждена! SMS отправлено.' : 'Бронь сәтті расталды! Клиентке SMS жіберілді.', 'check_circle');
+		}
+
+		function ownerReject(rowId) {
+			const statusCell = document.getElementById('owner-status-' + rowId);
+			const actionsCell = document.getElementById('owner-actions-' + rowId);
+			statusCell.innerHTML = `
+				<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-100 text-red-700 text-[11px] font-semibold">
+					${t('rejectAction')}
+				</span>
+			`;
+			actionsCell.innerHTML = `<span class="text-xs text-red-600 font-semibold">${t('rejectAction')} ✕</span>`;
+			updateOwnerKPI();
+			showToast(state.currentLang === 'en' ? 'Booking declined.' : state.currentLang === 'ru' ? 'Бронь отклонена.' : 'Бронь қабылданбады.', 'cancel');
+		}
+
+		function updateOwnerKPI() {
+			const kpi = document.getElementById('kpi-pending-count');
+			let val = parseInt(kpi.textContent, 10);
+			if (val > 0) kpi.textContent = (val - 1).toString();
+		}
+
+		function openNewCourtModal() {
+			document.getElementById('new-court-modal').classList.remove('hidden');
+		}
+		function closeNewCourtModal() {
+			document.getElementById('new-court-modal').classList.add('hidden');
+		}
+		function handleNewCourtSubmit(e) {
+			e.preventDefault();
+			closeNewCourtModal();
+			showToast(state.currentLang === 'en' ? 'Court submitted for moderation!' : state.currentLang === 'ru' ? 'Площадка отправлена на модерацию!' : 'Алаң модерацияға жіберілді! Әкімші тексеруі күтілуде.', 'verified');
+		}
+
+		// --- 12. Superadmin Panel Interactions ---
+		function adminApprove(queueId) {
+			const item = document.getElementById('admin-queue-' + queueId);
+			item.innerHTML = `
+				<div class="text-primary font-semibold py-2 text-xs">
+					✓ ${state.currentLang === 'en' ? 'Approved and published to catalog!' : state.currentLang === 'ru' ? 'Одобрено и добавлено в каталог!' : 'Алаң бекітілді және каталогқа шығарылды!'}
+				</div>
+			`;
+			decrementAdminMod();
+			showToast(state.currentLang === 'en' ? 'Court added to database' : state.currentLang === 'ru' ? 'Площадка добавлена в базу' : 'Алаң базаға сәтті қосылды', 'check_circle');
+		}
+
+		function adminReject(queueId) {
+			const item = document.getElementById('admin-queue-' + queueId);
+			item.innerHTML = `
+				<div class="text-red-600 font-semibold py-2 text-xs">
+					✕ ${state.currentLang === 'en' ? 'Returned for revision.' : state.currentLang === 'ru' ? 'Возвращено на доработку.' : 'Өтінім кері қайтарылды (ескерту жіберілді).'}
+				</div>
+			`;
+			decrementAdminMod();
+			showToast(state.currentLang === 'en' ? 'Returned to owner' : state.currentLang === 'ru' ? 'Возвращено владельцу' : 'Өтінім толықтыруға қайтарылды', 'warning');
+		}
+
+		function decrementAdminMod() {
+			const countEl = document.getElementById('admin-mod-count');
+			let val = parseInt(countEl.textContent, 10);
+			if (val > 0) countEl.textContent = (val - 1).toString();
+		}
+
+		// --- 13. Toast Notifications Helper ---
+		let toastTimer;
+		function showToast(message, icon = 'check_circle') {
+			const toast = document.getElementById('toast');
+			const msg = document.getElementById('toast-message');
+			const iconEl = document.getElementById('toast-icon');
+
+			msg.textContent = message;
+			iconEl.textContent = icon;
+			toast.classList.remove('hidden');
+
+			clearTimeout(toastTimer);
+			toastTimer = setTimeout(() => {
+				hideToast();
+			}, 4000);
+		}
+		function hideToast() {
+			document.getElementById('toast').classList.add('hidden');
+		}
+
+		// --- 14. Initialization ---
+		document.addEventListener('DOMContentLoaded', () => {
+			updateUIForRole();
+			if (state.currentLang !== 'kk') {
+				setLanguage(state.currentLang);
+			}
+		});
+	</script>
+</body>
+</html>

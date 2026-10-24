@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-canvas-bg text-text-primary antialiased" lang="kk"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PlaySlot - Спорт алаңдарын онлайн брондау платформасы</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#f8f9ff",
+            "surface-container-low": "#eff4ff",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#fffbff",
+            "surface-variant": "#d3e4fe",
+            "danger-soft": "#FEE2E2",
+            "surface-tint": "#006e2d",
+            "accent-soft": "#FEF3C7",
+            "primary-container": "#00873a",
+            "primary-fixed-dim": "#62df7d",
+            "error-container": "#ffdad6",
+            "on-background": "#0b1c30",
+            "on-tertiary": "#ffffff",
+            "on-surface-variant": "#3e4a3d",
+            "secondary": "#855300",
+            "surface-secondary": "#F1F5F9",
+            "on-primary-fixed": "#002109",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed": "#ffddb8",
+            "secondary-container": "#fea619",
+            "inverse-surface": "#213145",
+            "on-surface": "#0b1c30",
+            "text-muted": "#94A3B8",
+            "tertiary-fixed-dim": "#ffb3ad",
+            "error": "#ba1a1a",
+            "tertiary-container": "#da3437",
+            "primary-soft": "#DCFCE7",
+            "surface-border": "#E2E8F0",
+            "on-primary": "#ffffff",
+            "outline": "#6e7b6c",
+            "surface-container": "#e5eeff",
+            "on-error": "#ffffff",
+            "background": "#f8f9ff",
+            "surface-container-high": "#dce9ff",
+            "secondary-fixed-dim": "#ffb95f",
+            "surface-default": "#FFFFFF",
+            "on-secondary-container": "#684000",
+            "inverse-on-surface": "#eaf1ff",
+            "inverse-primary": "#62df7d",
+            "on-primary-fixed-variant": "#005320",
+            "surface-container-highest": "#d3e4fe",
+            "on-secondary-fixed-variant": "#653e00",
+            "tertiary-fixed": "#ffdad7",
+            "outline-variant": "#bdcaba",
+            "text-secondary": "#64748B",
+            "on-error-container": "#93000a",
+            "primary": "#006b2c",
+            "surface-dim": "#cbdbf5",
+            "surface": "#f8f9ff",
+            "on-tertiary-fixed": "#410004",
+            "on-secondary-fixed": "#2a1700",
+            "on-tertiary-fixed-variant": "#930013",
+            "text-primary": "#0F172A",
+            "tertiary": "#b61722",
+            "on-primary-container": "#f7fff2",
+            "primary-fixed": "#7ffc97",
+            "primary-hover": "#15803D",
+            "canvas-bg": "#F8FAFC"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-2xl": "3rem",
+            "space-3xl": "4rem",
+            "space-xl": "2rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "margin": "2rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "1rem"
+          },
+          "fontFamily": {
+            "body-sm-medium": ["Inter"],
+            "display-mobile": ["Inter"],
+            "body-md-medium": ["Inter"],
+            "headline-xl-mobile": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "display": ["Inter"],
+            "body-lg": ["Inter"],
+            "caption": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-xl": ["Inter"]
+          },
+          "fontSize": {
+            "body-sm-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "display-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md-medium": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display": ["52px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Smooth transitions and scroll */
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-canvas-bg font-body-md text-text-primary selection:bg-primary-soft selection:text-primary">
+<!-- Top Tester Bar (Quick View Switcher) -->
+<aside aria-label="Әзірлеушілер навигациясы" class="bg-inverse-surface text-inverse-on-surface px-4 py-2 text-label-sm font-label-sm shadow-inner flex flex-wrap items-center justify-between gap-3 sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
+<span class="text-text-muted">Көріністі таңдау:</span>
+</div>
+<div class="flex flex-wrap gap-1.5 overflow-x-auto py-0.5">
+<button class="px-2.5 py-1 rounded bg-primary text-white font-label-sm hover:brightness-110 transition-all" id="demo-btn-home" onclick="switchView('home')">Басты бет</button>
+<button class="px-2.5 py-1 rounded bg-surface-secondary text-text-primary font-label-sm hover:bg-white transition-all" id="demo-btn-courts" onclick="switchView('courts')">Алаңдар (Тізім/Карта)</button>
+<button class="px-2.5 py-1 rounded bg-surface-secondary text-text-primary font-label-sm hover:bg-white transition-all" id="demo-btn-booking" onclick="openBooking('Central Arena (Футбол)', 6000)">Брондау кестесі</button>
+<button class="px-2.5 py-1 rounded bg-surface-secondary text-text-primary font-label-sm hover:bg-white transition-all" id="demo-btn-games" onclick="switchView('games')">Ойындар мен командалар</button>
+<button class="px-2.5 py-1 rounded bg-surface-secondary text-text-primary font-label-sm hover:bg-white transition-all" id="demo-btn-profile" onclick="switchView('profile')">Жеке кабинет</button>
+<button class="px-2.5 py-1 rounded bg-surface-secondary text-text-primary font-label-sm hover:bg-white transition-all" id="demo-btn-owner" onclick="switchView('owner')">Алаң иесі</button>
+<button class="px-2.5 py-1 rounded bg-surface-secondary text-text-primary font-label-sm hover:bg-white transition-all" id="demo-btn-admin" onclick="switchView('admin')">Әкімші</button>
+</div>
+<div class="hidden lg:flex items-center gap-2 text-text-muted">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span>Қазақстан: Алматы &amp; Астана</span>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component JSON anchor) -->
+<header class="bg-surface-default shadow-sm border-b border-surface-border sticky top-[37px] z-40">
+<div class="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center h-16 w-full">
+<!-- Brand Logo -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2.5 text-primary group" href="javascript:switchView('home')">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl" data-icon="sports_soccer">sports_soccer</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">PlaySlot</span>
+<span class="text-[10px] font-semibold text-text-secondary -mt-1 tracking-wider uppercase">Спорт алаңдары</span>
+</div>
+</a>
+<!-- Desktop Navigation Links from JSON -->
+<nav class="hidden md:flex items-center gap-6 pt-1">
+<button class="border-b-2 border-primary text-primary font-label-md text-label-md pb-1 font-semibold transition-colors" id="nav-home" onclick="switchView('home')">
+            Басты бет
+          </button>
+<button class="text-text-secondary hover:text-text-primary font-label-md text-label-md pb-1 transition-colors" id="nav-courts" onclick="switchView('courts')">
+            Спорт алаңдары
+          </button>
+<button class="text-text-secondary hover:text-text-primary font-label-md text-label-md pb-1 transition-colors" id="nav-games" onclick="switchView('games')">
+            Ойындар мен командалар
+          </button>
+<button class="text-text-secondary hover:text-text-primary font-label-md text-label-md pb-1 transition-colors" id="nav-profile" onclick="switchView('profile')">
+            Профиль
+          </button>
+</nav>
+</div>
+<!-- Trailing Action Cluster from JSON -->
+<div class="flex items-center gap-3">
+<!-- Mode Switch: Owner Mode -->
+<button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-surface-border text-text-primary font-label-sm text-label-sm hover:bg-surface-secondary transition-colors" onclick="switchView('owner')">
+<span class="material-symbols-outlined text-secondary text-base">storefront</span>
+<span>Алаң иесі режимі</span>
+</button>
+<!-- Notification Icon -->
+<button class="relative p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-secondary transition-colors" title="Хабарламалар">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-tertiary rounded-full"></span>
+</button>
+<!-- Primary Action / Login / User Pill -->
+<button class="flex items-center gap-2 p-1.5 pr-3 rounded-full border border-surface-border hover:border-primary transition-colors bg-surface-default" onclick="switchView('profile')">
+<div class="w-8 h-8 rounded-full bg-primary-soft text-primary font-bold flex items-center justify-center text-sm">
+            ЕС
+          </div>
+<span class="hidden sm:inline font-label-sm text-label-sm text-text-primary">Ерлан С.</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Notification Toast Container -->
+<div class="fixed bottom-20 md:bottom-8 right-6 z-50 hidden max-w-sm bg-surface-default border border-surface-border shadow-lg rounded-xl p-4 flex items-center gap-3 transition-all duration-300" id="toast">
+<div class="w-9 h-9 rounded-full bg-primary-soft text-primary flex items-center justify-center shrink-0" id="toast-icon-box">
+<span class="material-symbols-outlined text-xl" id="toast-icon">check_circle</span>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md font-semibold text-text-primary" id="toast-title">Хабарлама</h4>
+<p class="font-body-sm text-body-sm text-text-secondary" id="toast-message">Сәтті орындалды</p>
+</div>
+<button class="text-text-muted hover:text-text-primary" onclick="hideToast()">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<!-- MAIN CANVAS -->
+<main class="flex-grow">
+<!-- ========================================== -->
+<!-- VIEW 1: HOME PAGE (Басты бет)             -->
+<!-- ========================================== -->
+<div class="view-panel block" id="view-home">
+<!-- Hero Section -->
+<section class="relative bg-surface-default border-b border-surface-border overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20 flex flex-col items-center text-center relative z-10">
+<!-- Category badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-soft text-primary font-label-sm text-label-sm mb-6 border border-primary/20">
+<span class="material-symbols-outlined text-sm">sports</span>
+<span>Қазақстан бойынша 120+ спорт алаңы бір жерде</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl md:text-display font-bold text-text-primary max-w-3xl tracking-tight leading-tight">
+            Спорт алаңын оңай тап және <span class="text-primary underline decoration-primary-soft decoration-8 underline-offset-4">онлайн бронда</span>
+</h1>
+<p class="mt-4 max-w-2xl font-body-lg text-body-lg text-text-secondary leading-relaxed">
+            Қаладағы спорт алаңдарын жылдам іздеу, бағасын салыстыру және бос уақыт слоттарын секунд ішінде брондау. Кезексіз әрі сенімді.
+          </p>
+<!-- Search & Filter Card -->
+<div class="mt-10 w-full max-w-4xl bg-surface-default p-3 md:p-4 rounded-2xl border border-surface-border shadow-md">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+<!-- Location Select -->
+<div class="text-left p-2.5 rounded-xl bg-canvas-bg border border-surface-border/80 focus-within:border-primary transition-colors">
+<label class="block font-caption text-caption text-text-secondary font-medium">Қала / Аймақ</label>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-primary text-xl">location_on</span>
+<select class="bg-transparent font-body-sm-medium text-body-sm-medium text-text-primary w-full focus:outline-none cursor-pointer border-none p-0 focus:ring-0" id="search-city">
+<option value="Алматы">Алматы қаласы</option>
+<option value="Астана">Астана қаласы</option>
+</select>
+</div>
+</div>
+<!-- Sport Select -->
+<div class="text-left p-2.5 rounded-xl bg-canvas-bg border border-surface-border/80 focus-within:border-primary transition-colors">
+<label class="block font-caption text-caption text-text-secondary font-medium">Спорт түрі</label>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-primary text-xl">sports_soccer</span>
+<select class="bg-transparent font-body-sm-medium text-body-sm-medium text-text-primary w-full focus:outline-none cursor-pointer border-none p-0 focus:ring-0" id="search-sport">
+<option value="all">Барлық спорттар</option>
+<option value="Футбол">Футбол</option>
+<option value="Теннис">Теннис</option>
+<option value="Баскетбол">Баскетбол</option>
+<option value="Волейбол">Волейбол</option>
+</select>
+</div>
+</div>
+<!-- Date Picker -->
+<div class="text-left p-2.5 rounded-xl bg-canvas-bg border border-surface-border/80 focus-within:border-primary transition-colors">
+<label class="block font-caption text-caption text-text-secondary font-medium">Күні</label>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-primary text-xl">calendar_month</span>
+<input class="bg-transparent font-body-sm-medium text-body-sm-medium text-text-primary w-full focus:outline-none border-none p-0 focus:ring-0 cursor-pointer" type="date" value="2025-10-24"/>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="h-full min-h-[52px] w-full rounded-xl bg-primary text-white font-label-md text-label-md font-semibold flex items-center justify-center gap-2 hover:bg-primary-hover active:scale-95 transition-all shadow-sm" onclick="handleHeroSearch()">
+<span class="material-symbols-outlined">search</span>
+<span>Алаңдарды көру</span>
+</button>
+</div>
+</div>
+<!-- Quick Metrics Bar -->
+<div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 text-center border-t border-surface-border pt-8 w-full max-w-4xl">
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-primary">120+</div>
+<div class="font-caption text-caption text-text-secondary mt-1">Спорт алаңы мен зал</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-primary">450+</div>
+<div class="font-caption text-caption text-text-secondary mt-1">Белсенді ойыншы</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-primary">98%</div>
+<div class="font-caption text-caption text-text-secondary mt-1">Оң пікірлер деңгейі</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-primary">&lt; 60 сек</div>
+<div class="font-caption text-caption text-text-secondary mt-1">Орташа брондау уақыты</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sports Categories Pills -->
+<section class="max-w-7xl mx-auto px-4 md:px-8 py-10">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md font-bold text-text-primary">Спорт түрлері</h2>
+<span class="font-body-sm text-body-sm text-text-secondary">Қалауыңыз бойынша таңдаңыз</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<!-- Футбол -->
+<div class="cursor-pointer p-4 bg-surface-default rounded-xl border border-surface-border hover:border-primary hover:shadow-md transition-all group" onclick="filterBySportAndNavigate('Футбол')">
+<div class="flex items-center justify-between">
+<span class="w-12 h-12 rounded-xl bg-primary-soft text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">sports_soccer</span>
+</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded-full bg-surface-secondary text-text-secondary">64 алаң</span>
+</div>
+<h3 class="mt-4 font-headline-sm text-headline-sm font-semibold text-text-primary">Футбол</h3>
+<p class="font-caption text-caption text-text-secondary mt-1">Жабық манеждер және ашық газон</p>
+</div>
+<!-- Баскетбол -->
+<div class="cursor-pointer p-4 bg-surface-default rounded-xl border border-surface-border hover:border-primary hover:shadow-md transition-all group" onclick="filterBySportAndNavigate('Баскетбол')">
+<div class="flex items-center justify-between">
+<span class="w-12 h-12 rounded-xl bg-accent-soft text-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">sports_basketball</span>
+</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded-full bg-surface-secondary text-text-secondary">28 алаң</span>
+</div>
+<h3 class="mt-4 font-headline-sm text-headline-sm font-semibold text-text-primary">Баскетбол</h3>
+<p class="font-caption text-caption text-text-secondary mt-1">Кәсіби паркет және стритборд</p>
+</div>
+<!-- Теннис -->
+<div class="cursor-pointer p-4 bg-surface-default rounded-xl border border-surface-border hover:border-primary hover:shadow-md transition-all group" onclick="filterBySportAndNavigate('Теннис')">
+<div class="flex items-center justify-between">
+<span class="w-12 h-12 rounded-xl bg-primary-soft text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">sports_tennis</span>
+</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded-full bg-surface-secondary text-text-secondary">19 корт</span>
+</div>
+<h3 class="mt-4 font-headline-sm text-headline-sm font-semibold text-text-primary">Теннис</h3>
+<p class="font-caption text-caption text-text-secondary mt-1">Хард және топырақ корттары</p>
+</div>
+<!-- Волейбол -->
+<div class="cursor-pointer p-4 bg-surface-default rounded-xl border border-surface-border hover:border-primary hover:shadow-md transition-all group" onclick="filterBySportAndNavigate('Волейбол')">
+<div class="flex items-center justify-between">
+<span class="w-12 h-12 rounded-xl bg-surface-secondary text-text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">sports_volleyball</span>
+</span>
+<span class="font-caption text-caption px-2 py-0.5 rounded-full bg-surface-secondary text-text-secondary">15 зал</span>
+</div>
+<h3 class="mt-4 font-headline-sm text-headline-sm font-semibold text-text-primary">Волейбол</h3>
+<p class="font-caption text-caption text-text-secondary mt-1">Жарықтандырылған жабық алаңдар</p>
+</div>
+</div>
+</section>
+<!-- Featured Courts Section («Танымал алаңдар») -->
+<section class="max-w-7xl mx-auto px-4 md:px-8 py-8">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+<div>
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Таңдаулы орындар</div>
+<h2 class="font-headline-md text-headline-md font-bold text-text-primary mt-1">Қаланың үздік спорт алаңдары</h2>
+</div>
+<button class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:gap-2 transition-all" onclick="switchView('courts')">
+<span>Барлық алаңдарды қарау</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+<!-- Bento / Responsive Grid of Court Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1: Central Arena -->
+<div class="bg-surface-default border border-surface-border rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all flex flex-col">
+<div class="relative h-48 bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Modern indoor football turf pitch with green synthetic grass, sharp white line markers, high lumen stadium floodlights overhead, clean architectural walls, bright daylight-simulated illumination, athletic and sleek aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz9M066xpLPAXFEhaqvS-ZRnQAZjk_XZAfiLY4wD5UQZV76HqROgRLq1dKnM0FYaC5DxKSMW16i7q-ycpmoLiGfb6Ch6ohrnocE1Z82OKNKT0q4pOmtCV4MWRobRDHcxMulI6q2u4a3M_ZgLlcY0OGhgnQmRorySY3G9XBwH_sl7AKnhVFoHwlfhgSWpWWwGPl2NgNVeZFtajoWMf_huGFbEiVsYGbE7G96_B8J7dsqmfqoA7yYACkxA"/>
+<div class="absolute top-3 left-3 bg-surface-default/95 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-md shadow-sm font-semibold">
+                Футбол
+              </div>
+<div class="absolute top-3 right-3 bg-surface-default/95 backdrop-blur-sm text-text-primary font-label-sm text-label-sm px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+<span class="font-bold">4.8</span>
+<span class="text-text-muted text-[10px]">(48)</span>
+</div>
+</div>
+<div class="p-5 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Central Arena</h3>
+<div class="flex items-center gap-1 text-text-secondary font-body-sm text-body-sm mt-1">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Алматы, Бостандық ауданы</span>
+</div>
+<!-- Amenities -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Паркинг</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Душ</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Киім бөлмесі</span>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-surface-border flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">6 000 ₸</span>
+<span class="font-caption text-caption text-text-secondary"> / сағ</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover active:scale-95 transition-all" onclick="openBooking('Central Arena (Футбол)', 6000)">
+                  Брондау
+                </button>
+</div>
+</div>
+</div>
+<!-- Card 2: Dostyk Tennis Club -->
+<div class="bg-surface-default border border-surface-border rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all flex flex-col">
+<div class="relative h-48 bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Championship standard indoor hard tennis court with crisp royal blue court paint, white boundary lines, high ceiling structure with bright stadium lights, clean and professional athletic facility environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4gj2xa6JArrTfEk2SEtTCzGCtOrBra8UUglPsLMLUk8IzXSRpM1rVpTwzwmZspCnCAdprJYOnA3MELprnv1twpoTrKOw0SaG8yTzNIaKpp-7kG3sUJoD1Fc4ZI6LZFsb2Qz4ebInm7gKALbYgkvE6hosiJZBRPDiOC99pFHZ9UZMdmHyc2oH-bhudzzarfr0i8wwXMMZ4_mQOWotEc2dLfEiAIczX95USKW9zbmr1cgVSWaA6zsk1BQ"/>
+<div class="absolute top-3 left-3 bg-surface-default/95 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-md shadow-sm font-semibold">
+                Теннис
+              </div>
+<div class="absolute top-3 right-3 bg-surface-default/95 backdrop-blur-sm text-text-primary font-label-sm text-label-sm px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+<span class="font-bold">4.9</span>
+<span class="text-text-muted text-[10px]">(62)</span>
+</div>
+</div>
+<div class="p-5 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Dostyk Tennis Club</h3>
+<div class="flex items-center gap-1 text-text-secondary font-body-sm text-body-sm mt-1">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Алматы, Медеу ауданы</span>
+</div>
+<!-- Amenities -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Жабық корт</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Pro жабдықтар</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Кафе</span>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-surface-border flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">10 000 ₸</span>
+<span class="font-caption text-caption text-text-secondary"> / сағ</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover active:scale-95 transition-all" onclick="openBooking('Dostyk Tennis Club (Теннис)', 10000)">
+                  Брондау
+                </button>
+</div>
+</div>
+</div>
+<!-- Card 3: Nomad Basketball Hall -->
+<div class="bg-surface-default border border-surface-border rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all flex flex-col">
+<div class="relative h-48 bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Polished maple wood parquet basketball court with vibrant orange hoops, plexiglass backboards, clean court side benches, modern architectural gymnasium with bright ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1vPlOlBHYw8lx2tXJQee4xoX_sw8nNoVHHwc_aSwyNML60JEYv-mf3wmrJUQlGbKlSJ2nDjeGplG8ogrPU8k5Eg4f6W6qfBOmjyoVtevTEox5d_Kv3YYTUHzZY7dfBh7154ZfW3nidIFPvjnjUo1fTZl_zfmGU_Mg-pwuPldRxU_tr7hOoRWxD-KcCL9DG7TyhKucNV7K6hsMtTtSq6846i_TRHu--HiRF13dnE7IBaxSufRmHg4W4w"/>
+<div class="absolute top-3 left-3 bg-surface-default/95 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-md shadow-sm font-semibold">
+                Баскетбол
+              </div>
+<div class="absolute top-3 right-3 bg-surface-default/95 backdrop-blur-sm text-text-primary font-label-sm text-label-sm px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+<span class="font-bold">4.7</span>
+<span class="text-text-muted text-[10px]">(31)</span>
+</div>
+</div>
+<div class="p-5 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Nomad Basketball Hall</h3>
+<div class="flex items-center gap-1 text-text-secondary font-body-sm text-body-sm mt-1">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Астана, Есіл ауданы</span>
+</div>
+<!-- Amenities -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Паркет</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Трибуна</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Доптар</span>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-surface-border flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">7 500 ₸</span>
+<span class="font-caption text-caption text-text-secondary"> / сағ</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover active:scale-95 transition-all" onclick="openBooking('Nomad Basketball Hall (Баскетбол)', 7500)">
+                  Брондау
+                </button>
+</div>
+</div>
+</div>
+<!-- Card 4: Sunkar Volleyball Arena -->
+<div class="bg-surface-default border border-surface-border rounded-xl overflow-hidden hover:-translate-y-1 hover:shadow-md transition-all flex flex-col">
+<div class="relative h-48 bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Spacious indoor volleyball hall with clean blue Taraflex synthetic flooring, taut professional net in center, LED boundary lighting, clean minimalist sports arena interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuIJhBibIJ2KFD8Uf1RtA5iIuP_9h4H0IWoRhAq87dTk1TIioQ2eUcX0CoE-6WwzAs7RR-OMt_k1oJCQM9E3qTYw_ejc5Yfi6VMHXHEkjKsrUzYu70oabEkYS2yKSQDkGjKZEpxROf06x53mxngwS1YUvhriJz25nXt5rmicLhSg2AMEX5Qhou3dW2JDwfAMh_o5a943xF3lq7iKohQFjC95bQtHv8qOquVLeA_rY4JcxyEXECF8ySQw"/>
+<div class="absolute top-3 left-3 bg-surface-default/95 backdrop-blur-sm text-primary font-label-sm text-label-sm px-2.5 py-1 rounded-md shadow-sm font-semibold">
+                Волейбол
+              </div>
+<div class="absolute top-3 right-3 bg-surface-default/95 backdrop-blur-sm text-text-primary font-label-sm text-label-sm px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+<span class="font-bold">4.6</span>
+<span class="text-text-muted text-[10px]">(24)</span>
+</div>
+</div>
+<div class="p-5 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Sunkar Volleyball Arena</h3>
+<div class="flex items-center gap-1 text-text-secondary font-body-sm text-body-sm mt-1">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Алматы, Әуезов ауданы</span>
+</div>
+<!-- Amenities -->
+<div class="flex flex-wrap gap-1.5 mt-3">
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Тарафлекс</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Жарық</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px] font-medium">Душ</span>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-surface-border flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">5 000 ₸</span>
+<span class="font-caption text-caption text-text-secondary"> / сағ</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover active:scale-95 transition-all" onclick="openBooking('Sunkar Volleyball Arena (Волейбол)', 5000)">
+                  Брондау
+                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Community Teaser Section -->
+<section class="max-w-7xl mx-auto px-4 md:px-8 py-12">
+<div class="bg-gradient-to-r from-inverse-surface to-slate-900 rounded-2xl p-8 md:p-12 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="relative z-10 max-w-xl">
+<span class="px-3 py-1 rounded-full bg-primary text-white font-label-sm text-label-sm uppercase tracking-wider font-semibold">Қауымдастық</span>
+<h2 class="font-headline-lg text-headline-lg font-bold mt-4 leading-tight">Команда тап, ашық ойынға қосыл немесе өз матчыңды ұйымдастыр</h2>
+<p class="font-body-md text-body-md text-slate-300 mt-2">
+              Ойыншылар жетіспей жатыр ма? PlaySlot арқылы деңгейіңізге сай пікірлестер тауып, бірлесіп ойнаңыз.
+            </p>
+<div class="mt-6 flex flex-wrap gap-3">
+<button class="px-5 py-2.5 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover transition-colors flex items-center gap-2" onclick="switchView('games')">
+<span class="material-symbols-outlined">group_add</span>
+<span>Ойындар тізімін ашу</span>
+</button>
+<button class="px-5 py-2.5 rounded-xl bg-white/10 text-white font-label-md text-label-md font-semibold hover:bg-white/20 transition-colors border border-white/20" onclick="openCreateGameModal()">
+                + Жаңа ойын құру
+              </button>
+</div>
+</div>
+<!-- Visual accent badge -->
+<div class="relative z-10 w-full md:w-auto flex flex-col sm:flex-row gap-4">
+<div class="p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 text-center sm:text-left">
+<div class="font-headline-md text-headline-md font-bold text-accent-soft">35+</div>
+<div class="font-caption text-caption text-slate-300">Бүгінгі белсенді ойындар</div>
+</div>
+<div class="p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 text-center sm:text-left">
+<div class="font-headline-md text-headline-md font-bold text-primary-fixed">0 ₸</div>
+<div class="font-caption text-caption text-slate-300">Қосылу комиссиясы жоқ</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ========================================== -->
+<!-- VIEW 2: COURTS PAGE (Тізім және Карта)     -->
+<!-- ========================================== -->
+<div class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8" id="view-courts">
+<!-- Top Filters & View Controls -->
+<div class="flex flex-col gap-4 mb-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-text-primary">Спорт алаңдары</h1>
+<p class="font-body-sm text-body-sm text-text-secondary">Қолжетімді уақыт слоттары мен онлайн төлем</p>
+</div>
+<!-- View Toggle Segmented Control -->
+<div class="flex items-center p-1 bg-surface-secondary rounded-xl border border-surface-border self-start">
+<button class="px-4 py-1.5 rounded-lg bg-surface-default text-text-primary font-label-md text-label-md font-semibold shadow-sm flex items-center gap-1.5 transition-all" id="view-mode-list-btn" onclick="setCourtViewMode('list')">
+<span class="material-symbols-outlined text-lg">format_list_bulleted</span>
+<span>Тізім</span>
+</button>
+<button class="px-4 py-1.5 rounded-lg text-text-secondary hover:text-text-primary font-label-md text-label-md font-semibold flex items-center gap-1.5 transition-all" id="view-mode-split-btn" onclick="setCourtViewMode('split')">
+<span class="material-symbols-outlined text-lg">map</span>
+<span>Тізім + Карта</span>
+</button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface-default p-4 rounded-xl border border-surface-border shadow-sm flex flex-wrap items-center justify-between gap-4">
+<!-- Sport Chips -->
+<div class="flex flex-wrap items-center gap-2">
+<button class="court-filter-chip px-3.5 py-1.5 rounded-full text-label-sm font-label-sm font-semibold bg-primary text-white transition-colors" data-sport="Барлығы" onclick="filterCourts('Барлығы')">Барлығы</button>
+<button class="court-filter-chip px-3.5 py-1.5 rounded-full text-label-sm font-label-sm font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors" data-sport="Футбол" onclick="filterCourts('Футбол')">Футбол</button>
+<button class="court-filter-chip px-3.5 py-1.5 rounded-full text-label-sm font-label-sm font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors" data-sport="Теннис" onclick="filterCourts('Теннис')">Теннис</button>
+<button class="court-filter-chip px-3.5 py-1.5 rounded-full text-label-sm font-label-sm font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors" data-sport="Баскетбол" onclick="filterCourts('Баскетбол')">Баскетбол</button>
+<button class="court-filter-chip px-3.5 py-1.5 rounded-full text-label-sm font-label-sm font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors" data-sport="Волейбол" onclick="filterCourts('Волейбол')">Волейбол</button>
+</div>
+<!-- Secondary Filters Dropdowns -->
+<div class="flex flex-wrap items-center gap-3">
+<select class="px-3 py-1.5 rounded-lg border border-surface-border font-body-sm text-body-sm bg-surface-default focus:ring-1 focus:ring-primary" id="filter-district" onchange="applyCourtFilters()">
+<option value="all">Барлық аудандар</option>
+<option value="Бостандық">Бостандық ауданы</option>
+<option value="Медеу">Медеу ауданы</option>
+<option value="Алмалы">Алмалы ауданы</option>
+<option value="Әуезов">Әуезов ауданы</option>
+<option value="Есіл">Есіл ауданы (Астана)</option>
+</select>
+<select class="px-3 py-1.5 rounded-lg border border-surface-border font-body-sm text-body-sm bg-surface-default focus:ring-1 focus:ring-primary" id="filter-price" onchange="applyCourtFilters()">
+<option value="all">Кез келген баға</option>
+<option value="5000">&lt; 5 000 ₸</option>
+<option value="8000">5 000 ₸ – 8 000 ₸</option>
+<option value="expensive">&gt; 8 000 ₸</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Split Layout: Left Content (7 col) & Right Map (5 col) or Full List -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start" id="courts-layout-container">
+<!-- Court Cards Feed (7 cols in split, 12 cols in list) -->
+<div class="lg:col-span-7 space-y-4" id="courts-listing-col">
+<!-- Item 1 -->
+<div class="court-item-card bg-surface-default border border-surface-border rounded-xl p-4 flex flex-col sm:flex-row gap-4 hover:border-primary hover:shadow-sm transition-all" data-district="Бостандық" data-price="6000" data-sport="Футбол">
+<div class="w-full sm:w-48 h-36 rounded-lg bg-slate-200 overflow-hidden relative shrink-0">
+<img class="w-full h-full object-cover" data-alt="Vibrant modern synthetic grass football field under stadium lighting, marked with crisp white lines, surrounded by security netting and spectator benches in an urban athletic facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2ulQYKze9zGOVQ-yz0mNJAYEP5sNNT-wybhUgMFAtGs7WNyi-KvBkOYNBuUYKPrna2sxSqFHIj5tRllU6c1zQSph--RELVphxhEjQ488HsrfPlK-6DbA_azhJXZ2A0J57XKzmbxSLcGRfP8R24xm3m3pXLePsc2nv6x7vw7aT-LGaGVW5GQgsToqfT9ZPJDTx6RPNDq952WxyVqmcOvtEBOunthdcQdxQtVrEGmCfYBijt1yKgd43_g"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-default/90 text-primary font-label-sm text-[11px] font-bold">Футбол</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Central Arena</h3>
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+<span class="font-bold">4.8</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Алматы, Бостандық ауданы, Сәтбаев к-сі 22</span>
+</p>
+<div class="flex flex-wrap gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">Жабық</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">Душ</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">Паркинг</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 pt-3 border-t border-surface-border">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">6 000 ₸</span>
+<span class="text-caption text-text-secondary"> / сағ</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover active:scale-95 transition-all" onclick="openBooking('Central Arena (Футбол)', 6000)">
+                  Брондау
+                </button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="court-item-card bg-surface-default border border-surface-border rounded-xl p-4 flex flex-col sm:flex-row gap-4 hover:border-primary hover:shadow-sm transition-all" data-district="Медеу" data-price="10000" data-sport="Теннис">
+<div class="w-full sm:w-48 h-36 rounded-lg bg-slate-200 overflow-hidden relative shrink-0">
+<img class="w-full h-full object-cover" data-alt="Championship standard indoor hard tennis court with crisp royal blue court paint, white boundary lines, high ceiling structure with bright stadium lights, clean and professional athletic facility environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR9lvFcBh0B91rzIzaETk3rNRb2GtpIGpcKN70zB2Iq-tdNn5l3itRZY52KH3QdJvOQT9XSY7-kUP2j2BUvlXnAJeYziStlZ4qZ4ECvzZcvTDjXj8ZQ4G_A555axRSJeSyWgMfNvcCEVtjB0xLjy2EaonqeFhsWTvgjqFM3Poqa--GAu1MicMcrkUVyaYlSnrs8bx87LuyXp3kF5Mowb9swj4FaugvoddITMU3k29ZOPy9a2RbDzf5bA"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-default/90 text-primary font-label-sm text-[11px] font-bold">Теннис</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Dostyk Tennis Club</h3>
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+<span class="font-bold">4.9</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Алматы, Медеу ауданы, Достық даңғылы 105</span>
+</p>
+<div class="flex flex-wrap gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">Hard корт</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">Жаттықтырушы</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">Инвентарь</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 pt-3 border-t border-surface-border">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">10 000 ₸</span>
+<span class="text-caption text-text-secondary"> / сағ</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover active:scale-95 transition-all" onclick="openBooking('Dostyk Tennis Club (Теннис)', 10000)">
+                  Брондау
+                </button>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="court-item-card bg-surface-default border border-surface-border rounded-xl p-4 flex flex-col sm:flex-row gap-4 hover:border-primary hover:shadow-sm transition-all" data-district="Есіл" data-price="7500" data-sport="Баскетбол">
+<div class="w-full sm:w-48 h-36 rounded-lg bg-slate-200 overflow-hidden relative shrink-0">
+<img class="w-full h-full object-cover" data-alt="Polished maple wood parquet basketball court with vibrant orange hoops, plexiglass backboards, clean court side benches, modern architectural gymnasium with bright ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIarn9pxyMn_uRDxhxJoZI7sTGg4TKesXFYKg11og20MPGr8wYPLTqbJAqsEIJ2vFEAeep_by8i1c4qiHC5FmAhHOumBECgwwaILQMLV4oxfC3cTPHBbcNOn021SBKrc4trEc430gGO04HzGGHpNGUVPDDGRacWUpgfhGtH2UYkKnffqBQFtnSONKwjE-2ZSSvB6-TJa5ngZE--nJSVp5zaesGAmBjx3DmI8_rsIyLOVj-J9nR0yISNA"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-default/90 text-primary font-label-sm text-[11px] font-bold">Баскетбол</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Nomad Basketball Hall</h3>
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+<span class="font-bold">4.7</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Астана, Есіл ауданы, Мәңгілік Ел 55</span>
+</p>
+<div class="flex flex-wrap gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">FIBA паркет</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">Трибуна</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 pt-3 border-t border-surface-border">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">7 500 ₸</span>
+<span class="text-caption text-text-secondary"> / сағ</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover active:scale-95 transition-all" onclick="openBooking('Nomad Basketball Hall (Баскетбол)', 7500)">
+                  Брондау
+                </button>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="court-item-card bg-surface-default border border-surface-border rounded-xl p-4 flex flex-col sm:flex-row gap-4 hover:border-primary hover:shadow-sm transition-all" data-district="Әуезов" data-price="5000" data-sport="Волейбол">
+<div class="w-full sm:w-48 h-36 rounded-lg bg-slate-200 overflow-hidden relative shrink-0">
+<img class="w-full h-full object-cover" data-alt="Spacious indoor volleyball hall with clean blue Taraflex synthetic flooring, taut professional net in center, LED boundary lighting, clean minimalist sports arena interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaMoO7Fw08tU2RtaRj7OWlPX8Y-h3_o3SBCxzv7Zr0tjyhc58juNQ4x6a4L7juu4a7XtsLh3a-w8FpLivSuwtwZziux724GRgDAGgTT_75KHBp_He8PyR3qibNfYHKHXH9ZtYCv1ue2j6UfDNajMrQM3uYjvo8hGMqBO7vTqZ3AMGVXhwsT4Z7pzMgKDq3bkrUHBQwY9t746fb3hoPieSLOdiIww4C-Akb9qzKoDWwjUpqkTWa_H1Jog"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-default/90 text-primary font-label-sm text-[11px] font-bold">Волейбол</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Sunkar Volleyball Arena</h3>
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-amber-500 text-sm material-symbols-fill">star</span>
+<span class="font-bold">4.6</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">location_on</span>
+<span>Алматы, Әуезов ауданы, Төле би 180</span>
+</p>
+<div class="flex flex-wrap gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">Тарафлекс</span>
+<span class="px-2 py-0.5 rounded bg-surface-secondary text-text-secondary text-[11px]">Душ</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-3 pt-3 border-t border-surface-border">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">5 000 ₸</span>
+<span class="text-caption text-text-secondary"> / сағ</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover active:scale-95 transition-all" onclick="openBooking('Sunkar Volleyball Arena (Волейбол)', 5000)">
+                  Брондау
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Interactive Simulated SVG Map (5 cols) -->
+<div class="lg:col-span-5 sticky top-28 hidden lg:block" id="courts-map-col">
+<div class="bg-surface-default border border-surface-border rounded-xl p-4 shadow-sm overflow-hidden">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-sm text-label-sm font-semibold text-text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-base">near_me</span>
+<span>Интерактивті карта: Алматы</span>
+</span>
+<span class="text-caption text-text-secondary">4 алаң көрсетілді</span>
+</div>
+<!-- Stylized Athletic Vector Map -->
+<div class="w-full h-[520px] bg-slate-100 rounded-lg relative overflow-hidden border border-surface-border">
+<!-- SVG Map background -->
+<svg class="w-full h-full" fill="none" viewbox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+<!-- City Grid lines -->
+<line stroke="#E2E8F0" stroke-width="2" x1="0" x2="400" y1="100" y2="100"></line>
+<line stroke="#E2E8F0" stroke-width="2" x1="0" x2="400" y1="200" y2="200"></line>
+<line stroke="#E2E8F0" stroke-width="3" x1="0" x2="400" y1="320" y2="320"></line>
+<line stroke="#E2E8F0" stroke-width="2" x1="120" x2="120" y1="0" y2="500"></line>
+<line stroke="#E2E8F0" stroke-width="2" x1="260" x2="260" y1="0" y2="500"></line>
+<!-- Main Avenues -->
+<path d="M-20 180 Q 200 240 420 190" stroke="#CBD5E1" stroke-width="6"></path>
+<path d="M150 -10 Q 210 250 180 510" stroke="#CBD5E1" stroke-width="6"></path>
+<!-- Green Parks -->
+<rect fill="#DCFCE7" height="40" opacity="0.7" rx="8" width="70" x="40" y="50"></rect>
+<rect fill="#DCFCE7" height="60" opacity="0.7" rx="10" width="110" x="230" y="270"></rect>
+<rect fill="#DCFCE7" height="50" opacity="0.6" rx="6" width="80" x="70" y="380"></rect>
+</svg>
+<!-- Interactive Pins -->
+<!-- Pin 1: Central Arena -->
+<button class="absolute top-[180px] left-[140px] -translate-x-1/2 -translate-y-1/2 group z-10 text-left" onclick="openBooking('Central Arena (Футбол)', 6000)">
+<div class="px-2 py-1 rounded-md bg-white border border-primary shadow-md text-[11px] font-bold text-text-primary flex items-center gap-1 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="w-2 h-2 rounded-full bg-primary group-hover:bg-white"></span>
+<span>6 000 ₸</span>
+</div>
+<div class="w-2 h-2 bg-white border-r border-b border-primary rotate-45 mx-auto -mt-1"></div>
+</button>
+<!-- Pin 2: Dostyk Tennis -->
+<button class="absolute top-[110px] left-[270px] -translate-x-1/2 -translate-y-1/2 group z-10 text-left" onclick="openBooking('Dostyk Tennis Club (Теннис)', 10000)">
+<div class="px-2 py-1 rounded-md bg-white border border-primary shadow-md text-[11px] font-bold text-text-primary flex items-center gap-1 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="w-2 h-2 rounded-full bg-primary group-hover:bg-white"></span>
+<span>10 000 ₸</span>
+</div>
+<div class="w-2 h-2 bg-white border-r border-b border-primary rotate-45 mx-auto -mt-1"></div>
+</button>
+<!-- Pin 3: Sunkar Volleyball -->
+<button class="absolute top-[310px] left-[90px] -translate-x-1/2 -translate-y-1/2 group z-10 text-left" onclick="openBooking('Sunkar Volleyball Arena (Волейбол)', 5000)">
+<div class="px-2 py-1 rounded-md bg-white border border-primary shadow-md text-[11px] font-bold text-text-primary flex items-center gap-1 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="w-2 h-2 rounded-full bg-primary group-hover:bg-white"></span>
+<span>5 000 ₸</span>
+</div>
+<div class="w-2 h-2 bg-white border-r border-b border-primary rotate-45 mx-auto -mt-1"></div>
+</button>
+<!-- Pin 4: Nomad Basketball (Astana / simulated) -->
+<button class="absolute top-[390px] left-[290px] -translate-x-1/2 -translate-y-1/2 group z-10 text-left" onclick="openBooking('Nomad Basketball Hall (Баскетбол)', 7500)">
+<div class="px-2 py-1 rounded-md bg-white border border-secondary shadow-md text-[11px] font-bold text-text-primary flex items-center gap-1 group-hover:bg-secondary group-hover:text-white transition-colors">
+<span class="w-2 h-2 rounded-full bg-secondary group-hover:bg-white"></span>
+<span>7 500 ₸</span>
+</div>
+<div class="w-2 h-2 bg-white border-r border-b border-secondary rotate-45 mx-auto -mt-1"></div>
+</button>
+<!-- Map Navigation Control Overlay -->
+<div class="absolute bottom-3 right-3 flex flex-col gap-1 bg-surface-default p-1 rounded-lg border border-surface-border shadow-sm">
+<button class="w-7 h-7 flex items-center justify-center text-text-secondary hover:text-text-primary font-bold text-base">+</button>
+<div class="h-px bg-surface-border"></div>
+<button class="w-7 h-7 flex items-center justify-center text-text-secondary hover:text-text-primary font-bold text-base">-</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- VIEW 3: COURT DETAILS & BOOKING FLOW       -->
+<!-- ========================================== -->
+<div class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8" id="view-booking">
+<!-- Back Navigation Header -->
+<div class="flex items-center gap-3 mb-6">
+<button class="w-10 h-10 rounded-xl bg-surface-default border border-surface-border flex items-center justify-center text-text-secondary hover:text-text-primary hover:border-primary transition-colors" onclick="switchView('courts')">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<span class="text-caption text-text-secondary">Брондау кезеңі</span>
+<h1 class="font-headline-md text-headline-md font-bold text-text-primary" id="booking-court-name">Central Arena (Футбол)</h1>
+</div>
+</div>
+<!-- Main Booking Interface -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left: Slot Selector Matrix (8 cols) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Date Navigation Bar -->
+<div class="bg-surface-default p-4 rounded-xl border border-surface-border shadow-sm">
+<h2 class="font-label-md text-label-md font-semibold text-text-primary mb-3">1. Күнді таңдаңыз</h2>
+<div class="grid grid-cols-3 sm:grid-cols-5 gap-2.5">
+<button class="date-chip p-2.5 rounded-xl border-2 border-primary bg-primary-soft text-primary font-semibold text-center transition-all" onclick="selectBookingDate(this, '24 Қазан 2025, Бүгін')">
+<div class="text-[11px] uppercase tracking-wider text-primary">Бүгін</div>
+<div class="font-headline-sm text-headline-sm font-bold mt-0.5">24 Қаз</div>
+</button>
+<button class="date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all" onclick="selectBookingDate(this, '25 Қазан 2025, Сенбі')">
+<div class="text-[11px] text-text-secondary">Сенбі</div>
+<div class="font-headline-sm text-headline-sm font-bold mt-0.5">25 Қаз</div>
+</button>
+<button class="date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all" onclick="selectBookingDate(this, '26 Қазан 2025, Жексенбі')">
+<div class="text-[11px] text-text-secondary">Жексенбі</div>
+<div class="font-headline-sm text-headline-sm font-bold mt-0.5">26 Қаз</div>
+</button>
+<button class="date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all hidden sm:block" onclick="selectBookingDate(this, '27 Қазан 2025, Дүйсенбі')">
+<div class="text-[11px] text-text-secondary">Дүйсенбі</div>
+<div class="font-headline-sm text-headline-sm font-bold mt-0.5">27 Қаз</div>
+</button>
+<button class="date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all hidden sm:block" onclick="selectBookingDate(this, '28 Қазан 2025, Сейсенбі')">
+<div class="text-[11px] text-text-secondary">Сейсенбі</div>
+<div class="font-headline-sm text-headline-sm font-bold mt-0.5">28 Қаз</div>
+</button>
+</div>
+</div>
+<!-- Time Slot Matrix -->
+<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-label-md text-label-md font-semibold text-text-primary">2. Уақыт слотын таңдаңыз (бір немесе бірнеше сағат)</h2>
+<div class="flex items-center gap-3 text-caption text-text-secondary">
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded border border-surface-border bg-white"></span> Бос</div>
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-primary"></span> Таңдалды</div>
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-surface-secondary border border-surface-border"></span> Брондалған</div>
+</div>
+</div>
+<!-- Slot Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<!-- 09:00 - 10:00 (Available) -->
+<button class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all" onclick="toggleSlot(this, '09:00 - 10:00')">
+<div class="font-body-md-medium text-body-md-medium font-bold text-text-primary">09:00 - 10:00</div>
+<div class="text-caption text-primary font-medium mt-1">Қолжетімді</div>
+</button>
+<!-- 10:00 - 11:00 (Booked) -->
+<div class="p-3 rounded-xl border border-surface-border bg-surface-secondary text-text-muted cursor-not-allowed">
+<div class="font-body-md-medium text-body-md-medium line-through">10:00 - 11:00</div>
+<div class="text-caption text-text-muted mt-1">Брондалған</div>
+</div>
+<!-- 11:00 - 12:00 (Available) -->
+<button class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all" onclick="toggleSlot(this, '11:00 - 12:00')">
+<div class="font-body-md-medium text-body-md-medium font-bold text-text-primary">11:00 - 12:00</div>
+<div class="text-caption text-primary font-medium mt-1">Қолжетімді</div>
+</button>
+<!-- 14:00 - 15:00 (Available) -->
+<button class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all" onclick="toggleSlot(this, '14:00 - 15:00')">
+<div class="font-body-md-medium text-body-md-medium font-bold text-text-primary">14:00 - 15:00</div>
+<div class="text-caption text-primary font-medium mt-1">Қолжетімді</div>
+</button>
+<!-- 16:00 - 17:00 (Booked) -->
+<div class="p-3 rounded-xl border border-surface-border bg-surface-secondary text-text-muted cursor-not-allowed">
+<div class="font-body-md-medium text-body-md-medium line-through">16:00 - 17:00</div>
+<div class="text-caption text-text-muted mt-1">Брондалған</div>
+</div>
+<!-- 18:00 - 19:00 (Available) -->
+<button class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all" onclick="toggleSlot(this, '18:00 - 19:00')">
+<div class="font-body-md-medium text-body-md-medium font-bold text-text-primary">18:00 - 19:00</div>
+<div class="text-caption text-primary font-medium mt-1">Танымал уақыт</div>
+</button>
+<!-- 19:00 - 20:00 (Selected by Default) -->
+<button class="slot-btn p-3 rounded-xl border-2 border-primary bg-primary text-white text-left transition-all" onclick="toggleSlot(this, '19:00 - 20:00')">
+<div class="font-body-md-medium text-body-md-medium font-bold">19:00 - 20:00</div>
+<div class="text-caption text-white/90 font-medium mt-1">Таңдалды ✓</div>
+</button>
+<!-- 20:00 - 21:00 (Available) -->
+<button class="slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all" onclick="toggleSlot(this, '20:00 - 21:00')">
+<div class="font-body-md-medium text-body-md-medium font-bold text-text-primary">20:00 - 21:00</div>
+<div class="text-caption text-primary font-medium mt-1">Қолжетімді</div>
+</button>
+</div>
+</div>
+<!-- Customer info notice -->
+<div class="bg-surface-bright p-4 rounded-xl border border-surface-border flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5">verified_user</span>
+<div class="font-body-sm text-body-sm">
+<span class="font-semibold text-text-primary">Брондау қауіпсіздігі:</span>
+<span class="text-text-secondary"> Өтінішіңізді алаң иесі жедел қарастырады. Растау 15 минут ішінде жіберіледі. Жою ережесі: ойынға 2 сағат қалғанға дейін тегін бас тартуға болады.</span>
+</div>
+</div>
+</div>
+<!-- Right: Live Booking Summary Panel (4 cols) -->
+<div class="lg:col-span-4 sticky top-28 space-y-4">
+<div class="bg-surface-default p-6 rounded-2xl border border-surface-border shadow-md">
+<h2 class="font-headline-sm text-headline-sm font-bold text-text-primary mb-4 pb-3 border-b border-surface-border">
+              Бронь мәліметтері
+            </h2>
+<div class="space-y-3 font-body-sm text-body-sm">
+<div class="flex justify-between">
+<span class="text-text-secondary">Алаң:</span>
+<span class="font-semibold text-text-primary text-right" id="summary-court-title">Central Arena</span>
+</div>
+<div class="flex justify-between">
+<span class="text-text-secondary">Күні:</span>
+<span class="font-semibold text-text-primary text-right" id="summary-date">24 Қазан 2025</span>
+</div>
+<div class="flex justify-between">
+<span class="text-text-secondary">Уақыты:</span>
+<span class="font-semibold text-primary text-right" id="summary-slots">19:00 - 20:00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-text-secondary">Ұзақтығы:</span>
+<span class="font-semibold text-text-primary text-right" id="summary-hours">1 сағат</span>
+</div>
+<div class="flex justify-between">
+<span class="text-text-secondary">Сағаттық баға:</span>
+<span class="font-semibold text-text-primary text-right" id="summary-rate">6 000 ₸</span>
+</div>
+<!-- Price Calc Divider -->
+<div class="pt-3 border-t border-surface-border flex justify-between items-baseline">
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">Жалпы төлем:</span>
+<span class="font-headline-md text-headline-md font-bold text-primary" id="summary-total">6 000 ₸</span>
+</div>
+</div>
+<!-- Booking Confirmation Action -->
+<button class="mt-6 w-full py-3.5 px-4 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover active:scale-95 transition-all shadow-sm flex items-center justify-center gap-2" onclick="confirmBookingAction()">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span>Броньды растау</span>
+</button>
+<p class="text-center font-caption text-caption text-text-muted mt-2">
+              Төлем бронь расталғаннан кейін алынады
+            </p>
+</div>
+</div>
+</div>
+<!-- Booking Result / Success Modal Container -->
+<div class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4" id="booking-success-modal">
+<div class="bg-surface-default max-w-md w-full rounded-2xl border border-surface-border p-6 shadow-2xl text-center">
+<div class="w-16 h-16 rounded-full bg-accent-soft text-secondary flex items-center justify-center mx-auto mb-4 animate-bounce">
+<span class="material-symbols-outlined text-3xl">hourglass_top</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-soft text-secondary font-label-sm text-label-sm font-semibold mb-3">
+<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+<span>Тексерілуде</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold text-text-primary">Бронь сәтті қабылданды!</h3>
+<p class="font-body-md text-body-md text-text-secondary mt-2">
+            Өтінішіңіз тіркелді. Алаң иесі жақын арада бекітеді. Статусты Жеке кабинеттен бақылай аласыз.
+          </p>
+<div class="mt-6 p-4 rounded-xl bg-surface-secondary text-left space-y-1.5 text-body-sm">
+<div class="text-text-muted font-caption">Бронь коды: <span class="text-text-primary font-bold">#PS-8491</span></div>
+<div class="font-semibold text-text-primary" id="modal-court-info">Central Arena • 24 Қазан 19:00</div>
+</div>
+<div class="mt-6 flex flex-col sm:flex-row gap-3">
+<button class="flex-1 py-2.5 px-4 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover transition-colors" onclick="goToMyBookings()">
+              Менің броньдарыма өту
+            </button>
+<button class="py-2.5 px-4 rounded-xl border border-surface-border text-text-primary font-label-md text-label-md font-semibold hover:bg-surface-secondary transition-colors" onclick="closeSuccessModalAndGoHome()">
+              Басты бетке
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- VIEW 4: TEAMS / GAMES PAGE (Ойындар)       -->
+<!-- ========================================== -->
+<div class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8" id="view-games">
+<!-- Header with Create Action -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-text-primary">Ойындар мен командалар</h1>
+<p class="font-body-sm text-body-sm text-text-secondary">Қалалық ашық матчтарға қосылыңыз немесе өз ойыныңызға серіктес табыңыз</p>
+</div>
+<button class="px-5 py-2.5 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover transition-all shadow-sm flex items-center gap-2 self-start" onclick="openCreateGameModal()">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+<span>Жаңа ойын құру</span>
+</button>
+</div>
+<!-- Active Games Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Game 1 -->
+<div class="bg-surface-default border border-surface-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-1 rounded-md bg-primary-soft text-primary font-label-sm text-label-sm font-semibold">Футбол 7x7</span>
+<span class="font-caption text-caption text-text-muted">Бүгін, 19:00</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary mt-3">Жұма кешкі ойын</h3>
+<p class="font-body-sm text-body-sm text-text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">stadium</span>
+<span>Central Arena, Алматы</span>
+</p>
+<!-- Organizer -->
+<div class="flex items-center gap-2 mt-4 pt-3 border-t border-surface-border">
+<div class="w-7 h-7 rounded-full bg-slate-200 text-text-primary flex items-center justify-center font-bold text-xs">АЕ</div>
+<div class="font-body-sm text-body-sm text-text-primary">
+                Ұйымдастырушы: <span class="font-semibold">Асқар Е.</span>
+</div>
+</div>
+<!-- Player Capacity Bar -->
+<div class="mt-4">
+<div class="flex justify-between font-label-sm text-label-sm mb-1.5">
+<span class="text-text-secondary">Қатысушылар:</span>
+<span class="font-bold text-primary" id="game-count-1">7 / 10 ойыншы (3 орын қалды)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-secondary overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-300" id="game-progress-1" style="width: 70%"></div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-surface-border flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">1 200 ₸</span>
+<span class="text-caption text-text-secondary"> / ойыншыдан</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover active:scale-95 transition-all" id="join-btn-1" onclick="joinGame(1, 10, 'Жұма кешкі ойын')">
+              Қосылу
+            </button>
+</div>
+</div>
+<!-- Game 2 -->
+<div class="bg-surface-default border border-surface-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-1 rounded-md bg-accent-soft text-secondary font-label-sm text-label-sm font-semibold">Волейбол MIX</span>
+<span class="font-caption text-caption text-text-muted">Сенбі, 16:00</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary mt-3">Сенбілік волейбол микс</h3>
+<p class="font-body-sm text-body-sm text-text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">stadium</span>
+<span>Sunkar Arena, Алматы</span>
+</p>
+<!-- Organizer -->
+<div class="flex items-center gap-2 mt-4 pt-3 border-t border-surface-border">
+<div class="w-7 h-7 rounded-full bg-slate-200 text-text-primary flex items-center justify-center font-bold text-xs">ДҚ</div>
+<div class="font-body-sm text-body-sm text-text-primary">
+                Ұйымдастырушы: <span class="font-semibold">Данияр Қ.</span>
+</div>
+</div>
+<!-- Player Capacity Bar -->
+<div class="mt-4">
+<div class="flex justify-between font-label-sm text-label-sm mb-1.5">
+<span class="text-text-secondary">Қатысушылар:</span>
+<span class="font-bold text-secondary" id="game-count-2">9 / 12 ойыншы (3 орын қалды)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-secondary overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full transition-all duration-300" id="game-progress-2" style="width: 75%"></div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-surface-border flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">900 ₸</span>
+<span class="text-caption text-text-secondary"> / ойыншыдан</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover active:scale-95 transition-all" id="join-btn-2" onclick="joinGame(2, 12, 'Сенбілік волейбол микс')">
+              Қосылу
+            </button>
+</div>
+</div>
+<!-- Game 3 -->
+<div class="bg-surface-default border border-surface-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-1 rounded-md bg-primary-soft text-primary font-label-sm text-label-sm font-semibold">Баскетбол 3x3</span>
+<span class="font-caption text-caption text-text-muted">Жексенбі, 18:30</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary mt-3">Баскетбол Streetball</h3>
+<p class="font-body-sm text-body-sm text-text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-base">stadium</span>
+<span>Nomad Hall, Астана</span>
+</p>
+<!-- Organizer -->
+<div class="flex items-center gap-2 mt-4 pt-3 border-t border-surface-border">
+<div class="w-7 h-7 rounded-full bg-slate-200 text-text-primary flex items-center justify-center font-bold text-xs">МС</div>
+<div class="font-body-sm text-body-sm text-text-primary">
+                Ұйымдастырушы: <span class="font-semibold">Мұрат С.</span>
+</div>
+</div>
+<!-- Player Capacity Bar -->
+<div class="mt-4">
+<div class="flex justify-between font-label-sm text-label-sm mb-1.5">
+<span class="text-text-secondary">Қатысушылар:</span>
+<span class="font-bold text-tertiary" id="game-count-3">5 / 6 ойыншы (1 орын қалды)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-secondary overflow-hidden">
+<div class="h-full bg-tertiary rounded-full transition-all duration-300" id="game-progress-3" style="width: 83%"></div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-surface-border flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-text-primary">1 500 ₸</span>
+<span class="text-caption text-text-secondary"> / ойыншыдан</span>
+</div>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover active:scale-95 transition-all" id="join-btn-3" onclick="joinGame(3, 6, 'Баскетбол Streetball')">
+              Қосылу
+            </button>
+</div>
+</div>
+</div>
+<!-- Create Game Modal -->
+<div class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4" id="create-game-modal">
+<div class="bg-surface-default max-w-lg w-full rounded-2xl border border-surface-border p-6 shadow-2xl">
+<div class="flex items-center justify-between pb-3 border-b border-surface-border">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Жаңа ойын ұйымдастыру</h3>
+<button class="text-text-secondary hover:text-text-primary" onclick="closeCreateGameModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="mt-4 space-y-4" onsubmit="handleCreateGameSubmit(event)">
+<div>
+<label class="block font-label-sm text-label-sm font-medium text-text-primary mb-1">Ойын атауы</label>
+<input class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary" placeholder="Мысалы: Жұмалық футбол матчы" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block font-label-sm text-label-sm font-medium text-text-primary mb-1">Спорт түрі</label>
+<select class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary">
+<option>Футбол</option>
+<option>Баскетбол</option>
+<option>Волейбол</option>
+<option>Теннис</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-medium text-text-primary mb-1">Ойыншылар саны</label>
+<input class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary" max="30" min="2" type="number" value="10"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block font-label-sm text-label-sm font-medium text-text-primary mb-1">Алаң</label>
+<select class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary">
+<option>Central Arena (Алматы)</option>
+<option>Dostyk Tennis (Алматы)</option>
+<option>Nomad Hall (Астана)</option>
+<option>Sunkar Arena (Алматы)</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-medium text-text-primary mb-1">Уақыты</label>
+<input class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary" type="time" value="20:00"/>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-border flex justify-end gap-2">
+<button class="px-4 py-2 rounded-xl border border-surface-border font-label-md text-label-md text-text-primary hover:bg-surface-secondary" onclick="closeCreateGameModal()" type="button">
+                Бас тарту
+              </button>
+<button class="px-5 py-2 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover" type="submit">
+                Ойынды жариялау
+              </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- VIEW 5: USER PROFILE (Жеке кабинет)        -->
+<!-- ========================================== -->
+<div class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8" id="view-profile">
+<!-- Profile Header Banner -->
+<div class="bg-surface-default border border-surface-border rounded-2xl p-6 shadow-sm mb-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="w-20 h-20 rounded-2xl bg-primary-soft text-primary font-bold text-2xl flex items-center justify-center border-2 border-primary/20">
+            ЕС
+          </div>
+<div>
+<div class="flex items-center gap-2">
+<h1 class="font-headline-md text-headline-md font-bold text-text-primary">Ерлан Серіков</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-soft text-primary font-label-sm text-[11px] font-bold">Ойыншы</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-0.5">erlan.serikov@example.kz • +7 (777) 345-67-89</p>
+<div class="flex items-center gap-4 text-caption text-text-muted mt-2">
+<span>Қаласы: <strong class="text-text-primary">Алматы</strong></span>
+<span>Тіркелген күні: <strong class="text-text-primary">Мамыр 2024</strong></span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 rounded-xl border border-surface-border font-label-md text-label-md font-semibold text-text-primary hover:bg-surface-secondary transition-colors" onclick="showToast('Профиль өзгерістері сақталды!', 'check_circle')">
+            Өңдеу
+          </button>
+<button class="px-4 py-2 rounded-xl bg-danger-soft text-error font-label-md text-label-md font-semibold hover:bg-red-200 transition-colors" onclick="switchView('home')">
+            Шығу
+          </button>
+</div>
+</div>
+<!-- Profile Navigation Tabs -->
+<div class="border-b border-surface-border flex gap-8 mb-6">
+<button class="border-b-2 border-primary text-primary font-label-md text-label-md font-bold pb-3" id="profile-tab-bookings" onclick="switchProfileTab('bookings')">
+          Менің броньдарым (3)
+        </button>
+<button class="text-text-secondary hover:text-text-primary font-label-md text-label-md pb-3 transition-colors" id="profile-tab-games" onclick="switchProfileTab('games')">
+          Қатысқан ойындарым (2)
+        </button>
+<button class="text-text-secondary hover:text-text-primary font-label-md text-label-md pb-3 transition-colors" id="profile-tab-settings" onclick="switchProfileTab('settings')">
+          Баптаулар
+        </button>
+</div>
+<!-- Tab Content: Bookings -->
+<div class="space-y-4" id="tab-content-bookings">
+<!-- Booking Card 1 (Pending Status) -->
+<div class="bg-surface-default border border-surface-border rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-accent-soft text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">hourglass_top</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Central Arena (Футбол)</h3>
+<!-- Status Badge Pending -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-soft text-secondary font-label-sm text-[12px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  Тексерілуде
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">
+                24 Қазан 2025 • 19:00 - 20:00 (1 сағат)
+              </p>
+<div class="font-caption text-caption text-text-muted mt-0.5">Бронь нөмірі: #PS-8491 • 6 000 ₸</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-2 rounded-xl border border-danger-soft text-error hover:bg-danger-soft font-label-sm text-label-sm font-semibold transition-colors" onclick="cancelBooking(this, '#PS-8491')">
+              Бас тарту
+            </button>
+<button class="px-3.5 py-2 rounded-xl bg-surface-secondary text-text-primary hover:bg-slate-200 font-label-sm text-label-sm font-semibold transition-colors" onclick="openBooking('Central Arena (Футбол)', 6000)">
+              Толық көру
+            </button>
+</div>
+</div>
+<!-- Booking Card 2 (Confirmed Status) -->
+<div class="bg-surface-default border border-surface-border rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-soft text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">check_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Dostyk Tennis Club (Теннис)</h3>
+<!-- Status Badge Confirmed -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-soft text-primary font-label-sm text-[12px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Расталды
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">
+                26 Қазан 2025 • 11:00 - 12:00 (1 сағат)
+              </p>
+<div class="font-caption text-caption text-text-muted mt-0.5">Бронь нөмірі: #PS-7922 • 10 000 ₸ (Төленді)</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-2 rounded-xl bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover transition-colors">
+              Алаңға өту
+            </button>
+</div>
+</div>
+<!-- Booking Card 3 (Completed Status) -->
+<div class="bg-surface-default border border-surface-border rounded-xl p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 opacity-75">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-secondary text-text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">sports_volleyball</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Sunkar Arena (Волейбол)</h3>
+<!-- Status Badge Completed -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-secondary text-text-secondary font-label-sm text-[12px] font-semibold">
+                  Аяқталды
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">
+                18 Қазан 2025 • 18:00 - 19:00
+              </p>
+<div class="font-caption text-caption text-text-muted mt-0.5">Бронь нөмірі: #PS-6102 • 5 000 ₸</div>
+</div>
+</div>
+<button class="px-3.5 py-2 rounded-xl border border-surface-border text-text-primary hover:bg-surface-secondary font-label-sm text-label-sm font-semibold" onclick="showToast('Пікір жазу терезесі ашылды', 'rate_review')">
+            Пікір қалдыру
+          </button>
+</div>
+</div>
+<!-- Tab Content: Games (Hidden) -->
+<div class="hidden space-y-4" id="tab-content-games">
+<div class="bg-surface-default border border-surface-border rounded-xl p-5">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Жұма кешкі ойын (Футбол 7x7)</h3>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1">Central Arena • Бүгін, 19:00 • Рөлі: Ойыншы</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-md bg-primary-soft text-primary font-label-sm text-label-sm">Тіркелгенсіз ✓</span>
+<button class="px-3 py-1 rounded-lg border border-surface-border text-label-sm" onclick="showToast('Чатқа өту...', 'forum')">Команда чаты</button>
+</div>
+</div>
+</div>
+<!-- Tab Content: Settings (Hidden) -->
+<div class="hidden bg-surface-default border border-surface-border rounded-xl p-6" id="tab-content-settings">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary mb-4">Байланыс деректерін жаңарту</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl">
+<div>
+<label class="block font-label-sm text-label-sm text-text-secondary mb-1">Аты-жөні</label>
+<input class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm" type="text" value="Ерлан Серіков"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-text-secondary mb-1">Телефон нөмірі</label>
+<input class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm" type="text" value="+7 (777) 345-67-89"/>
+</div>
+</div>
+<button class="mt-4 px-5 py-2 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold" onclick="showToast('Деректер сақталды', 'save')">
+          Сақтау
+        </button>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- VIEW 6: OWNER DASHBOARD (Алаң иесі)       -->
+<!-- ========================================== -->
+<div class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8" id="view-owner">
+<!-- Top Title with Action -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Venue Partner</span>
+<span class="text-caption text-text-secondary">Алматы спорт кешендері желісі</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-text-primary mt-1">Алаң иесінің басқару панелі</h1>
+</div>
+<button class="px-4 py-2.5 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover transition-all flex items-center gap-2 self-start shadow-sm" onclick="openNewCourtModal()">
+<span class="material-symbols-outlined text-lg">add_business</span>
+<span>Жаңа алаң қосу</span>
+</button>
+</div>
+<!-- Metric Cards KPI -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-text-secondary font-medium">Барлық алаңдар</span>
+<span class="material-symbols-outlined text-primary text-xl">stadium</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-primary mt-2">3</div>
+<div class="text-caption text-primary font-medium mt-1">Барлығы белсенді</div>
+</div>
+<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-text-secondary font-medium">Жаңа броньдар</span>
+<span class="material-symbols-outlined text-secondary text-xl">pending_actions</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-secondary mt-2" id="kpi-pending-count">5</div>
+<div class="text-caption text-amber-600 font-medium mt-1">Растауды күтуде</div>
+</div>
+<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-text-secondary font-medium">Бекітілген броньдар</span>
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-primary mt-2">42</div>
+<div class="text-caption text-text-secondary mt-1">Осы айда</div>
+</div>
+<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption text-caption text-text-secondary font-medium">Айлық табыс</span>
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+</div>
+<div class="font-headline-lg text-headline-lg font-bold text-primary mt-2">480 000 ₸</div>
+<div class="text-caption text-primary font-medium mt-1">+18% өткен аймен салыстырғанда</div>
+</div>
+</div>
+<!-- Manage Bookings Table (Interactive Actions) -->
+<div class="bg-surface-default rounded-xl border border-surface-border shadow-sm overflow-hidden mb-8">
+<div class="p-5 border-b border-surface-border flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-text-primary">Броньдарды жедел басқару</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">Келген тапсырыстарды растаңыз немесе бас тартыңыз</p>
+</div>
+<span class="px-2.5 py-1 rounded bg-accent-soft text-secondary font-label-sm text-label-sm font-semibold">Нақты уақыт режимі</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-secondary text-text-secondary font-label-sm text-label-sm">
+<tr>
+<th class="px-5 py-3 font-semibold">Клиент</th>
+<th class="px-5 py-3 font-semibold">Алаң</th>
+<th class="px-5 py-3 font-semibold">Күні мен Уақыты</th>
+<th class="px-5 py-3 font-semibold">Сомасы</th>
+<th class="px-5 py-3 font-semibold">Күйі</th>
+<th class="px-5 py-3 font-semibold text-right">Әрекеттер</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-border">
+<!-- Row 1 (Pending) -->
+<tr class="hover:bg-slate-50 transition-colors" id="owner-row-1">
+<td class="px-5 py-4">
+<div class="font-semibold text-text-primary">Ерлан Серіков</div>
+<div class="text-caption text-text-muted">+7 777 345 6789</div>
+</td>
+<td class="px-5 py-4 text-text-primary">Central Arena (Футбол)</td>
+<td class="px-5 py-4">
+<div>24 Қазан 2025</div>
+<div class="text-caption text-primary font-semibold">19:00 - 20:00</div>
+</td>
+<td class="px-5 py-4 font-bold text-text-primary">6 000 ₸</td>
+<td class="px-5 py-4" id="owner-status-1">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-soft text-secondary font-label-sm text-[12px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                    Тексерілуде
+                  </span>
+</td>
+<td class="px-5 py-4 text-right">
+<div class="flex items-center justify-end gap-2" id="owner-actions-1">
+<button class="px-3 py-1.5 rounded-lg bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover transition-colors" onclick="ownerConfirm(1)">
+                      Растау
+                    </button>
+<button class="px-3 py-1.5 rounded-lg border border-danger-soft text-error hover:bg-danger-soft font-label-sm text-label-sm font-semibold transition-colors" onclick="ownerReject(1)">
+                      Бас тарту
+                    </button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (Pending) -->
+<tr class="hover:bg-slate-50 transition-colors" id="owner-row-2">
+<td class="px-5 py-4">
+<div class="font-semibold text-text-primary">Бауыржан Нұрланұлы</div>
+<div class="text-caption text-text-muted">+7 701 112 3344</div>
+</td>
+<td class="px-5 py-4 text-text-primary">Central Arena (Футбол)</td>
+<td class="px-5 py-4">
+<div>25 Қазан 2025</div>
+<div class="text-caption text-primary font-semibold">20:00 - 22:00</div>
+</td>
+<td class="px-5 py-4 font-bold text-text-primary">12 000 ₸</td>
+<td class="px-5 py-4" id="owner-status-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-accent-soft text-secondary font-label-sm text-[12px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                    Тексерілуде
+                  </span>
+</td>
+<td class="px-5 py-4 text-right">
+<div class="flex items-center justify-end gap-2" id="owner-actions-2">
+<button class="px-3 py-1.5 rounded-lg bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover transition-colors" onclick="ownerConfirm(2)">
+                      Растау
+                    </button>
+<button class="px-3 py-1.5 rounded-lg border border-danger-soft text-error hover:bg-danger-soft font-label-sm text-label-sm font-semibold transition-colors" onclick="ownerReject(2)">
+                      Бас тарту
+                    </button>
+</div>
+</td>
+</tr>
+<!-- Row 3 (Confirmed) -->
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-5 py-4">
+<div class="font-semibold text-text-primary">Алина Ким</div>
+<div class="text-caption text-text-muted">+7 775 889 9001</div>
+</td>
+<td class="px-5 py-4 text-text-primary">Dostyk Tennis Club</td>
+<td class="px-5 py-4">
+<div>26 Қазан 2025</div>
+<div class="text-caption text-text-secondary">10:00 - 11:00</div>
+</td>
+<td class="px-5 py-4 font-bold text-text-primary">10 000 ₸</td>
+<td class="px-5 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-soft text-primary font-label-sm text-[12px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    Расталды
+                  </span>
+</td>
+<td class="px-5 py-4 text-right">
+<span class="text-caption text-text-muted">Өңделді ✓</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Add New Court Modal -->
+<div class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4" id="new-court-modal">
+<div class="bg-surface-default max-w-lg w-full rounded-2xl border border-surface-border p-6 shadow-2xl">
+<div class="flex items-center justify-between pb-3 border-b border-surface-border">
+<h3 class="font-headline-sm text-headline-sm font-bold text-text-primary">Жаңа спорт алаңын қосу</h3>
+<button class="text-text-secondary hover:text-text-primary" onclick="closeNewCourtModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="mt-4 space-y-4" onsubmit="handleNewCourtSubmit(event)">
+<div>
+<label class="block font-label-sm text-label-sm font-medium text-text-primary mb-1">Алаң атауы</label>
+<input class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm" placeholder="Мысалы: Arena Mega Sport" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div>
+<label class="block font-label-sm text-label-sm font-medium text-text-primary mb-1">Спорт түрі</label>
+<select class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm">
+<option>Футбол</option>
+<option>Баскетбол</option>
+<option>Теннис</option>
+<option>Волейбол</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-medium text-text-primary mb-1">Сағаттық баға (₸)</label>
+<input class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm" placeholder="8000" required="" type="number"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-medium text-text-primary mb-1">Мекен-жайы</label>
+<input class="w-full px-3 py-2 rounded-xl border border-surface-border font-body-sm text-body-sm" placeholder="Қала, көше, ғимарат" required="" type="text"/>
+</div>
+<div class="pt-3 border-t border-surface-border flex justify-end gap-2">
+<button class="px-4 py-2 rounded-xl border border-surface-border text-text-primary font-label-md text-label-md" onclick="closeNewCourtModal()" type="button">
+                Бас тарту
+              </button>
+<button class="px-5 py-2 rounded-xl bg-primary text-white font-label-md text-label-md font-semibold hover:bg-primary-hover" type="submit">
+                Модерацияға жіберу
+              </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- VIEW 7: ADMIN PANEL (Әкімші)              -->
+<!-- ========================================== -->
+<div class="view-panel hidden max-w-7xl mx-auto px-4 md:px-8 py-8" id="view-admin">
+<!-- Top Title -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary text-white font-label-sm text-[11px] font-bold">
+<span class="material-symbols-outlined text-xs">admin_panel_settings</span>
+<span>Бас Әкімші (SuperAdmin)</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-text-primary mt-1">PlaySlot Басқару жүйесі</h1>
+</div>
+<span class="text-caption text-text-secondary bg-surface-default px-3 py-1.5 rounded-lg border border-surface-border">
+          Соңғы синхрондау: 24 Қазан 2025, 14:35
+        </span>
+</div>
+<!-- KPI Analytics Cards -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+<div class="text-caption text-text-secondary">Тіркелген алаңдар</div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-primary mt-1">24</div>
+<div class="text-caption text-primary font-semibold mt-1">20 белсенді, 4 кезекте</div>
+</div>
+<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+<div class="text-caption text-text-secondary">Жалпы броньдар саны</div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-primary mt-1">1,280</div>
+<div class="text-caption text-primary font-semibold mt-1">↑ +24% апталық өсім</div>
+</div>
+<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+<div class="text-caption text-text-secondary">Пайдаланушылар</div>
+<div class="font-headline-lg text-headline-lg font-bold text-text-primary mt-1">3,450</div>
+<div class="text-caption text-text-secondary mt-1">3,100 ойыншы, 350 ие</div>
+</div>
+<div class="bg-surface-default p-5 rounded-xl border border-surface-border shadow-sm">
+<div class="text-caption text-text-secondary">Модерация кезекте</div>
+<div class="font-headline-lg text-headline-lg font-bold text-secondary mt-1" id="admin-mod-count">4</div>
+<div class="text-caption text-amber-600 font-semibold mt-1">Шұғыл тексеру қажет</div>
+</div>
+</div>
+<!-- Verification / Moderation Queue -->
+<div class="bg-surface-default rounded-xl border border-surface-border shadow-sm overflow-hidden mb-8">
+<div class="p-5 border-b border-surface-border flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-text-primary">Алаңдарды модерациялау кезегі</h2>
+<p class="font-body-sm text-body-sm text-text-secondary">Жаңа өтінімдердің құжаттары мен фотосуреттерін тексеру</p>
+</div>
+<span class="px-2.5 py-1 rounded bg-accent-soft text-secondary font-label-sm text-label-sm font-semibold">4 өтінім күтуде</span>
+</div>
+<div class="divide-y divide-surface-border">
+<!-- Queue Item 1 -->
+<div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 transition-colors" id="admin-queue-1">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-soft text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">stadium</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-label-md text-label-md font-bold text-text-primary">Spartak Mini Pitch (Астана, Алматы ауданы)</h3>
+<span class="px-2 py-0.5 rounded bg-accent-soft text-secondary text-[11px] font-bold">Жаңа алаң</span>
+</div>
+<div class="text-caption text-text-secondary mt-1">Иесі: Серікбай Т. • Бағасы: 7 000 ₸/сағ • Құжаттар жүктелді (Мемлекеттік акт, фото)</div>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start sm:self-center">
+<button class="px-3.5 py-1.5 rounded-lg bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover transition-colors" onclick="adminApprove(1)">
+                Бекіту
+              </button>
+<button class="px-3.5 py-1.5 rounded-lg border border-surface-border text-text-secondary hover:text-error font-label-sm text-label-sm font-semibold transition-colors" onclick="adminReject(1)">
+                Қайтару
+              </button>
+</div>
+</div>
+<!-- Queue Item 2 -->
+<div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50 transition-colors" id="admin-queue-2">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-xl bg-accent-soft text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">sports_tennis</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-label-md text-label-md font-bold text-text-primary">Almaty Tennis Dome (Алматы, Самал)</h3>
+<span class="px-2 py-0.5 rounded bg-accent-soft text-secondary text-[11px] font-bold">Тариф жаңарту</span>
+</div>
+<div class="text-caption text-text-secondary mt-1">Иесі: Дәулет М. • Жаңа баға: 12 000 ₸/сағ • Сертификат тексерілді</div>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start sm:self-center">
+<button class="px-3.5 py-1.5 rounded-lg bg-primary text-white font-label-sm text-label-sm font-semibold hover:bg-primary-hover transition-colors" onclick="adminApprove(2)">
+                Бекіту
+              </button>
+<button class="px-3.5 py-1.5 rounded-lg border border-surface-border text-text-secondary hover:text-error font-label-sm text-label-sm font-semibold transition-colors" onclick="adminReject(2)">
+                Қайтару
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component JSON anchor) -->
+<footer class="bg-surface-default border-t border-surface-border mt-auto">
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-12 flex flex-col gap-8 w-full">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div>
+<a class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2" href="javascript:switchView('home')">
+<span class="material-symbols-outlined text-primary text-2xl">sports_soccer</span>
+<span>PlaySlot</span>
+</a>
+<p class="font-body-sm text-body-sm text-text-secondary mt-1 max-w-md">
+            Қазақстан бойынша спорт алаңдарын онлайн брондау платформасы. Алматы және Астана қалаларындағы ең үздік корттар мен залдар.
+          </p>
+</div>
+<!-- Footer Links from JSON -->
+<nav class="flex flex-wrap gap-x-6 gap-y-2 font-body-sm text-body-sm">
+<a class="text-text-secondary hover:text-primary transition-colors" href="javascript:switchView('courts')">Спорт алаңдары</a>
+<a class="text-text-secondary hover:text-primary transition-colors" href="javascript:switchView('courts')">Алматы</a>
+<a class="text-text-secondary hover:text-primary transition-colors" href="javascript:switchView('courts')">Астана</a>
+<a class="text-text-secondary hover:text-primary transition-colors" href="javascript:switchView('games')">Ойындар мен қауымдастық</a>
+<a class="text-text-secondary hover:text-primary transition-colors" href="javascript:switchView('owner')">Алаң иелеріне</a>
+<a class="text-text-secondary hover:text-primary transition-colors" href="javascript:showToast('Құпиялылық саясаты қолжетімді', 'shield')">Құпиялылық саясаты</a>
+<a class="text-text-secondary hover:text-primary transition-colors" href="javascript:showToast('Байланыс орталығы: +7 (727) 300-11-22', 'call')">Байланыс</a>
+</nav>
+</div>
+<div class="pt-6 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 font-caption text-caption text-text-muted">
+<div>
+          © 2025 PlaySlot. Барлық құқықтар қорғалған. Қазақстан бойынша спорт алаңдарын онлайн брондау.
+        </div>
+<div class="flex items-center gap-4">
+<span class="hover:text-text-primary cursor-pointer transition-colors">Қазақша (KZ)</span>
+<span>•</span>
+<span class="hover:text-text-primary cursor-pointer transition-colors">Төлем қауіпсіздігі SSL 256-bit</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar for Mobile (Shared Component JSON anchor) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-default border-t border-surface-border shadow-md">
+<button class="flex flex-col items-center justify-center bg-primary-soft text-primary rounded-xl px-3 py-1 font-label-sm text-label-sm" id="mobile-nav-home" onclick="switchView('home')">
+<span class="material-symbols-outlined text-xl" data-icon="home">home</span>
+<span>Басты</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary px-3 py-1 font-label-sm text-label-sm" id="mobile-nav-courts" onclick="switchView('courts')">
+<span class="material-symbols-outlined text-xl" data-icon="stadium">stadium</span>
+<span>Алаңдар</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary px-3 py-1 font-label-sm text-label-sm" id="mobile-nav-games" onclick="switchView('games')">
+<span class="material-symbols-outlined text-xl" data-icon="groups">groups</span>
+<span>Ойындар</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary px-3 py-1 font-label-sm text-label-sm" id="mobile-nav-profile" onclick="switchView('profile')">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+<span>Профиль</span>
+</button>
+</nav>
+<!-- Core JavaScript Single Page Application Logic -->
+<script>
+    // State management
+    const state = {
+      currentView: 'home',
+      selectedCourt: 'Central Arena (Футбол)',
+      hourlyRate: 6000,
+      selectedDate: '24 Қазан 2025',
+      selectedSlots: ['19:00 - 20:00'],
+      totalPrice: 6000,
+      viewMode: 'split' // 'list' or 'split'
+    };
+
+    // Navigation and View Switching
+    function switchView(viewName) {
+      state.currentView = viewName;
+
+      // Hide all panels
+      const panels = document.querySelectorAll('.view-panel');
+      panels.forEach(p => p.classList.add('hidden'));
+
+      // Show selected panel
+      const targetPanel = document.getElementById('view-' + viewName);
+      if (targetPanel) {
+        targetPanel.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Update Desktop TopNavBar links
+      const navLinks = ['home', 'courts', 'games', 'profile'];
+      navLinks.forEach(item => {
+        const link = document.getElementById('nav-' + item);
+        if (link) {
+          if (item === viewName) {
+            link.className = "border-b-2 border-primary text-primary font-label-md text-label-md pb-1 font-semibold transition-colors";
+          } else {
+            link.className = "text-text-secondary hover:text-text-primary font-label-md text-label-md pb-1 transition-colors";
+          }
+        }
+      });
+
+      // Update Mobile BottomNavBar
+      navLinks.forEach(item => {
+        const mLink = document.getElementById('mobile-nav-' + item);
+        if (mLink) {
+          if (item === viewName) {
+            mLink.className = "flex flex-col items-center justify-center bg-primary-soft text-primary rounded-xl px-3 py-1 font-label-sm text-label-sm";
+          } else {
+            mLink.className = "flex flex-col items-center justify-center text-text-secondary px-3 py-1 font-label-sm text-label-sm";
+          }
+        }
+      });
+
+      // Update Demo bar buttons
+      const demoBtns = ['home', 'courts', 'booking', 'games', 'profile', 'owner', 'admin'];
+      demoBtns.forEach(btnKey => {
+        const b = document.getElementById('demo-btn-' + btnKey);
+        if (b) {
+          if (btnKey === viewName) {
+            b.className = "px-2.5 py-1 rounded bg-primary text-white font-label-sm hover:brightness-110 transition-all";
+          } else {
+            b.className = "px-2.5 py-1 rounded bg-surface-secondary text-text-primary font-label-sm hover:bg-white transition-all";
+          }
+        }
+      });
+    }
+
+    // Open Booking Flow with Specific Court Data
+    function openBooking(courtTitle, rate) {
+      state.selectedCourt = courtTitle;
+      state.hourlyRate = rate;
+      state.selectedSlots = ['19:00 - 20:00'];
+      
+      document.getElementById('booking-court-name').textContent = courtTitle;
+      document.getElementById('summary-court-title').textContent = courtTitle;
+      document.getElementById('summary-rate').textContent = rate.toLocaleString('kk-KZ') + ' ₸';
+      
+      recalcSummary();
+      switchView('booking');
+    }
+
+    // Slot toggle interaction
+    function toggleSlot(buttonEl, timeRange) {
+      const idx = state.selectedSlots.indexOf(timeRange);
+      if (idx > -1) {
+        if (state.selectedSlots.length === 1) {
+          showToast('Кемінде бір слот таңдалуы керек', 'info');
+          return;
+        }
+        state.selectedSlots.splice(idx, 1);
+        buttonEl.className = "slot-btn p-3 rounded-xl border border-surface-border bg-surface-default hover:border-primary text-left transition-all";
+        buttonEl.innerHTML = `
+          <div class="font-body-md-medium text-body-md-medium font-bold text-text-primary">${timeRange}</div>
+          <div class="text-caption text-primary font-medium mt-1">Қолжетімді</div>
+        `;
+      } else {
+        state.selectedSlots.push(timeRange);
+        buttonEl.className = "slot-btn p-3 rounded-xl border-2 border-primary bg-primary text-white text-left transition-all";
+        buttonEl.innerHTML = `
+          <div class="font-body-md-medium text-body-md-medium font-bold">${timeRange}</div>
+          <div class="text-caption text-white/90 font-medium mt-1">Таңдалды ✓</div>
+        `;
+      }
+      recalcSummary();
+    }
+
+    function selectBookingDate(buttonEl, dateStr) {
+      state.selectedDate = dateStr;
+      document.querySelectorAll('.date-chip').forEach(btn => {
+        btn.className = "date-chip p-2.5 rounded-xl border border-surface-border bg-surface-default text-text-primary hover:border-primary text-center transition-all";
+      });
+      buttonEl.className = "date-chip p-2.5 rounded-xl border-2 border-primary bg-primary-soft text-primary font-semibold text-center transition-all";
+      
+      document.getElementById('summary-date').textContent = dateStr;
+    }
+
+    function recalcSummary() {
+      const count = state.selectedSlots.length;
+      state.totalPrice = count * state.hourlyRate;
+      
+      document.getElementById('summary-slots').textContent = state.selectedSlots.join(', ');
+      document.getElementById('summary-hours').textContent = count + ' сағат';
+      document.getElementById('summary-total').textContent = state.totalPrice.toLocaleString('kk-KZ') + ' ₸';
+    }
+
+    function confirmBookingAction() {
+      document.getElementById('modal-court-info').textContent = `${state.selectedCourt} • ${state.selectedDate} • ${state.selectedSlots.join(', ')}`;
+      document.getElementById('booking-success-modal').classList.remove('hidden');
+    }
+
+    function goToMyBookings() {
+      document.getElementById('booking-success-modal').classList.add('hidden');
+      switchView('profile');
+      switchProfileTab('bookings');
+    }
+
+    function closeSuccessModalAndGoHome() {
+      document.getElementById('booking-success-modal').classList.add('hidden');
+      switchView('home');
+    }
+
+    // Court Filters & List logic
+    function setCourtViewMode(mode) {
+      state.viewMode = mode;
+      const listCol = document.getElementById('courts-listing-col');
+      const mapCol = document.getElementById('courts-map-col');
+      const listBtn = document.getElementById('view-mode-list-btn');
+      const splitBtn = document.getElementById('view-mode-split-btn');
+
+      if (mode === 'list') {
+        listCol.className = 'lg:col-span-12 space-y-4';
+        mapCol.classList.add('hidden');
+        listBtn.className = 'px-4 py-1.5 rounded-lg bg-surface-default text-text-primary font-label-md text-label-md font-semibold shadow-sm flex items-center gap-1.5 transition-all';
+        splitBtn.className = 'px-4 py-1.5 rounded-lg text-text-secondary hover:text-text-primary font-label-md text-label-md font-semibold flex items-center gap-1.5 transition-all';
+      } else {
+        listCol.className = 'lg:col-span-7 space-y-4';
+        mapCol.classList.remove('hidden');
+        splitBtn.className = 'px-4 py-1.5 rounded-lg bg-surface-default text-text-primary font-label-md text-label-md font-semibold shadow-sm flex items-center gap-1.5 transition-all';
+        listBtn.className = 'px-4 py-1.5 rounded-lg text-text-secondary hover:text-text-primary font-label-md text-label-md font-semibold flex items-center gap-1.5 transition-all';
+      }
+    }
+
+    function filterCourts(sportName) {
+      document.querySelectorAll('.court-filter-chip').forEach(chip => {
+        if (chip.getAttribute('data-sport') === sportName) {
+          chip.className = 'court-filter-chip px-3.5 py-1.5 rounded-full text-label-sm font-label-sm font-semibold bg-primary text-white transition-colors';
+        } else {
+          chip.className = 'court-filter-chip px-3.5 py-1.5 rounded-full text-label-sm font-label-sm font-semibold bg-surface-default text-text-primary border border-surface-border hover:border-primary transition-colors';
+        }
+      });
+      applyCourtFilters(sportName);
+    }
+
+    function applyCourtFilters(targetSport) {
+      let activeSport = targetSport;
+      if (!activeSport) {
+        const activeChip = document.querySelector('.court-filter-chip.bg-primary');
+        activeSport = activeChip ? activeChip.getAttribute('data-sport') : 'Барлығы';
+      }
+
+      const district = document.getElementById('filter-district').value;
+      const pricePref = document.getElementById('filter-price').value;
+
+      const cards = document.querySelectorAll('.court-item-card');
+      cards.forEach(card => {
+        const cardSport = card.getAttribute('data-sport');
+        const cardDistrict = card.getAttribute('data-district');
+        const cardPrice = parseInt(card.getAttribute('data-price'), 10);
+
+        let matchSport = (activeSport === 'Барлығы' || cardSport === activeSport);
+        let matchDistrict = (district === 'all' || cardDistrict.includes(district));
+        let matchPrice = true;
+        if (pricePref === '5000') matchPrice = cardPrice <= 5000;
+        if (pricePref === '8000') matchPrice = cardPrice > 5000 && cardPrice <= 8000;
+        if (pricePref === 'expensive') matchPrice = cardPrice > 8000;
+
+        if (matchSport && matchDistrict && matchPrice) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function handleHeroSearch() {
+      const sport = document.getElementById('search-sport').value;
+      switchView('courts');
+      if (sport !== 'all') {
+        filterCourts(sport);
+      }
+    }
+
+    function filterBySportAndNavigate(sport) {
+      switchView('courts');
+      filterCourts(sport);
+    }
+
+    // Community / Games actions
+    function joinGame(gameId, maxPlayers, title) {
+      const countEl = document.getElementById('game-count-' + gameId);
+      const progEl = document.getElementById('game-progress-' + gameId);
+      const btnEl = document.getElementById('join-btn-' + gameId);
+
+      btnEl.disabled = true;
+      btnEl.textContent = 'Қосылдыңыз ✓';
+      btnEl.className = 'px-4 py-2 rounded-xl bg-surface-secondary text-primary font-label-sm text-label-sm font-semibold cursor-default';
+
+      if (gameId === 1) {
+        countEl.textContent = '8 / 10 ойыншы (2 орын қалды)';
+        progEl.style.width = '80%';
+      } else if (gameId === 2) {
+        countEl.textContent = '10 / 12 ойыншы (2 орын қалды)';
+        progEl.style.width = '83%';
+      } else if (gameId === 3) {
+        countEl.textContent = '6 / 6 ойыншы (Орын қалмады)';
+        progEl.style.width = '100%';
+      }
+
+      showToast(`«${title}» матчына сәтті тіркелдіңіз!`, 'groups');
+    }
+
+    function openCreateGameModal() {
+      document.getElementById('create-game-modal').classList.remove('hidden');
+    }
+    function closeCreateGameModal() {
+      document.getElementById('create-game-modal').classList.add('hidden');
+    }
+    function handleCreateGameSubmit(e) {
+      e.preventDefault();
+      closeCreateGameModal();
+      showToast('Жаңа ойын сәтті құрылды және жарияланды!', 'check_circle');
+    }
+
+    // Profile Tab Switching
+    function switchProfileTab(tabName) {
+      const tabs = ['bookings', 'games', 'settings'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('profile-tab-' + t);
+        const content = document.getElementById('tab-content-' + t);
+        if (t === tabName) {
+          btn.className = "border-b-2 border-primary text-primary font-label-md text-label-md font-bold pb-3";
+          content.classList.remove('hidden');
+        } else {
+          btn.className = "text-text-secondary hover:text-text-primary font-label-md text-label-md pb-3 transition-colors";
+          content.classList.add('hidden');
+        }
+      });
+    }
+
+    function cancelBooking(buttonEl, code) {
+      if (confirm(`${code} броньынан бас тартуды растайсыз ба?`)) {
+        const card = buttonEl.closest('.bg-surface-default');
+        card.style.opacity = '0.5';
+        buttonEl.outerHTML = '<span class="text-caption text-error font-semibold">Бас тартылды</span>';
+        showToast(`${code} броньы жойылды`, 'cancel');
+      }
+    }
+
+    // Owner Dashboard Actions
+    function ownerConfirm(rowId) {
+      const statusCell = document.getElementById('owner-status-' + rowId);
+      const actionsCell = document.getElementById('owner-actions-' + rowId);
+      statusCell.innerHTML = `
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-soft text-primary font-label-sm text-[12px] font-semibold">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Расталды
+        </span>
+      `;
+      actionsCell.innerHTML = `<span class="text-caption text-primary font-semibold">Расталды ✓</span>`;
+      
+      updateOwnerKPI();
+      showToast('Бронь сәтті расталды! Клиентке SMS жіберілді.', 'check_circle');
+    }
+
+    function ownerReject(rowId) {
+      const statusCell = document.getElementById('owner-status-' + rowId);
+      const actionsCell = document.getElementById('owner-actions-' + rowId);
+      statusCell.innerHTML = `
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-danger-soft text-error font-label-sm text-[12px] font-semibold">
+          Бас тартылды
+        </span>
+      `;
+      actionsCell.innerHTML = `<span class="text-caption text-error font-semibold">Қабылданбады ✕</span>`;
+      
+      updateOwnerKPI();
+      showToast('Бронь қабылданбады.', 'cancel');
+    }
+
+    function updateOwnerKPI() {
+      const kpi = document.getElementById('kpi-pending-count');
+      let val = parseInt(kpi.textContent, 10);
+      if (val > 0) kpi.textContent = (val - 1).toString();
+    }
+
+    function openNewCourtModal() {
+      document.getElementById('new-court-modal').classList.remove('hidden');
+    }
+    function closeNewCourtModal() {
+      document.getElementById('new-court-modal').classList.add('hidden');
+    }
+    function handleNewCourtSubmit(e) {
+      e.preventDefault();
+      closeNewCourtModal();
+      showToast('Алаң модерацияға жіберілді! Әкімші 2 сағат ішінде тексереді.', 'verified');
+    }
+
+    // Admin Panel Actions
+    function adminApprove(queueId) {
+      const item = document.getElementById('admin-queue-' + queueId);
+      item.innerHTML = `
+        <div class="text-primary font-semibold py-2">
+          ✓ Алаң бекітілді және каталогқа шығарылды!
+        </div>
+      `;
+      decrementAdminMod();
+      showToast('Алаң базаға сәтті қосылды', 'check_circle');
+    }
+
+    function adminReject(queueId) {
+      const item = document.getElementById('admin-queue-' + queueId);
+      item.innerHTML = `
+        <div class="text-error font-semibold py-2">
+          ✕ Өтінім кері қайтарылды (ескерту жіберілді).
+        </div>
+      `;
+      decrementAdminMod();
+      showToast('Өтінім толықтыруға қайтарылды', 'warning');
+    }
+
+    function decrementAdminMod() {
+      const countEl = document.getElementById('admin-mod-count');
+      let val = parseInt(countEl.textContent, 10);
+      if (val > 0) countEl.textContent = (val - 1).toString();
+    }
+
+    // Toast feedback helper
+    let toastTimeout;
+    function showToast(message, icon = 'check_circle') {
+      const toast = document.getElementById('toast');
+      const msg = document.getElementById('toast-message');
+      const iconEl = document.getElementById('toast-icon');
+
+      msg.textContent = message;
+      iconEl.textContent = icon;
+      toast.classList.remove('hidden');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        hideToast();
+      }, 4000);
+    }
+    function hideToast() {
+      document.getElementById('toast').classList.add('hidden');
+    }
+  </script>
+</body></html>

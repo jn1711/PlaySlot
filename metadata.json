@@ -1,9 +1,0 @@
-{
-  "name": "PlaySlot - Спорт алаңдарын онлайн брондау",
-  "description": "Спорт алаңдарын онлайн брондау, команда мен ойын ұйымдастыру платформасы (PlaySlot)",
-  "prompt": "PlaySlot sports court booking and games organization platform",
-  "capabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ],
-  "permissions": []
-}

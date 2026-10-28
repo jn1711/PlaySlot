@@ -33,6 +33,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static com.jayway.jsonpath.JsonPath.read;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -205,10 +206,15 @@ class PlaySlotApplicationTests {
                 .andExpect(status().isUnauthorized());
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("PlaySlot")));
+        mockMvc.perform(get("/api"))
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("PlaySlot API"))
                 .andExpect(jsonPath("$.endpoints").isArray());
         mockMvc.perform(get("/index.html"))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML));
         mockMvc.perform(get("/login.html"))
                 .andExpect(status().isNotFound());
     }

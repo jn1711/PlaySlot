@@ -75,7 +75,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/home", "/api/courts/**", "/api/games", "/api/teams")
                         .permitAll()
                         .requestMatchers(
-                                "/", "/api/auth/csrf", "/api/auth/register", "/api/auth/login",
+                                "/", "/api", "/api/auth/csrf", "/api/auth/register", "/api/auth/login",
                                 "/api/courts", "/api/health/**"
                         ).permitAll()
                         .requestMatchers("/api/**").authenticated()

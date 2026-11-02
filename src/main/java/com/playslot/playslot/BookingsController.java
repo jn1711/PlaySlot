@@ -4,6 +4,7 @@ import com.playslot.playslot.model.Booking;
 import com.playslot.playslot.model.BookingStatus;
 import com.playslot.playslot.model.Court;
 import com.playslot.playslot.model.CourtStatus;
+import com.playslot.playslot.model.NotificationType;
 import com.playslot.playslot.model.User;
 import com.playslot.playslot.repository.BookingRepository;
 import com.playslot.playslot.repository.CourtRepository;
@@ -37,11 +38,14 @@ public class BookingsController {
     private final UserRepository userRepository;
 
     public BookingsController(BookingRepository bookingRepository, CourtRepository courtRepository,
-                              UserRepository userRepository) {
+                              UserRepository userRepository, NotificationService notificationService) {
         this.bookingRepository = bookingRepository;
         this.courtRepository = courtRepository;
         this.userRepository = userRepository;
+        this.notificationService = notificationService;
     }
+
+    private final NotificationService notificationService;
 
     @PostMapping("/api/bookings")
     @PreAuthorize("hasAnyRole('PLAYER', 'OWNER')")
@@ -65,6 +69,10 @@ public class BookingsController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Бұл уақыт бос емес");
         }
         Booking booking = bookingRepository.save(new Booking(user, court, request.startsAt(), request.endsAt()));
+        notificationService.notify(court.getOwner(), NotificationType.BOOKING_CREATED,
+                "Жаңа бронь өтініші",
+                user.getFullName() + " «" + court.getName() + "» алаңына бронь жасады: "
+                        + formatDateTime(request.startsAt()) + " – " + formatDateTime(request.endsAt()));
         return BookingView.from(booking);
     }
 
@@ -133,7 +141,36 @@ public class BookingsController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Брондау жабылған");
         }
         booking.setStatus(request.status());
+        String courtName = booking.getCourt().getName();
+        switch (request.status()) {
+            case CONFIRMED -> notificationService.notify(booking.getUser(), NotificationType.BOOKING_CONFIRMED,
+                    "Бронь расталды",
+                    "«" + courtName + "» алаңындағы " + formatDateTime(booking.getStartsAt())
+                            + " басталатын бронь расталды.");
+            case CANCELLED -> {
+                if (!player) {
+                    notificationService.notify(booking.getUser(), NotificationType.BOOKING_CANCELLED,
+                            "Бронь бас тартылды",
+                            "«" + courtName + "» алаңындағы " + formatDateTime(booking.getStartsAt())
+                                    + " басталатын бронь өтінішіңізге алаң иесі бас тартты.");
+                } else {
+                    notificationService.notify(booking.getCourt().getOwner(), NotificationType.BOOKING_CANCELLED,
+                            "Бронь болдырылмады",
+                            user.getFullName() + " «" + courtName + "» алаңындағы "
+                                    + formatDateTime(booking.getStartsAt()) + " броньын болдырмады.");
+                }
+            }
+            case COMPLETED -> notificationService.notify(booking.getUser(), NotificationType.BOOKING_COMPLETED,
+                    "Бронь аяқталды",
+                    "«" + courtName + "» алаңындағы бронь аяқталды. Пікір қалдыруға болады.");
+            default -> {
+            }
+        }
         return BookingView.from(booking);
+    }
+
+    private static String formatDateTime(java.time.LocalDateTime value) {
+        return value.format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
     }
 
     private User currentUser(Authentication authentication) {
